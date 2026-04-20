@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  padding: 0 34px;
+}
+
+.title {
+  font-weight: 600;
+  font-family: 24px;
+  color: #282828;
+  margin-top: -28px;
+  margin-bottom: 20px;
+}
+
+.backToHomeBtn {
+  font-weight: 600;
+  font-size: 20px;
+  color: #28a745;
+  background: #d8ffe1;
+  border-radius: 16px;
+  padding: 12px 18px;
+}
