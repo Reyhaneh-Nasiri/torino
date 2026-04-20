@@ -16,7 +16,6 @@ const Layout = ({ children }) => {
       </header>
       <div className={styles.content}>{children}</div>
       <footer className={styles.footer}>
-        {/* <div className={styles['footer-border']}></div> */}
         <div className={styles.top}>
           <div className={styles.top_start}>
             <h2>تورینو</h2>

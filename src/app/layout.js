@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/Layout";
+import Layout from "@/components/templates/layout/Layout";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 
