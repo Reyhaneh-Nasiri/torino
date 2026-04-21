@@ -1,0 +1,34 @@
+.container {
+  padding: 0 31px;
+  margin-top: 48px;
+  margin-bottom: 52px;
+}
+
+.container h2 {
+  color: #000;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.tours {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.moreBtnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.moreBtn {
+  color: #00000080;
+  font-weight: 400;
+  font-size: 13px;
+  padding: 8px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./TourCard.module.css";
-import { sp } from "@/utils/replaceNumber";
-// import { sp } from "@/utils/replaceNumber";
 
-const TourCard = ({tour: {id , name, image, description, price}}) => {
+const TourCard = ({id , name, image, description, price}) => {
 
   return (
     <div className={styles.card}>
