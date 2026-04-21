@@ -1,0 +1,31 @@
+.container {
+  border-top: 1px solid #00000040;
+  padding-top: 44px;
+  border-spacing: 10px;
+  margin-bottom: 30px;
+}
+
+
+.features{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  color: #282828;
+}
+
+.description {
+  font-weight: 300;
+  font-size: 12px;
+  color: #282828;
+}

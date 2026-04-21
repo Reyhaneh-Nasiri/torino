@@ -1,9 +1,9 @@
-import ToursList from "@/components/modules/toursList/ToursList";
+import Features from "@/components/modules/features/Features";
 
 export default function Home() {
   return (
-    <>
-      <ToursList />
-    </>
+    <div style={{padding: "0 31px"}}>
+      <Features />
+    </div>
   );
 }
