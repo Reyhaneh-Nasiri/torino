@@ -20,4 +20,5 @@ button{
   outline: none;
   background-color: transparent;
   font-family: inherit;
+  cursor: pointer;
 }

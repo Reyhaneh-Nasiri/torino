@@ -1,0 +1,69 @@
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 8px;
+  grid-template-areas:
+    "a b"
+    "c c"
+    "d d"
+    ;
+}
+
+.inputWrapper:nth-child(1){
+  grid-area: a;
+}
+.inputWrapper:nth-child(2){
+  grid-area: b;
+}
+.inputWrapper:nth-child(3){
+  grid-area: c;
+  margin-top: 4px;
+}
+.container button {
+  grid-area: d;
+  margin-top: 16px;
+  border-radius: 16px;
+  background: #28A745;
+  color: #fff;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 8px;
+}
+.inputWrapper {
+  border: 1px solid #00000026;
+  border-radius: 12px;
+  color: #00000080;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.inputWrapper input {
+  position: absolute;
+  border: none;
+  outline: none;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  text-align: center;
+  background: transparent;
+}
+
+.label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #00000080;
+  font-weight: 400;
+  font-size: 16px;
+}
