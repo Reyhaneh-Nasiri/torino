@@ -13,6 +13,7 @@
 }
 
 .menuBtn::after {
+  cursor: pointer;
   content: "";
   position: absolute;
   top: 0;
