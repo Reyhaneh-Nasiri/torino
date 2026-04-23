@@ -43,7 +43,7 @@ const ToursList = () => {
       </div>
       <div className={styles.moreBtnContainer}>
         <button className={styles.moreBtn}>
-          مشاهده بیشتر <i class="fa-solid fa-angle-down"></i>
+          مشاهده بیشتر <i className="fa-solid fa-angle-down"></i>
         </button>
       </div>
     </div>

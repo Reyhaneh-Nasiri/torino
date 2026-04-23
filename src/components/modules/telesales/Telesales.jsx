@@ -14,7 +14,7 @@ const Telesales = () => {
         <Image width={195} height={158} src={telesalesOperator} alt="telesales operator" />
       </div>
       <div className={styles.bottom}>
-        <p className={styles.phoneNumber}>021-1840 <i class="fa-solid fa-phone"></i></p>
+        <p className={styles.phoneNumber}>021-1840 <i className="fa-solid fa-phone"></i></p>
         <button className={styles.moreInfoBtn}>اطلاعات بیشتر</button>
       </div>
     </div>

@@ -1,11 +1,13 @@
 import Layout from "@/components/templates/layout/Layout";
-import { Vazirmatn } from "next/font/google";
+// import { Vazirmatn } from "next/font/google";
+import TanstackQueryProvider from "@/components/partials/providers/TanstackQueryProvider";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-const vazirmatn = Vazirmatn({
-  variable: "--font-vazirmatn",
-  // subsets: ["latin"],
-});
+// const vazirmatn = Vazirmatn({
+//   variable: "--font-vazirmatn",
+//   // subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +16,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazirmatn.variable}`}>
+    // <html lang="fa" dir="rtl" className={`${vazirmatn.variable}`}>
+    <html lang="fa" dir="rtl">
       <head>
         <link
           rel="stylesheet"
@@ -22,7 +25,10 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Layout>{children}</Layout>
+        <TanstackQueryProvider>
+          <Layout>{children}</Layout>
+        </TanstackQueryProvider>
+        <Toaster />
       </body>
     </html>
   );

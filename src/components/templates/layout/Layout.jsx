@@ -1,5 +1,5 @@
 "use client"
-import loginBtn from "@/assets/icons/sign-in-buttom.svg";
+// import loginBtn from "@/assets/icons/sign-in-buttom.svg";
 import airaLogo from "@/assets/images/aira-logo.svg";
 import caoLogo from "@/assets/images/cao-logo.svg";
 import caoPaxrightsLogo from "@/assets/images/cao-paxrights-logo.svg";
@@ -10,13 +10,15 @@ import Image from "next/image";
 import styles from "./Layout.module.css";
 import MenuBar from "@/components/modules/menuBar/MenuBar";
 import { useState } from "react";
+import AuthForm from "../AuthForm";
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <>
       <header className={styles.header}>
         <div className={styles.menuBtn} onClick={() => setIsMenuOpen(true)}></div>
-        <Image width={40} height={40} src={loginBtn} alt="login-btn" />
+        <AuthForm />
+        {/* <Image width={40} height={40} src={loginBtn} alt="login-btn" /> */}
         <MenuBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
       <div className={styles.content}>{children}</div>

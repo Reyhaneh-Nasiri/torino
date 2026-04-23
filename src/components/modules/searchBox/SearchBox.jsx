@@ -18,7 +18,7 @@ const SearchBox = () => {
         <input type="text" onFocus={focusHandler} onBlur={blurHandler} />
         {!isFocus && (
           <div className={styles.label}>
-            <i class="fa-solid fa-location-dot"></i>
+            <i className="fa-solid fa-location-dot"></i>
             مبدا
           </div>
         )}
@@ -27,7 +27,7 @@ const SearchBox = () => {
         <input type="text" onFocus={focusHandler} onBlur={blurHandler} />
         {!isFocus && (
           <div className={styles.label}>
-            <i class="fa-solid fa-globe"></i>
+            <i className="fa-solid fa-globe"></i>
             مقصد
           </div>
         )}
@@ -36,7 +36,7 @@ const SearchBox = () => {
         <input type="text" onFocus={focusHandler} onBlur={blurHandler} />
         {!isFocus && (
           <div className={styles.label}>
-            <i class="fa-solid fa-calendar-days"></i>
+            <i className="fa-solid fa-calendar-days"></i>
             تاریخ
           </div>
         )}
