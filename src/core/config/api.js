@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie, setCookie } from "../utils/cookie";
+import { getCookie, removeCookie, setCookie } from "../utils/cookie";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -27,17 +27,16 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if ((error.response.status === 403 || error.response.status === 401) && !originalRequest._retry) {
       originalRequest._retry = true;
 
       const res = await getNewTokens();
-      if (res?.response?.status === 201) {
-        setCookie("accessToken", res?.response?.data?.accessToken, 30);
-        setCookie("refreshToken", res?.response?.data?.refreshToken, 360);
+      if (res?.response?.status === 200) {
+        setCookie("accessToken", res?.response?.data?.accessToken, {days: 30});
         return api(originalRequest);
       } else {
-        setCookie("accessToken", "", 0);
-        setCookie("refreshToken", "", 0);
+        removeCookie("accessToken");
+        removeCookie("refreshToken");
       }
     }
 
