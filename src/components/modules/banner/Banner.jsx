@@ -1,6 +1,4 @@
-import Image from "next/image"
 import styles from "./Banner.module.css"
-import bannerImg from "@/assets/images/torino-hero-travel-illustration.svg"
 
 const Banner = () => {
   return (

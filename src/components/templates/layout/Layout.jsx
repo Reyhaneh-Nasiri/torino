@@ -1,24 +1,25 @@
-"use client"
-// import loginBtn from "@/assets/icons/sign-in-buttom.svg";
+"use client";
 import airaLogo from "@/assets/images/aira-logo.svg";
 import caoLogo from "@/assets/images/cao-logo.svg";
 import caoPaxrightsLogo from "@/assets/images/cao-paxrights-logo.svg";
 import ecunionLogo from "@/assets/images/ecunion-logo.svg";
 import samandehiLogo from "@/assets/images/samandehi-logo.svg";
 import torinoLogo from "@/assets/images/Torino.svg";
-import Image from "next/image";
-import styles from "./Layout.module.css";
 import MenuBar from "@/components/modules/menuBar/MenuBar";
+import Image from "next/image";
 import { useState } from "react";
 import AuthForm from "../AuthForm";
+import styles from "./Layout.module.css";
 const Layout = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.menuBtn} onClick={() => setIsMenuOpen(true)}></div>
+        <div
+          className={styles.menuBtn}
+          onClick={() => setIsMenuOpen(true)}
+        ></div>
         <AuthForm />
-        {/* <Image width={40} height={40} src={loginBtn} alt="login-btn" /> */}
         <MenuBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
       <div className={styles.content}>{children}</div>
@@ -62,7 +63,9 @@ const Layout = ({ children }) => {
             <p className={styles.support_number}>تلفن پشتیبانی: 021-8574</p>
           </div>
         </div>
-        <p className={styles.copyright}>کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
+        <p className={styles.copyright}>
+          کلیه حقوق این وب سایت متعلق به تورینو میباشد.
+        </p>
       </footer>
     </>
   );
