@@ -8,7 +8,7 @@ import torinoLogo from "@/assets/images/Torino.svg";
 import MenuBar from "@/components/modules/menuBar/MenuBar";
 import Image from "next/image";
 import { useState } from "react";
-import AuthForm from "../AuthForm";
+import AuthForm from "../AuthForm/AuthForm";
 import styles from "./Layout.module.css";
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

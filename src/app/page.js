@@ -4,7 +4,6 @@ import SearchBox from "@/components/modules/searchBox/SearchBox";
 import Telesales from "@/components/modules/telesales/Telesales";
 import ToursList from "@/components/modules/toursList/ToursList";
 import WhyUs from "@/components/modules/whyUs/WhyUs";
-// import AuthForm from "@/components/templates/AuthForm";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <WhyUs />
         <Features />
       </div>
-      {/* <AuthForm /> */}
     </>
   );
 }

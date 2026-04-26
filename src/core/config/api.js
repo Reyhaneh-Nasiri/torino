@@ -27,12 +27,17 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    if ((error.response.status === 403 || error.response.status === 401) && !originalRequest._retry) {
+    if (
+      (error.response.status === 403 || error.response.status === 401) &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true;
 
       const res = await getNewTokens();
       if (res?.response?.status === 200) {
-        setCookie("accessToken", res?.response?.data?.accessToken, {days: 30});
+        setCookie("accessToken", res?.response?.data?.accessToken, {
+          days: 30,
+        });
         return api(originalRequest);
       } else {
         removeCookie("accessToken");
@@ -43,7 +48,7 @@ api.interceptors.response.use(
     return Promise.reject(error.response.data);
   },
 );
- 
+
 export default api;
 
 const getNewTokens = async () => {

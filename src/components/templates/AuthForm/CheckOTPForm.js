@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import OtpInput from "react-otp-input";
 import styles from "./CheckOTPForm.module.css";
+import useAuthStore from "@/stores/authStore";
 
 const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
-  // const [code, setCode] = useState("");
+  const login = useAuthStore((state) => state.login);
   const [otp, setOtp] = useState("");
   const [timeLeft, setTimeLeft] = useState(10);
 
@@ -31,7 +32,6 @@ const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
     );
   };
 
-  //   // تایمر ساده برای شمارش معکوس
   useEffect(() => {
     if (timeLeft === 0) return;
     const t = setInterval(() => setTimeLeft((t) => t - 1), 1000);
@@ -49,22 +49,23 @@ const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
     e.preventDefault();
     if (isPending) return;
     mutate(
-      // { mobile, code },
       { mobile, code: otp },
       {
         onSuccess: () => {
+          login()
           setIsOpen(false);
           setStep(1);
         },
         onError: (error) => {
           console.log(error);
+          toast.error("کد وارد شده صحیح نیست. لطفا دوباره تلاش کنید.");
         },
       },
     );
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.form}>
+    <div className={styles.container} onClick={() => setIsOpen(false)}>
+      <div className={styles.form} onClick={(e) => e.stopPropagation()}>
         <i
           className={`${styles.backBtn} fa-solid fa-arrow-left`}
           onClick={() => setStep(1)}
@@ -72,20 +73,11 @@ const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
         <h4 className={styles.title}>کد تایید را وارد کنید</h4>
         <p className={styles.message}>کد تایید به شماره {mobile} ارسال شد</p>
         <form onSubmit={checkOtpHandler}>
-          {/* <div className={styles.inputs}>
-            <input
-              type="text"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-          </div> */}
-
           <div className={styles.otpInputs}>
             <OtpInput
               value={otp}
               onChange={setOtp}
               numInputs={6}
-              // renderSeparator={<span>-</span>}
               shouldAutoFocus
               renderInput={(props) => (
                 <input {...props} style={{ width: "fit-content" }} />

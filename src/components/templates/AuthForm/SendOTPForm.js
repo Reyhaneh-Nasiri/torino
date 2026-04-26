@@ -26,8 +26,8 @@ const SendOTPForm = ({ mobile, setMobile, setStep, setIsOpen }) => {
     );
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.form}>
+    <div className={styles.container} onClick={() => setIsOpen(false)}>
+      <div className={styles.form} onClick={(e) => e.stopPropagation()}>
         <i className={`${styles.closeBtn} fa-solid fa-plus`} onClick={() => setIsOpen(false)}></i>
         <h4 className={styles.title}>ورود به تورینو</h4>
         <form onSubmit={sendOtpHandler}>
