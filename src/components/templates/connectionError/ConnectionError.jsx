@@ -1,3 +1,4 @@
+"use client"
 import connectionErrorImg from "@/assets/images/connection-error.svg"
 
 import styles from "./ConnectionError.module.css"
