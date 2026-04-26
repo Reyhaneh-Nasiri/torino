@@ -16,11 +16,11 @@
 .inputWrapper:nth-child(2){
   grid-area: b;
 }
-.inputWrapper:nth-child(3){
+.container div:nth-child(3){
   grid-area: c;
   margin-top: 4px;
 }
-.container button {
+.container > button {
   grid-area: d;
   margin-top: 16px;
   border-radius: 16px;

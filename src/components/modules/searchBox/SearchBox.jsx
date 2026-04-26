@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import styles from "./SearchBox.module.css";
+import TourDatePicker from "../tourDatePicker/TourDatePicker";
 
 const SearchBox = () => {
   const [isFocus, setIsFocus] = useState(false);
@@ -32,16 +33,7 @@ const SearchBox = () => {
           </div>
         )}
       </div>
-      <div className={styles.inputWrapper}>
-        <input type="text" onFocus={focusHandler} onBlur={blurHandler} />
-        {!isFocus && (
-          <div className={styles.label}>
-            <i className="fa-solid fa-calendar-days"></i>
-            تاریخ
-          </div>
-        )}
-      </div>
-
+      <TourDatePicker />
       <button>جستجو</button>
     </div>
   );

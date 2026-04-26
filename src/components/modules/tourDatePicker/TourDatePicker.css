@@ -1,0 +1,112 @@
+.rmdp-container {
+  width: 100%;
+}
+
+.tour-input {
+  border: 1px solid #00000026;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #00000080;
+  font-weight: 400;
+  font-size: 16px;
+  height: 53px;
+}
+
+.ep-arrow {
+  display: none;
+}
+
+.rmdp-container > div:nth-child(3) {
+  width: 100% !important;
+  padding: 0 31px;
+  margin-top: -3px;
+}
+
+.rmdp-wrapper {
+  background-color: #fff !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  border: 1px solid #00000040;
+  border-radius: 12px !important;
+}
+
+.rmdp-header-values {
+  color: #fff !important;
+  padding: 4px 8px;
+  font-weight: 400;
+  font-size: 11px;
+  background: #28a745;
+  border-radius: 4px;
+}
+
+.rmdp-arrow {
+  border-color: #28a745 !important;
+}
+
+.rmdp-arrow-container:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.rmdp-day-picker > div {
+  width: 100% !important;
+}
+
+.rmdp-week-day {
+  font-weight: 400;
+  font-size: 11px;
+  color: #10411b !important;
+}
+
+.rmdp-week-day:last-child {
+  color: #28a745 !important;
+}
+
+.rmdp-week {
+  align-items: baseline !important;
+}
+
+.sd {
+  background-color: transparent !important;
+  color: #616161 !important;
+  opacity: 0.8 !important;
+}
+
+.holiday-day {
+  color: #28a745 !important;
+}
+
+.rmdp-day.rmdp-selected span {
+  background-color: #28a745 !important;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 3px 5px !important;
+  box-shadow: none !important;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.rmdp-day.rmdp-selected span:hover {
+  opacity: 0.8;
+}
+
+.rmdp-today span {
+  background-color: transparent !important;
+  color: #28a745 !important;
+  border: 1px solid #28a745;
+  border-radius: 4px !important;
+  padding: 3px 5px !important;
+  box-shadow: none !important;
+}
+
+.rmdp-calendar {
+  width: 100% !important;
+  padding: 0 !important;
+}
