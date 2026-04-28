@@ -5,7 +5,7 @@ import place3 from "@/assets/images/place3.png";
 import place4 from "@/assets/images/place4.png";
 import Image from "next/image";
 import { useState } from "react";
-import styles from "./WhyUs.module.css";
+import styles from "./index.module.css";
 
 const SLIDES = [
   <Image src={place1} key="1" alt="place 1" />,
@@ -17,19 +17,13 @@ const WhyUs = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const nextHandler = () => {
     const s = SLIDES.splice(0, 1);
-    console.log(s);
-    console.log(SLIDES);
     SLIDES.push(...s);
-    console.log(false);
     setCurrentSlide((curr) => curr + 1);
     if (currentSlide === SLIDES.length) setCurrentSlide(1);
   };
   const prevHandler = () => {
     const s = SLIDES.splice(-1);
-    console.log(s);
-    console.log(SLIDES);
     SLIDES.unshift(...s);
-    console.log(SLIDES);
     setCurrentSlide((curr) => curr - 1);
     if (currentSlide === 1) setCurrentSlide(SLIDES.length);
   };
