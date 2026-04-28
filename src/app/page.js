@@ -1,5 +1,5 @@
 import Banner from "@/components/modules/banner/Banner";
-import Features from "@/components/modules/features/Features";
+import Features from "@/components/modules/Features";
 import SearchBox from "@/components/modules/searchBox/SearchBox";
 import Telesales from "@/components/modules/telesales/Telesales";
 import ToursList from "@/components/modules/ToursList";

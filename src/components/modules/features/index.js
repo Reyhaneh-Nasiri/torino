@@ -2,7 +2,7 @@ import support24h from "@/assets/images/24h-support.png";
 import bestPrice from "@/assets/images/best-price.png";
 import userSatisfaction from "@/assets/images/user-satisfaction.png";
 import Image from "next/image";
-import styles from "./Features.module.css";
+import styles from "./index.module.css";
 
 const FEATURES = [
   {
@@ -12,13 +12,13 @@ const FEATURES = [
     description: "بصرفه ترین و ارزان ترین قیمت تور را از ما بخواهید.",
   },
   {
-    id: 1,
+    id: 2,
     image: support24h,
     title: "پشتیبانی",
     description: "پشتیبانی و همراهی 24 ساعته در تمامی مراحل سفر شما.",
   },
   {
-    id: 1,
+    id: 3,
     image: userSatisfaction,
     title: "رضایت کاربران",
     description: "رضایت بیش از 10هزار کاربر از تور های ما. ",
