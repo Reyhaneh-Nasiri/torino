@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
           href="https://lib.arvancloud.ir/font-awesome/6.3.0/css/all.css"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <TanstackQueryProvider>
           <Layout>{children}</Layout>
         </TanstackQueryProvider>
