@@ -42,7 +42,7 @@ export const useOrder = () => {
       router.push("/");
     },
     onError: (error) => {
-      console.error(error);
+      toast.error(error.message);
     },
   });
 };
