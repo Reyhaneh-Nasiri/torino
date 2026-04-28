@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import api from "../config/api";
 import { setCookie } from "../utils/cookie";
 
@@ -10,8 +11,20 @@ export const useSendOtp = () => {
 export const useCheckOtp = () => {
   const mutationFn = (data) => api.post("/auth/check-otp", data);
   const onSuccess = (data) => {
-    setCookie("accessToken", data?.data?.accessToken, {days: 30});
-    setCookie("refreshToken", data?.data?.refreshToken, {days: 365});
+    setCookie("accessToken", data?.data?.accessToken, { days: 30 });
+    setCookie("refreshToken", data?.data?.refreshToken, { days: 365 });
   };
   return useMutation({ mutationFn, onSuccess });
+};
+
+export const useReserveBuy = (id) => {
+  return useMutation({
+    mutationFn: (payload) => api.put(`/basket/${id}`, payload),
+    onSuccess: (data) => {
+      toast.success(data.data.message);
+    },
+    onError: (error) => {
+      console.error("خطا در رزرو:", error);
+    },
+  });
 };
