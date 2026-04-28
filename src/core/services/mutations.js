@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import api from "../config/api";
 import { setCookie } from "../utils/cookie";
@@ -25,6 +26,23 @@ export const useReserveBuy = (id) => {
     },
     onError: (error) => {
       console.error("خطا در رزرو:", error);
+    },
+  });
+};
+
+export const useOrder = () => {
+  const router = useRouter();
+  return useMutation({
+    mutationFn: (payload) => {
+      console.log(payload);
+      return api.post(`/order`, payload);
+    },
+    onSuccess: (data) => {
+      toast.success(data.data.message);
+      router.push("/");
+    },
+    onError: (error) => {
+      console.error(error);
     },
   });
 };
