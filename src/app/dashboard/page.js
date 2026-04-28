@@ -1,8 +1,8 @@
+import { redirect } from "next/navigation";
 
-const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+const DashboardPage = () => {
+  redirect("/dashboard/profile");
+  return null;
+};
 
-export default Dashboard
+export default DashboardPage;

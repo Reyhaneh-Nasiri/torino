@@ -1,0 +1,30 @@
+
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #00000040;
+}
+
+.tabItem {
+  padding: 8px 12px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #282828;
+  cursor: pointer;
+}
+
+.tabItem i {
+  padding-inline-end: 8px;
+}
+
+.tabItem.active{
+  color: #28A745;
+  border-bottom: 2px solid #28A745;
+}
+
+
+.tabItem:hover{
+  color: #28A745;
+}
