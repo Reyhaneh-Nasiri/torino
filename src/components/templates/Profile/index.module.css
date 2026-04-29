@@ -1,0 +1,56 @@
+.profile{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.title{
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+}
+
+.accountInfo, .bankInfo, .personalInfo{
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actionBtn{
+  font-weight: 400;
+  font-size: 14px;
+  color: #009ECA;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label{
+  font-weight: 300;
+  font-size: 14px;
+  color: #000;
+}
+
+.value{
+  font-weight: 400;
+  font-size: 14px;
+  color: #282828;
+}
