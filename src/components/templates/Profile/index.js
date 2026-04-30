@@ -1,5 +1,6 @@
 "use client";
 import ProfileForm from "@/components/modules/ProfileForm.js";
+import { useGetProfile } from "@/core/services/queries";
 import { toPersianDate } from "@/core/utils/date";
 import { e2p } from "@/core/utils/digit";
 import { useState } from "react";
@@ -23,13 +24,16 @@ const FORM_DATA = {
     { id: 3, placeholder: "شماره شبا" },
   ],
 };
-const Profile = ({ data }) => {
+const Profile = () => {
+  const { data, isFetching, error } = useGetProfile();
   const [edit, setEdit] = useState({
     account: false,
     personal: false,
     bank: false,
   });
 
+  if (isFetching) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
   const {
     mobile,
     email,
@@ -107,6 +111,7 @@ const Profile = ({ data }) => {
             editHandler={editHandler}
             section="personal"
             form={FORM_DATA}
+            setEdit={setEdit}
           />
         ) : (
           <div className={styles.items}>
