@@ -1,8 +1,10 @@
 "use client";
+import { useProfileUpdate } from "@/core/services/mutations";
 import { useState } from "react";
 import styles from "./index.module.css";
 
 const ProfileForm = ({ editHandler, section, form, data: profileData }) => {
+  const { mutate } = useProfileUpdate();
 
   const initialData = {
     mobile: profileData.mobile || "",
@@ -43,6 +45,10 @@ const ProfileForm = ({ editHandler, section, form, data: profileData }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const updateHandler = () => {
+    mutate(formData);
+    editHandler(section);
+  };
   if (section === "account") {
     return (
       <div className={styles.field}>
