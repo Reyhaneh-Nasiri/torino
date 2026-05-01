@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import api from "../config/api";
@@ -43,6 +43,25 @@ export const useOrder = () => {
     },
     onError: (error) => {
       toast.error(error.message);
+    },
+  });
+};
+
+export const useProfileUpdate = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload) => {
+      console.log(payload);
+      return api.put(`/user/profile`, payload);
+    },
+    onSuccess: (data) => {
+      toast.success(data.data.message);
+      queryClient.invalidateQueries(["profile"]);
+      console.log(data);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
     },
   });
 };
