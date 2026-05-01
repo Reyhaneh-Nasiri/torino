@@ -1,7 +1,8 @@
+import MyTourCard from "@/components/modules/MyTourCard"
 
 const HistoryPage = () => {
   return (
-    <div>HistoryPage</div>
+    <MyTourCard />
   )
 }
 

@@ -1,0 +1,117 @@
+.card {
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  position: relative;
+}
+
+.status {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  background-color: #28a7454d;
+  border-radius: 27px;
+  padding: 4px 6px;
+  font-weight: 400;
+  font-size: 6px;
+  color: #28a745;
+}
+
+.header {
+  padding: 24px 20px 20px;
+}
+
+.cardRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000000;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000000;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.type i {
+  transform: rotate(-135deg);
+}
+
+.dates {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dateItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dateLabel {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.dateValue {
+  color: #00000099;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.footer {
+  border-top: 1px solid #00000033;
+  padding: 8px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info,
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.infoLabel,
+.priceLabel {
+  font-weight: 400;
+  font-size: 12px;
+  color: #00000080;
+}
+
+.infoValue,
+.priceAmount {
+  font-weight: 500;
+  font-size: 12px;
+  color: #282828;
+}
+
+.border {
+  width: 1px;
+  height: 30px;
+  margin: 0 12px;
+  background-color: #00000033;
+}
+
+.unit{
+  font-weight: 300;
+  font-size: 8px;
+  color: #00000080;
+}
