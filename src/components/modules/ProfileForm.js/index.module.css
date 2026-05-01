@@ -44,3 +44,14 @@
   border: 2px solid #28a745;
   color: #28a745;
 }
+
+.field > button{
+  background-color: #28A745;
+  min-width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}

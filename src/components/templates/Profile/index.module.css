@@ -54,30 +54,3 @@
   font-size: 14px;
   color: #282828;
 }
-
-.field{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.field input{
-  width: 186px;
-  height: 40px;
-  border: 1px solid #00000080;
-  border-radius: 5px;
-  padding: 8px;
-  font-weight: 400;
-  font-size: 12px;
-}
-
-.field button{
-  background-color: #28A745;
-  width: 90px;
-  height: 40px;
-  border-radius: 5px;
-  padding: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  color: #fff;
-}

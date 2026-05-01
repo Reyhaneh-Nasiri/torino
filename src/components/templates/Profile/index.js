@@ -13,15 +13,15 @@ const GENDER = {
 
 const FORM_DATA = {
   personal: [
-    { id: 1, placeholder: "نام و نام خانوادگی" },
-    { id: 2, placeholder: "کدملی" },
-    { id: 3, placeholder: "جنسیت" },
-    { id: 4, placeholder: "تاریخ تولد" },
+    { id: 1, placeholder: "نام و نام خانوادگی", name: "fullName" },
+    { id: 2, placeholder: "کدملی", name: "nationalCode" },
+    { id: 3, placeholder: "جنسیت", name: "gender" },
+    { id: 4, placeholder: "تاریخ تولد", name: "birthDate" },
   ],
   bank: [
-    { id: 1, placeholder: "شماره کارت" },
-    { id: 2, placeholder: "شماره حساب" },
-    { id: 3, placeholder: "شماره شبا" },
+    { id: 1, placeholder: "شماره کارت", name: "debitCard_code" },
+    { id: 2, placeholder: "شماره حساب", name: "accountIdentifier" },
+    { id: 3, placeholder: "شماره شبا", name: "shaba_code" },
   ],
 };
 const Profile = () => {
@@ -45,11 +45,7 @@ const Profile = () => {
     payment,
   } = data;
 
-  console.log(data);
-
   const editHandler = (section) => {
-    console.log(edit);
-    console.log(section);
     setEdit((prev) => ({ ...prev, [section]: !prev[section] }));
   };
   return (
@@ -64,10 +60,12 @@ const Profile = () => {
             <p className={styles.value}>{mobile ? e2p(mobile) : "_"}</p>
           </div>
           {edit.account ? (
-            <div className={styles.field}>
-              <input type="text" placeholder="آدرس ایمیل" />
-              <button onClick={() => editHandler("account")}>تایید</button>
-            </div>
+            <ProfileForm
+              editHandler={editHandler}
+              section="account"
+              mobile={mobile}
+              data={data}
+            />
           ) : (
             <div className={styles.item}>
               <p className={styles.label}>ایمیل</p>
@@ -112,6 +110,8 @@ const Profile = () => {
             section="personal"
             form={FORM_DATA}
             setEdit={setEdit}
+            mobile={mobile}
+            data={data}
           />
         ) : (
           <div className={styles.items}>
@@ -157,28 +157,30 @@ const Profile = () => {
             editHandler={editHandler}
             section="bank"
             form={FORM_DATA}
+            mobile={mobile}
+            data={data}
           />
         ) : (
           <div className={styles.items}>
             <div className={styles.item}>
               <p className={styles.label}>شماره کارت</p>
               <p className={styles.value}>
-                {payment?.shaba_code ? e2p(payment.shaba_code) : "__"}
+                {payment?.debitCard_code ? e2p(payment.debitCard_code) : "__"}
               </p>
             </div>
 
-            <div className={styles.item}>
-              <p className={styles.label}>شماره شبا</p>
-              <p className={styles.value}>
-                {payment?.shaba_code ? e2p(payment.shaba_code) : "__"}
-              </p>
-            </div>
             <div className={styles.item}>
               <p className={styles.label}>شماره حساب</p>
               <p className={styles.value}>
                 {payment?.accountIdentifier
                   ? e2p(payment.accountIdentifier)
                   : "__"}
+              </p>
+            </div>
+            <div className={styles.item}>
+              <p className={styles.label}>شماره شبا</p>
+              <p className={styles.value}>
+                {payment?.shaba_code ? e2p(payment.shaba_code) : "__"}
               </p>
             </div>
           </div>
