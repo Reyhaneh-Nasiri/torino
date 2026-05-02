@@ -15,3 +15,18 @@ export const useGetProfile = () => {
   });
 };
 
+
+export const useGetHistory = () => {
+  return useQuery({
+    queryKey: ["history"],
+    queryFn: async () => {
+      try {
+        const res = await api.get("/user/tours", { cache: "no-store" });
+        return res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
+};
+
