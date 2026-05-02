@@ -1,9 +1,7 @@
-import MyTourCard from "@/components/modules/MyTourCard"
+import History from "@/components/templates/History";
 
 const HistoryPage = () => {
-  return (
-    <MyTourCard />
-  )
-}
+  return <History />;
+};
 
-export default HistoryPage
+export default HistoryPage;

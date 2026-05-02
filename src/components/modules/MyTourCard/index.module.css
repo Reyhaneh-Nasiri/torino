@@ -45,9 +45,9 @@
   font-size: 12px;
 }
 
-.type i {
+/* .type i {
   transform: rotate(-135deg);
-}
+} */
 
 .dates {
   display: flex;
@@ -110,7 +110,7 @@
   background-color: #00000033;
 }
 
-.unit{
+.unit {
   font-weight: 300;
   font-size: 8px;
   color: #00000080;

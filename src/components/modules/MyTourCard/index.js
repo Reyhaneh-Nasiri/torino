@@ -1,9 +1,21 @@
+import { PLACES } from "@/constants/places";
+import { VEHICLES } from "@/constants/vehicles";
+import { formatCurrency } from "@/core/utils/currency";
+import { toPersianDateLong } from "@/core/utils/date";
 import styles from "./index.module.css";
 
-{
-  /* <span class="tour-card__status tour-card__status--finished">به اتمام رسیده</span> */
-}
-const MyTourCard = () => {
+const MyTourCard = ({ tour }) => {
+  const {
+    title,
+    fleetVehicle,
+    origin,
+    destination,
+    price,
+    startDate,
+    endDate,
+  } = tour;
+
+  const vehicleInfo = VEHICLES[fleetVehicle];
   return (
     <div className={styles.card}>
       <span className={styles.status}>به اتمام رسیده</span>
@@ -11,22 +23,28 @@ const MyTourCard = () => {
         <div className={styles.cardRow}>
           <h3 className={styles.title}>
             <i className="fa-solid fa-mountain-city"></i>
-            تور اقلیم کردستان
+            {title}
           </h3>
           <span className={styles.type}>
-            <i className="fa-solid fa-plane"></i>
-            سفر با هواپیما
+            {vehicleInfo.icon}
+            سفر با {vehicleInfo.name}
           </span>
         </div>
 
         <div className={styles.dates}>
           <div className={styles.dateItem}>
-            <span className={styles.dateLabel}>تهران به سلیمانیه </span>
-            <span className={styles.dateValue}>دوشنبه 15 شهریور 1402</span>
+            <span className={styles.dateLabel}>
+              {PLACES[origin.name]} به {PLACES[destination.name]}
+            </span>
+            <span className={styles.dateValue}>
+              {toPersianDateLong(startDate)}
+            </span>
           </div>
           <div className={styles.dateItem}>
             <span className={styles.dateLabel}>تاریخ برگشت:</span>
-            <span className={styles.dateValue}>جمعه 19 شهریور 1402</span>
+            <span className={styles.dateValue}>
+              {toPersianDateLong(endDate)}
+            </span>
           </div>
         </div>
       </div>
@@ -39,7 +57,9 @@ const MyTourCard = () => {
         <div className={styles.border}></div>
         <div className={styles.price}>
           <span className={styles.priceLabel}>مبلغ پرداخت شده:</span>
-          <span className={styles.priceAmount}>18,000,000 <span className={styles.unit}>تومان</span></span>
+          <span className={styles.priceAmount}>
+            {formatCurrency(price)} <span className={styles.unit}>تومان</span>
+          </span>
         </div>
       </div>
     </div>
