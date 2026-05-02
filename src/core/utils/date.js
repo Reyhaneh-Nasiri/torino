@@ -1,4 +1,5 @@
 import { e2p } from "./digit";
+import { formatTime } from "./time";
 
 const toPersianDate = (isoString) => {
   const date = new Date(isoString);
@@ -20,6 +21,11 @@ const toPersianDateLong = (isoString) => {
   }).format(date);
 };
 
+const formatTransactionDate = (isoString) => {
+  const date = new Date(isoString);
+  return `${e2p(formatTime(date))} - ${new Intl.DateTimeFormat("fa-IR").format(date)}`;
+};
+
 const diffDaysAndNights = (date1, date2) => {
   const d1 = new Date(date1);
   const d2 = new Date(date2);
@@ -29,4 +35,9 @@ const diffDaysAndNights = (date1, date2) => {
   return `${e2p(days + 1)} روز و ${e2p(days)} شب`;
 };
 
-export { diffDaysAndNights, toPersianDate, toPersianDateLong };
+export {
+  diffDaysAndNights,
+  formatTransactionDate,
+  toPersianDate,
+  toPersianDateLong,
+};
