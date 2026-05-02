@@ -9,6 +9,16 @@ const toPersianDate = (isoString) => {
     day: "numeric",
   }).format(date);
 };
+const toPersianDateLong = (isoString) => {
+  const date = new Date(isoString);
+
+  return new Intl.DateTimeFormat("fa-IR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+};
 
 const diffDaysAndNights = (date1, date2) => {
   const d1 = new Date(date1);
@@ -19,4 +29,4 @@ const diffDaysAndNights = (date1, date2) => {
   return `${e2p(days + 1)} روز و ${e2p(days)} شب`;
 };
 
-export { diffDaysAndNights, toPersianDate };
+export { diffDaysAndNights, toPersianDate, toPersianDateLong };
