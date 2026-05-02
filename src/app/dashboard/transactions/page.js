@@ -1,8 +1,7 @@
+import Transactions from "@/components/templates/Transactions";
 
 const TransactionsPage = () => {
-  return (
-    <div>TransactionsPage</div>
-  )
-}
+  return <Transactions />;
+};
 
-export default TransactionsPage
+export default TransactionsPage;
