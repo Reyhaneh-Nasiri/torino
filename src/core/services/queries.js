@@ -15,7 +15,6 @@ export const useGetProfile = () => {
   });
 };
 
-
 export const useGetHistory = () => {
   return useQuery({
     queryKey: ["history"],
@@ -30,3 +29,16 @@ export const useGetHistory = () => {
   });
 };
 
+export const useGetTransactions = () => {
+  return useQuery({
+    queryKey: ["transactions"],
+    queryFn: async () => {
+      try {
+        const res = await api.get("/user/transactions", { cache: "no-store" });
+        return res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
+};
