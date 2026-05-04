@@ -1,0 +1,95 @@
+.select {
+  position: relative;
+}
+
+.input {
+  border: 1px solid #00000080;
+  border-radius: 5px;
+  width: 287px;
+  padding: 12px 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #282828;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  caret-color: transparent;
+  color: transparent;
+}
+
+.value{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px 8px;
+  user-select: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.angle{
+  position: absolute;
+  left: 8px;
+  top:50%;
+  transform: translateY(-50%);
+  transition: .2s ease;
+  font-size: 12px;
+}
+
+.select.open .angle{
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.options {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 100%;
+  border: 1px solid #00000033;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 100;
+}
+
+.label{
+  font-weight: 300;
+  font-size: 13px;
+  color: #282828B2;
+  background-color: #f8f8f8;
+  padding: 6px;
+  user-select: none;
+}
+
+.option {
+  padding: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #282828;
+  border-bottom: 1px solid #0000001f;
+  user-select: none;
+  cursor: pointer;
+}
+
+.option.selected{
+  background-color: #eee;
+}
+
+.option:hover{
+  background-color: #eee;
+}
+
+.option:last-child {
+  border-bottom: none;
+}
