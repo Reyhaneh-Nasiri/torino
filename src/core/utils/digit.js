@@ -1,7 +1,7 @@
 const e2p = (s) => s?.toString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
 
 const p2e = (s) =>
-  s?.toString().replace(/[٠-٩]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+  s?.toString().replace(/[۰-۹]/g, (d) => d.charCodeAt(0) - 1776);
 
 const sp = (number) => {
   const seperatedNumber = number
