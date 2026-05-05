@@ -1,5 +1,5 @@
 import jalaali from "jalaali-js";
-import { e2p, p2e } from "./digit";
+import { e2p } from "./digit";
 import { formatTime } from "./time";
 
 const toPersianDate = (isoString) => {
@@ -46,9 +46,8 @@ const jalaliToGregorianString = (jalaliStr) => {
   const yyyy = g.gy.toString().padStart(4, "0");
   const mm = g.gm.toString().padStart(2, "0");
   const dd = g.gd.toString().padStart(2, "0");
-
-  return p2e(`${yyyy}-${mm}-${dd}`);
-}
+  return `${yyyy}-${mm}-${dd}`;
+};
 
 export {
   diffDaysAndNights,

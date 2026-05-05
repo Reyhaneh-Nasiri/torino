@@ -3,6 +3,8 @@ import OrderSummaryCard from "@/components/modules/OrderSummaryCard";
 import PassengerForm from "@/components/modules/PassengerForm";
 import { checkoutSchema } from "@/core/schemas/checkout";
 import { useOrder } from "@/core/services/mutations";
+import { jalaliToGregorianString } from "@/core/utils/date";
+import { p2e } from "@/core/utils/digit";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import styles from "./index.module.css";
@@ -27,7 +29,11 @@ const Checkout = ({ data }) => {
     mode: "onChange",
   });
   const onSubmit = (values) => {
-    mutate(values);
+    const formatValues = {
+      ...values,
+      birthDate: jalaliToGregorianString(p2e(values.birthDate)),
+    };
+    mutate(formatValues);
   };
 
   return (
