@@ -1,8 +1,8 @@
-.rmdp-container {
+.tour-date-picker .rmdp-container {
   width: 100%;
 }
 
-.tour-input {
+.tour-date-picker .tour-input {
   border: 1px solid #00000026;
   border-radius: 12px;
   padding: 12px 16px;
@@ -19,17 +19,17 @@
   height: 53px;
 }
 
-.ep-arrow {
+.tour-date-picker .ep-arrow {
   display: none;
 }
 
-.rmdp-container > div:nth-child(3) {
+.tour-date-picker .rmdp-container > div:nth-child(3) {
   width: 100% !important;
   padding: 0 31px;
   margin-top: -3px;
 }
 
-.rmdp-wrapper {
+.tour-date-picker .rmdp-wrapper {
   background-color: #fff !important;
   width: 100% !important;
   box-shadow: none !important;
@@ -37,7 +37,7 @@
   border-radius: 12px !important;
 }
 
-.rmdp-header-values {
+.tour-date-picker .rmdp-header-values {
   color: #fff !important;
   padding: 4px 8px;
   font-weight: 400;
@@ -46,44 +46,44 @@
   border-radius: 4px;
 }
 
-.rmdp-arrow {
+.tour-date-picker .rmdp-arrow {
   border-color: #28a745 !important;
 }
 
-.rmdp-arrow-container:hover {
+.tour-date-picker .rmdp-arrow-container:hover {
   background-color: transparent !important;
   box-shadow: none !important;
 }
 
-.rmdp-day-picker > div {
+.tour-date-picker .rmdp-day-picker > div {
   width: 100% !important;
 }
 
-.rmdp-week-day {
+.tour-date-picker .rmdp-week-day {
   font-weight: 400;
   font-size: 11px;
   color: #10411b !important;
 }
 
-.rmdp-week-day:last-child {
+.tour-date-picker .rmdp-week-day:last-child {
   color: #28a745 !important;
 }
 
-.rmdp-week {
+.tour-date-picker .rmdp-week {
   align-items: baseline !important;
 }
 
-.sd {
+.tour-date-picker .sd {
   background-color: transparent !important;
   color: #616161 !important;
   opacity: 0.8 !important;
 }
 
-.holiday-day {
+.tour-date-picker .holiday-day {
   color: #28a745 !important;
 }
 
-.rmdp-day.rmdp-selected span {
+.tour-date-picker .rmdp-day.rmdp-selected span {
   background-color: #28a745 !important;
   color: #fff !important;
   border-radius: 4px;
@@ -93,11 +93,11 @@
   font-size: 11px;
 }
 
-.rmdp-day.rmdp-selected span:hover {
+.tour-date-picker .rmdp-day.rmdp-selected span:hover {
   opacity: 0.8;
 }
 
-.rmdp-today span {
+.tour-date-picker .rmdp-today span {
   background-color: transparent !important;
   color: #28a745 !important;
   border: 1px solid #28a745;
@@ -106,7 +106,7 @@
   box-shadow: none !important;
 }
 
-.rmdp-calendar {
+.tour-date-picker .rmdp-calendar {
   width: 100% !important;
   padding: 0 !important;
 }

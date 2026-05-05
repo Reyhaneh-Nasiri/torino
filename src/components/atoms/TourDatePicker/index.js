@@ -1,19 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-
-import gregorian from "react-date-object/calendars/gregorian";
 import persian from "react-date-object/calendars/persian";
-import gregorian_en from "react-date-object/locales/gregorian_en";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DatePicker from "react-multi-date-picker";
-
-import "./TourDatePicker.css";
+import "./index.css";
 
 const TourDatePicker = () => {
   const [value, setValue] = useState("");
-  const [lang, setLang] = useState("fa");
-
-  const isFa = lang === "fa";
 
   useEffect(() => {
     persian_fa["weekDays"] = persian_fa.weekDays.map((day) => {
@@ -25,7 +18,7 @@ const TourDatePicker = () => {
 
   return (
     <>
-      <div style={{ direction: isFa ? "rtl" : "ltr" }}>
+      <div className="tour-date-picker">
         <DatePicker
           mapDays={({ date }) => {
             const isFriday = date.weekDay.index === 6;
@@ -35,16 +28,16 @@ const TourDatePicker = () => {
               };
             }
           }}
-          calendar={isFa ? persian : gregorian}
-          locale={isFa ? persian_fa : gregorian_en}
+          calendar={persian}
+          locale={persian_fa}
           value={value}
           onChange={setValue}
-          format={isFa ? "YYYY/MM/DD" : "YYYY-MM-DD"}
+          format={"YYYY/MM/DD"}
           calendarPosition="bottom-center"
           render={(value, openCalendar) => (
             <div className="tour-input" onClick={openCalendar}>
               <i className="fa-solid fa-calendar"></i>
-              <span>{value || (isFa ? "انتخاب تاریخ" : "Select date")}</span>
+              <span>{value || "انتخاب تاریخ"}</span>
             </div>
           )}
         />
@@ -55,17 +48,12 @@ const TourDatePicker = () => {
 
 export default TourDatePicker;
 
-// <div style={{ marginBottom: 16 }}>
-//   <button onClick={() => setLang("fa")}>فارسی</button>
-//   <button onClick={() => setLang("en")}>English</button>
-// </div>
-
 {
   /* <DatePicker
         range
         rangeHover
-        calendar={isFa ? persian : gregorian}
-        locale={isFa ? persian_fa : gregorian_en}
+        calendar={persian}
+        locale={persian_fa}
         value={value}
         onChange={setValue}
         />  */
