@@ -1,7 +1,7 @@
 "use client";
 import TourDatePicker from "@/components/atoms/TourDatePicker";
 import { useState } from "react";
-import styles from "./SearchBox.module.css";
+import styles from "./index.module.css";
 
 const SearchBox = () => {
   const [isFocus, setIsFocus] = useState(false);
