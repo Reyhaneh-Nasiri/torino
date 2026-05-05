@@ -1,12 +1,9 @@
 "use client";
+import BirthDatePicker from "@/components/atoms/BirthDatePicker";
+import SelectOption from "@/components/customGenerate/SelectOption";
 import styles from "./index.module.css";
 
-const PassengerForm = ({ form, setForm }) => {
-  const { nationalCode, fullName, gender, birthDate } = form;
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+const PassengerForm = ({ register, errors, control, trigger, setValue }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>
@@ -14,41 +11,45 @@ const PassengerForm = ({ form, setForm }) => {
         مشخصات مسافر
       </h3>
       <div className={styles.form}>
-        <input
-          type="text"
-          className={styles.field}
-          placeholder="نام و نام‌خانوادگی"
-          name="fullName"
-          value={fullName}
-          onChange={changeHandler}
-        />
-        <select
-          className={styles.field}
-          name="gender"
-          value={gender}
-          onChange={changeHandler}
+        <div>
+          <input
+            placeholder="نام و نام خانوادگی"
+            className={`${styles.field} ${errors.fullName ? styles["field--error"] : null}`}
+            {...register("fullName")}
+          />
+          {errors.fullName && (
+            <p className={styles.errorMessage}>{errors.fullName.message}</p>
+          )}
+        </div>
+        <div className={`${errors.gender ? styles["field--error"] : null}`}>
+          <SelectOption
+            register={register}
+            trigger={trigger}
+            setValue={setValue}
+            type="gender"
+          />
+          {errors.gender && (
+            <p className={styles.errorMessage}>{errors.gender.message}</p>
+          )}
+        </div>
+        <div>
+          <input
+            {...register("nationalCode")}
+            className={`${styles.field} ${errors.nationalCode ? styles["field--error"] : null}`}
+            placeholder="کدملی"
+          />
+          {errors.nationalCode && (
+            <p className={styles.errorMessage}>{errors.nationalCode.message}</p>
+          )}
+        </div>
+        <div
+          className={`${errors.birthDate ? styles["field--error"] : null} birth-date-picker`}
         >
-          <option value="">جنسیت</option>
-          <option value="Male">مرد</option>
-          <option value="Female">زن</option>
-          <option value="Other">یه چیز دیگه</option>
-        </select>
-        <input
-          type="text"
-          name="nationalCode"
-          value={nationalCode}
-          className={styles.field}
-          placeholder="کدملی"
-          onChange={changeHandler}
-        />
-        <input
-          type="text"
-          name="birthDate"
-          value={birthDate}
-          className={styles.field}
-          placeholder="تاریخ تولد"
-          onChange={changeHandler}
-        />
+          <BirthDatePicker control={control} />
+          {errors.birthDate && (
+            <p className={styles.errorMessage}>{errors.birthDate.message}</p>
+          )}
+        </div>
       </div>
     </div>
   );

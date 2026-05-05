@@ -21,6 +21,10 @@
   gap: 24px;
 }
 
+.form > div {
+  position: relative;
+}
+
 .field {
   width: 287px;
   padding: 12px 8px;
@@ -29,6 +33,21 @@
   outline: none;
 }
 
+.field--error {
+  border-color: #f43f5e;
+}
+
+.field--error > div > div > div,
+.field--error > div > input {
+  border-color: #f43f5e;
+}
+
 .field option {
   width: 100%;
+}
+
+.errorMessage {
+  color: #f43f5e;
+  font-size: 12px;
+  padding: 4px 2px 0;
 }
