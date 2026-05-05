@@ -1,4 +1,5 @@
-import { e2p } from "./digit";
+import jalaali from "jalaali-js";
+import { e2p, p2e } from "./digit";
 import { formatTime } from "./time";
 
 const toPersianDate = (isoString) => {
@@ -35,9 +36,24 @@ const diffDaysAndNights = (date1, date2) => {
   return `${e2p(days + 1)} روز و ${e2p(days)} شب`;
 };
 
+const jalaliToGregorianString = (jalaliStr) => {
+  const parts = jalaliStr.replaceAll("-", "/").split("/");
+  const jy = parseInt(parts[0], 10);
+  const jm = parseInt(parts[1], 10);
+  const jd = parseInt(parts[2], 10);
+
+  const g = jalaali.toGregorian(jy, jm, jd);
+  const yyyy = g.gy.toString().padStart(4, "0");
+  const mm = g.gm.toString().padStart(2, "0");
+  const dd = g.gd.toString().padStart(2, "0");
+
+  return p2e(`${yyyy}-${mm}-${dd}`);
+}
+
 export {
   diffDaysAndNights,
   formatTransactionDate,
+  jalaliToGregorianString,
   toPersianDate,
   toPersianDateLong,
 };
