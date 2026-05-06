@@ -51,13 +51,11 @@ export const useProfileUpdate = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (payload) => {
-      console.log(payload);
       return api.put(`/user/profile`, payload);
     },
     onSuccess: (data) => {
       toast.success(data.data.message);
       queryClient.invalidateQueries(["profile"]);
-      console.log(data);
     },
     onError: (error) => {
       toast.error(error.message);

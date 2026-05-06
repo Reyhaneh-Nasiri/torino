@@ -7,7 +7,17 @@ export const useGetProfile = () => {
     queryFn: async () => {
       try {
         const res = await api.get("/user/profile", { cache: "no-store" });
-        return res.data;
+        const data = await res.data;
+        if (data.firstName) {
+          const formatData = {
+            ...data,
+            fullName: `${data.firstName} ${data.lastName}`,
+          };
+          delete formatData.firstName;
+          delete formatData.lastName;
+          return formatData;
+        }
+        return data;
       } catch (error) {
         console.log(error);
       }

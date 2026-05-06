@@ -1,5 +1,5 @@
 "use client";
-import ProfileForm from "@/components/modules/ProfileForm.js";
+import ProfileForm from "@/components/modules/ProfileForm/index.js";
 import { useGetProfile } from "@/core/services/queries";
 import { toPersianDate } from "@/core/utils/date";
 import { e2p } from "@/core/utils/digit";
@@ -34,16 +34,8 @@ const Profile = () => {
 
   if (isFetching) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
-  const {
-    mobile,
-    email,
-    firstName,
-    lastName,
-    gender,
-    birthDate,
-    nationalCode,
-    payment,
-  } = data;
+  const { mobile, email, fullName, gender, birthDate, nationalCode, payment } =
+    data;
 
   const editHandler = (section) => {
     setEdit((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -117,9 +109,7 @@ const Profile = () => {
           <div className={styles.items}>
             <div className={styles.item}>
               <p className={styles.label}>نام و نام خانوادگی</p>
-              <p className={styles.value}>
-                {firstName ? `${firstName} ${lastName}` : "__"}
-              </p>
+              <p className={styles.value}>{fullName ? fullName : "__"}</p>
             </div>
 
             <div className={styles.item}>

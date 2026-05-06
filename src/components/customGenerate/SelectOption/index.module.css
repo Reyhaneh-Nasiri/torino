@@ -5,7 +5,8 @@
 .input {
   border: 1px solid #00000080;
   border-radius: 5px;
-  width: 287px;
+  min-width: 287px;
+  width: 100%;
   padding: 12px 8px;
   font-weight: 400;
   font-size: 14px;
@@ -18,7 +19,7 @@
   color: transparent;
 }
 
-.value{
+.value {
   position: absolute;
   left: 0;
   top: 0;
@@ -31,16 +32,16 @@
   font-weight: 400;
 }
 
-.angle{
+.angle {
   position: absolute;
   left: 8px;
-  top:50%;
+  top: 50%;
   transform: translateY(-50%);
-  transition: .2s ease;
+  transition: 0.2s ease;
   font-size: 12px;
 }
 
-.select.open .angle{
+.select.open .angle {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -63,10 +64,10 @@
   z-index: 100;
 }
 
-.label{
+.label {
   font-weight: 300;
   font-size: 13px;
-  color: #282828B2;
+  color: #282828b2;
   background-color: #f8f8f8;
   padding: 6px;
   user-select: none;
@@ -82,11 +83,11 @@
   cursor: pointer;
 }
 
-.option.selected{
+.option.selected {
   background-color: #eee;
 }
 
-.option:hover{
+.option:hover {
   background-color: #eee;
 }
 

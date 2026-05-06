@@ -18,8 +18,8 @@ const SELECT_TYPE = {
   },
 };
 
-const SelectOption = ({ register, trigger, setValue, type }) => {
-  const [localValue, setLocalValue] = useState("");
+const SelectOption = ({ register, trigger, setValue, type, value }) => {
+  const [localValue, setLocalValue] = useState(value || "");
   const [isOpen, setIsOpen] = useState(false);
 
   const selectHandler = (value) => {
@@ -28,7 +28,7 @@ const SelectOption = ({ register, trigger, setValue, type }) => {
     trigger("gender");
     setIsOpen(false);
   };
-  
+
   return (
     <>
       <div

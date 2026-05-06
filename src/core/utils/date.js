@@ -49,9 +49,26 @@ const jalaliToGregorianString = (jalaliStr) => {
   return `${yyyy}-${mm}-${dd}`;
 };
 
+const gregorianToJalaliString = (gregorianStr) => {
+  if (!gregorianStr) return;
+  const parts = gregorianStr.replaceAll("-", "/").split("/");
+  const gy = parseInt(parts[0], 10);
+  const gm = parseInt(parts[1], 10);
+  const gd = parseInt(parts[2], 10);
+
+  const j = jalaali.toJalaali(gy, gm, gd);
+
+  const yyyy = j.jy.toString().padStart(4, "0");
+  const mm = j.jm.toString().padStart(2, "0");
+  const dd = j.jd.toString().padStart(2, "0");
+
+  return `${yyyy}-${mm}-${dd}`;
+};
+
 export {
   diffDaysAndNights,
   formatTransactionDate,
+  gregorianToJalaliString,
   jalaliToGregorianString,
   toPersianDate,
   toPersianDateLong,

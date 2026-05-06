@@ -40,9 +40,14 @@ const BirthDatePicker = ({ control }) => {
               format="YYYY/MM/DD"
               calendarPosition="bottom-center"
               render={(value, openCalendar) => (
-                <div className={`tour-input ${value ? "value" : "emptyValue"}`} onClick={openCalendar}>
+                <div
+                  className={`tour-input ${value ? "value" : "emptyValue"}`}
+                  onClick={openCalendar}
+                >
                   <i className="fa-solid fa-calendar"></i>
-                  <span className={`${value ? "value" : "emptyValue"}`}>{value || "تاریخ تولد"}</span>
+                  <span className={`${value ? "value" : "emptyValue"}`}>
+                    {value || "تاریخ تولد"}
+                  </span>
                 </div>
               )}
             />

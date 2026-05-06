@@ -1,55 +1,58 @@
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.header{
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
 }
 
-.title{
+.title {
   font-weight: 400;
   font-size: 16px;
   color: #000;
 }
 
-.accountInfo, .bankInfo, .personalInfo{
+.accountInfo,
+.bankInfo,
+.personalInfo {
   border: 1px solid #00000033;
   border-radius: 10px;
   padding: 16px 20px;
 }
 
-.items{
+.items {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.item{
+.item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.actionBtn{
+.actionBtn {
   font-weight: 400;
   font-size: 14px;
-  color: #009ECA;
+  color: #009eca;
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
-.label{
+.label {
   font-weight: 300;
   font-size: 14px;
   color: #000;
 }
 
-.value{
+.value {
   font-weight: 400;
   font-size: 14px;
   color: #282828;
