@@ -1,7 +1,7 @@
 import Banner from "@/components/modules/banner/Banner";
 import Features from "@/components/modules/Features";
 import SearchBox from "@/components/modules/SearchBox";
-import Telesales from "@/components/modules/telesales/Telesales";
+import Telesales from "@/components/modules/Telesales";
 import ToursList from "@/components/modules/ToursList";
 import WhyUs from "@/components/modules/whyUs";
 import { serverFetch } from "@/core/services/http";

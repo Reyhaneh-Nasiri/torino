@@ -1,43 +1,42 @@
-.container{
+.container {
   border-radius: 10px;
   border: 1px solid #00000040;
   margin-bottom: 90px;
 }
 
-.top{
+.top {
   display: flex;
-  background-color: #28A745;
+  background-color: #28a745;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   position: relative;
   padding: 12px 12px 55px;
 }
 
-
-.top img{
+.top img {
   position: absolute;
   left: 0;
   bottom: 0;
 }
 
-.title{
+.title {
   font-weight: 800;
   font-size: 22px;
   color: #fff;
   margin-bottom: 8px;
 }
 
-.title span{
-  color: #10411B;
+.title span {
+  color: #10411b;
 }
 
-.description{
+.description {
   font-weight: 400;
   font-size: 14px;
   color: #fff;
 }
 
-.bottom{
+.bottom {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +44,7 @@
   padding: 12px;
 }
 
-.phoneNumber{
+.phoneNumber {
   font-weight: 700;
   font-size: 20px;
   color: #282828;
@@ -55,14 +54,11 @@
   padding: 8px;
 }
 
-
-.moreInfoBtn{
-  background-color: #10411B;
+.moreInfoBtn {
+  background-color: #10411b;
   color: #fff;
   border-radius: 8px;
   padding: 8px 28px;
   font-size: 14px;
   font-weight: 500;
 }
-
-
