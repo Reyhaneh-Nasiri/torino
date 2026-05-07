@@ -106,3 +106,15 @@
   outline: none;
   text-align: center;
 }
+
+
+.otpInputs .field--error{
+  border: 1px solid #f43f5e !important;
+}
+
+.errorMessage {
+  text-align: center;
+  color: #f43f5e;
+  font-size: 12px;
+  padding: 4px 2px 0;
+}

@@ -1,14 +1,17 @@
 "use client";
 import { useCheckOtp, useSendOtp } from "@/core/services/mutations";
+import useAuthStore from "@/stores/authStore";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import OtpInput from "react-otp-input";
 import styles from "./CheckOTPForm.module.css";
-import useAuthStore from "@/stores/authStore";
 
 const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
   const login = useAuthStore((state) => state.login);
   const [otp, setOtp] = useState("");
+  const [otpError, setOtpError] = useState("");
+  const [otpHasError, setOtpHasError] = useState(false);
+
   const [timeLeft, setTimeLeft] = useState(10);
 
   const { mutate, isPending } = useCheckOtp();
@@ -44,21 +47,25 @@ const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
   };
 
   const checkOtpHandler = (e) => {
-    console.log(otp);
-
     e.preventDefault();
     if (isPending) return;
     mutate(
       { mobile, code: otp },
       {
         onSuccess: () => {
-          login()
+          login();
           setIsOpen(false);
           setStep(1);
         },
         onError: (error) => {
-          console.log(error);
-          toast.error("کد وارد شده صحیح نیست. لطفا دوباره تلاش کنید.");
+          setOtpHasError(true);
+
+          const msg =
+            error?.response?.data?.message ||
+            (otp ? "کد وارد شده صحیح نیست." : "کد پیامک شده را وارد کنید");
+
+          setOtpError(msg);
+          toast.error(msg);
         },
       },
     );
@@ -76,13 +83,24 @@ const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
           <div className={styles.otpInputs}>
             <OtpInput
               value={otp}
-              onChange={setOtp}
+              onChange={(val) => {
+                setOtp(val);
+                if (otpHasError) {
+                  setOtpHasError(false);
+                  setOtpError("");
+                }
+              }}
               numInputs={6}
               shouldAutoFocus
               renderInput={(props) => (
-                <input {...props} style={{ width: "fit-content" }} />
+                <input
+                  {...props}
+                  style={{ width: "fit-content" }}
+                  className={otpHasError ? styles["field--error"] : null}
+                />
               )}
             />
+            {otpHasError && <p className={styles.errorMessage}>{otpError}</p>}
           </div>
           {timeLeft === 0 ? (
             <p className={styles.resendOtp} onClick={handleResend}>
