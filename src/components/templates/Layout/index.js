@@ -9,7 +9,7 @@ import MenuBar from "@/components/modules/menuBar/MenuBar";
 import Image from "next/image";
 import { useState } from "react";
 import AuthForm from "../AuthForm/AuthForm";
-import styles from "./Layout.module.css";
+import styles from "./index.module.css";
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
@@ -60,7 +60,9 @@ const Layout = ({ children }) => {
           </div>
           <div className={styles.bottom_end}>
             <Image width={100} height={30} src={torinoLogo} alt="login-btn" />
-            <p className={styles.support_number}>تلفن پشتیبانی: 021-8574</p>
+            <p className={styles.support_number}>
+              <a href="tel:+980218574">تلفن پشتیبانی: 021-8574</a>
+            </p>
           </div>
         </div>
         <p className={styles.copyright}>

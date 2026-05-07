@@ -1,4 +1,4 @@
-import Layout from "@/components/templates/layout/Layout";
+import Layout from "@/components/templates/Layout";
 // import { Vazirmatn } from "next/font/google";
 import TanstackQueryProvider from "@/components/partials/providers/TanstackQueryProvider";
 import { Toaster } from "react-hot-toast";
