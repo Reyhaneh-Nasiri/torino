@@ -3,6 +3,7 @@ import bestPrice from "@/assets/images/best-price.png";
 import userSatisfaction from "@/assets/images/user-satisfaction.png";
 import Image from "next/image";
 import styles from "./index.module.css";
+import { e2p } from "@/core/utils/digit";
 
 const FEATURES = [
   {
@@ -33,7 +34,7 @@ const Features = () => {
             <Image width={70} height={64} src={feature.image} alt="something" />
             <div className={styles.content}>
               <h3 className={styles.title}>{feature.title}</h3>
-              <p className={styles.description}>{feature.description}</p>
+              <p className={styles.description}>{e2p(feature.description)}</p>
             </div>
           </div>
         ))}
