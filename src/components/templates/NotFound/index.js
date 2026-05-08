@@ -1,6 +1,6 @@
 import error404 from "@/assets/images/error-404.svg"
 import Image from "next/image"
-import styles from "./NotFoundPage.module.css"
+import styles from "./index.module.css"
 import Link from "next/link"
 
 const NotFoundPage = () => {

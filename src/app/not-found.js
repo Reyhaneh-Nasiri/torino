@@ -1,4 +1,4 @@
-import NotFoundPage from '@/components/templates/notFound/NotFoundPage'
+import NotFoundPage from '@/components/templates/NotFound'
 import React from 'react'
 
 const NotFound = () => {

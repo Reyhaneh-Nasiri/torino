@@ -1,5 +1,5 @@
 "use client"
-import styles from "./MenuBar.module.css";
+import styles from "./index.module.css";
 
 const MenuBar = ({ isMenuOpen, setIsMenuOpen }) => {
   const closeHandler = () => {

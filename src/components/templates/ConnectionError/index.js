@@ -1,7 +1,7 @@
 "use client"
 import connectionErrorImg from "@/assets/images/connection-error.svg"
 
-import styles from "./ConnectionError.module.css"
+import styles from "./index.module.css"
 import Image from "next/image"
 
 const ConnectionError = () => {

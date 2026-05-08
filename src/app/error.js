@@ -1,5 +1,5 @@
 "use client"
-import ConnectionError from "@/components/templates/connectionError/ConnectionError"
+import ConnectionError from "@/components/templates/ConnectionError"
 
 const error = () => {
   return (

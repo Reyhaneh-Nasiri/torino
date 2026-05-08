@@ -5,7 +5,7 @@ import caoPaxrightsLogo from "@/assets/images/cao-paxrights-logo.svg";
 import ecunionLogo from "@/assets/images/ecunion-logo.svg";
 import samandehiLogo from "@/assets/images/samandehi-logo.svg";
 import torinoLogo from "@/assets/images/Torino.svg";
-import MenuBar from "@/components/modules/menuBar/MenuBar";
+import MenuBar from "@/components/modules/MenuBar";
 import Image from "next/image";
 import { useState } from "react";
 import AuthForm from "../AuthForm/AuthForm";

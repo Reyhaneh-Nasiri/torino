@@ -1,4 +1,4 @@
-import Banner from "@/components/modules/banner/Banner";
+import Banner from "@/components/modules/Banner";
 import Features from "@/components/modules/Features";
 import SearchBox from "@/components/modules/SearchBox";
 import Telesales from "@/components/modules/Telesales";
