@@ -6,3 +6,12 @@
   font-size: 24px;
   font-weight: 400;
 }
+
+.buyBtn:disabled{
+  opacity: .7;
+  cursor: auto;
+}
+
+.fullNotice{
+  font-weight: 500;
+}

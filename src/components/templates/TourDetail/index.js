@@ -66,8 +66,10 @@ const TourDetail = ({
             ظرفیت:
           </p>
           <p>
-            حداکثر
-            {e2p(availableSeats)} نفر
+            {availableSeats
+              ? ` حداکثر
+            ${e2p(availableSeats)} نفر`
+              : "تکمیل"}
           </p>
         </div>
         <div>
@@ -79,7 +81,7 @@ const TourDetail = ({
         </div>
       </div>
       <div className={styles.footer}>
-        <ReserveBuyCTA id={id} />
+        <ReserveBuyCTA id={id} availableSeats={availableSeats}/>
         <p>
           <span className={styles.price}>{formatCurrency(price)}</span>
           <span className={styles.unit}>تومان</span>

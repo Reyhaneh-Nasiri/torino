@@ -3,7 +3,7 @@ import { useReserveBuy } from "@/core/services/mutations";
 import { useRouter } from "next/navigation";
 import styles from "./index.module.css";
 
-const ReserveBuyCTA = ({ id }) => {
+const ReserveBuyCTA = ({ id, availableSeats }) => {
   const router = useRouter();
   const { mutate, isPending } = useReserveBuy(id);
 
@@ -17,9 +17,12 @@ const ReserveBuyCTA = ({ id }) => {
     router.push("/tours/checkout");
   };
   return (
-    <button className={styles.buyBtn} onClick={handleReserve}>
-      رزرو و خرید
-    </button>
+    <>
+    {availableSeats ? (<button className={styles.buyBtn} disabled={isPending} onClick={handleReserve}>
+     {isPending ?  "در حال رزرو..." : "رزرو و خرید"}
+    </button>) : <p className={styles.fullNotice}>ظرفیت این تور تکمیل شده است</p>}
+    
+    </>
   );
 };
 
