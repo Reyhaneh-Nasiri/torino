@@ -2,6 +2,7 @@
 import loginBtn from "@/assets/icons/sign-in-buttom.svg";
 import ModalContainer from "@/components/partials/containers/ModalContainer";
 import { OtpSmsSchema } from "@/core/schemas/auth";
+import { useGetProfile } from "@/core/services/queries";
 import { removeCookie } from "@/core/utils/cookie";
 import useAuthStore from "@/stores/authStore";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,6 +15,7 @@ import CheckOTPForm from "./CheckOTPForm";
 import SendOTPForm from "./SendOTPForm";
 
 const AuthForm = () => {
+  const { data } = useGetProfile();
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const logout = useAuthStore((state) => state.logout);
   const [isOpen, setIsOpen] = useState(false);
@@ -42,12 +44,12 @@ const AuthForm = () => {
       <>
         <div className={styles.dashboardBtn}>
           <i className="fa-solid fa-user"></i>
-          09224526847
+          {data?.mobile}
           <i className="fa-solid fa-angle-down"></i>
           <ul className={styles.dropdown}>
             <li className={styles.number}>
               <i className="fa-solid fa-user-circle"></i>
-              0922526847
+              {data?.mobile}
             </li>
             <li className={styles.infoBtn}>
               <i className="fa-solid fa-user"></i>
