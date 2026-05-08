@@ -19,12 +19,17 @@ export const useCheckOtp = () => {
 };
 
 export const useReserveBuy = (id) => {
+  const router = useRouter();
   return useMutation({
     mutationFn: (payload) => api.put(`/basket/${id}`, payload),
     onSuccess: (data) => {
       toast.success(data.data.message);
     },
     onError: (error) => {
+      if(error.message === "Access token required"){
+        router.push("/");
+        toast("برای رزرو تور ابتدا وارد حساب کاربری خود شوید.");
+      }
       console.error("خطا در رزرو:", error);
     },
   });
