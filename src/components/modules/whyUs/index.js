@@ -3,6 +3,7 @@ import place1 from "@/assets/images/place1.png";
 import place2 from "@/assets/images/place2.png";
 import place3 from "@/assets/images/place3.png";
 import place4 from "@/assets/images/place4.png";
+import { e2p } from "@/core/utils/digit";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./index.module.css";
@@ -36,7 +37,7 @@ const WhyUs = () => {
         <div className={styles.images}>{SLIDES.map((slide) => slide)}</div>
         <div className={styles.actions}>
           <i className="fa-solid fa-arrow-right" onClick={prevHandler}></i>
-          <p>4 / {currentSlide}</p>
+          <p>{e2p(`${SLIDES.length} / ${currentSlide}`)}</p>
           <i className="fa-solid fa-arrow-left" onClick={nextHandler}></i>
         </div>
       </div>
