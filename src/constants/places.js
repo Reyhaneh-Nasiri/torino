@@ -1,5 +1,5 @@
 const PLACES = {
-  Sanandaj: "سنندج",
+  Sananndaj: "سنندج",
   Madrid: "مادرید",
   Tehran: "تهران",
   Isfahan: "اصفهان",

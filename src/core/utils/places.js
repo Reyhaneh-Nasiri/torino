@@ -1,4 +1,6 @@
-export const getTopCities = (tours, type = "all") => {
+import { PLACES } from "@/constants/places";
+
+export const getTopPlaces = (tours, type = "all") => {
   const result = tours.reduce((acc, tour) => {
     let cities = [];
 
@@ -24,3 +26,14 @@ export const getTopCities = (tours, type = "all") => {
   return Object.values(result).sort((a, b) => b.count - a.count);
 };
 
+export const filteredPlaces = (places, query) => {
+  if (!query?.trim()) return places;
+
+  const queryNormalized = query.trim().toLowerCase();
+
+  return places.filter(
+    (place) =>
+      place.name.toLowerCase().includes(queryNormalized) ||
+      PLACES[place.name].toLowerCase().includes(queryNormalized),
+  );
+};
