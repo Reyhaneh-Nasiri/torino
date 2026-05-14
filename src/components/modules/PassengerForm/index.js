@@ -3,7 +3,14 @@ import BirthDatePicker from "@/components/atoms/BirthDatePicker";
 import SelectOption from "@/components/customGenerate/SelectOption";
 import styles from "./index.module.css";
 
-const PassengerForm = ({ register, errors, control, trigger, setValue }) => {
+const PassengerForm = ({
+  register,
+  errors,
+  control,
+  trigger,
+  setValue,
+  userProfile,
+}) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>
@@ -27,6 +34,7 @@ const PassengerForm = ({ register, errors, control, trigger, setValue }) => {
             trigger={trigger}
             setValue={setValue}
             type="gender"
+            value={userProfile.gender}
           />
           {errors.gender && (
             <p className={styles.errorMessage}>{errors.gender.message}</p>
