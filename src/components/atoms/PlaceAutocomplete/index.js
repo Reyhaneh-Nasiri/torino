@@ -3,45 +3,65 @@ import { PLACES } from "@/constants/places";
 import { filteredPlaces } from "@/core/utils/places";
 import { useState } from "react";
 import styles from "./index.module.css";
-const PlaceAutocomplete = ({ topPlaces, icon, label }) => {
+
+const LABELS = {
+  origin: "مبدا",
+  destination: "مقصد",
+};
+
+const PlaceAutocomplete = ({
+  topPlaces,
+  icon,
+  label,
+  value,
+  onChange,
+  error,
+}) => {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedPlace, setSelectedPlace] = useState(null);
+
   const options = query.trim()
     ? filteredPlaces(topPlaces, query)
     : topPlaces.slice(0, 4);
-  const focusHandlar = () => {
+
+  const focusHandler = () => {
     setIsOpen(true);
-    setQuery(PLACES[selectedPlace?.name] || query);
-    setSelectedPlace(null);
+    onChange("");
+    if (value) setQuery(PLACES[value] || "");
   };
+
   const changeHandler = (e) => {
     setQuery(e.target.value);
+    onChange("");
   };
 
   const selectHandler = (place) => {
-    setSelectedPlace(place);
+    onChange(place.id);
+    setQuery(PLACES[place.name]);
+    setIsOpen(false);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.inputWrapper}>
         <input
-          value={selectedPlace ? PLACES[selectedPlace.name] : query}
+          className={`${error ? styles["field--error"] : null}`}
+          value={query}
           onChange={changeHandler}
-          onFocus={focusHandlar}
+          onFocus={focusHandler}
           onBlur={() => setIsOpen(false)}
         />
-        {!query.trim() && !selectedPlace && !isOpen && (
+
+        {!query.trim() && !value && !isOpen && (
           <p className={styles.placeholder}>
             {icon}
-            {label}
+            {LABELS[label]}
           </p>
         )}
 
-        {isOpen ? (
+        {isOpen && (
           <div className={styles.dropdown}>
-            {query.trim() ? null : <p className={styles.title}>پرتردد</p>}
+            {!query.trim() && <p className={styles.title}>پرتردد</p>}
 
             <ul className={styles.placeList}>
               {options.map((option) => (
@@ -56,8 +76,9 @@ const PlaceAutocomplete = ({ topPlaces, icon, label }) => {
               ))}
             </ul>
           </div>
-        ) : null}
+        )}
       </div>
+      {error ? <p className={styles.errorMessage}>{error}</p> : null}
     </div>
   );
 };

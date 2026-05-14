@@ -58,6 +58,10 @@
   background-color: transparent;
 }
 
+.inputWrapper input.field--error {
+  border-color: #f43f5e;
+}
+
 .placeholder {
   z-index: -1;
   color: #00000080;
@@ -70,4 +74,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.errorMessage {
+  color: #f43f5e;
+  font-size: 12px;
+  padding: 4px 2px 0;
 }

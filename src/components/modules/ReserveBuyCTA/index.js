@@ -18,10 +18,17 @@ const ReserveBuyCTA = ({ id, availableSeats }) => {
   };
   return (
     <>
-    {availableSeats ? (<button className={styles.buyBtn} disabled={isPending} onClick={handleReserve}>
-     {isPending ?  "در حال رزرو..." : "رزرو و خرید"}
-    </button>) : <p className={styles.fullNotice}>ظرفیت این تور تکمیل شده است</p>}
-    
+      {availableSeats ? (
+        <button
+          className={styles.buyBtn}
+          disabled={isPending}
+          onClick={handleReserve}
+        >
+          {isPending ? "در حال رزرو..." : "رزرو و خرید"}
+        </button>
+      ) : (
+        <p className={styles.fullNotice}>ظرفیت این تور تکمیل شده است</p>
+      )}
     </>
   );
 };

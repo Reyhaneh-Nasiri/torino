@@ -1,3 +1,15 @@
+.allToursBtn {
+  display: inline-block;
+  margin: 12px 0;
+  border-radius: 8px;
+  background: #28a745;
+  color: hsl(0, 0%, 100%);
+  font-weight: 400;
+  font-size: 16px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
 .container {
   display: grid;
   grid-template-columns: 50% 50%;
