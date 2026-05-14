@@ -8,12 +8,31 @@
   position: absolute;
   left: 8px;
   top: 8px;
-  background-color: #28a7454d;
   border-radius: 27px;
   padding: 4px 6px;
   font-weight: 400;
   font-size: 6px;
+  font-size: 10px;
+}
+
+.upcoming {
+  background-color: #0d6efd4d;
+  color: #0d6efd;
+}
+
+.ongoing {
+  background-color: #d1b9004d;
+  color: #d1b900;
+}
+
+.finished {
+  background-color: #28a7454d;
   color: #28a745;
+}
+
+.unknown {
+  background-color: #6c757d20;
+  color: #6c757d;
 }
 
 .header {
