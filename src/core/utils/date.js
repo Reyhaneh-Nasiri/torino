@@ -11,8 +11,17 @@ const toPersianDate = (isoString) => {
     day: "numeric",
   }).format(date);
 };
+
 const toPersianDateLong = (isoString) => {
+  if (!isoString) {
+    return "تاریخ نامعتبر";
+  }
+
   const date = new Date(isoString);
+
+  if (isNaN(date.getTime())) {
+    return "تاریخ نامعتبر";
+  }
 
   return new Intl.DateTimeFormat("fa-IR", {
     weekday: "long",
@@ -71,5 +80,6 @@ export {
   gregorianToJalaliString,
   jalaliToGregorianString,
   toPersianDate,
-  toPersianDateLong,
+  toPersianDateLong
 };
+
