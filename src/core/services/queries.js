@@ -1,54 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../config/api";
 
-export const useGetProfile = () => {
-  return useQuery({
+export const useGetProfile = () =>
+  useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
-      try {
-        const res = await api.get("/user/profile", { cache: "no-store" });
-        const data = await res.data;
-        if (data.firstName) {
-          const formatData = {
-            ...data,
-            fullName: `${data.firstName} ${data.lastName}`,
-          };
-          delete formatData.firstName;
-          delete formatData.lastName;
-          return formatData;
-        }
-        return data;
-      } catch (error) {
-        console.log(error);
+      const { data } = await api.get("/user/profile", { cache: "no-store" });
+      if (data.firstName) {
+        const { firstName, lastName, ...rest } = data;
+        return { ...rest, fullName: `${firstName} ${lastName}` };
       }
+      return data;
     },
   });
-};
 
-export const useGetHistory = () => {
-  return useQuery({
+export const useGetHistory = () =>
+  useQuery({
     queryKey: ["history"],
-    queryFn: async () => {
-      try {
-        const res = await api.get("/user/tours", { cache: "no-store" });
-        return res.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    queryFn: async () =>
+      (await api.get("/user/tours", { cache: "no-store" })).data,
   });
-};
 
-export const useGetTransactions = () => {
-  return useQuery({
+export const useGetTransactions = () =>
+  useQuery({
     queryKey: ["transactions"],
-    queryFn: async () => {
-      try {
-        const res = await api.get("/user/transactions", { cache: "no-store" });
-        return res.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    queryFn: async () =>
+      (await api.get("/user/transactions", { cache: "no-store" })).data,
   });
-};
