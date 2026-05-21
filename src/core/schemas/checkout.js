@@ -1,20 +1,18 @@
-import { z } from "zod";
+import * as yup from "yup";
+import { trimmedRequiredString } from "./helper";
 
-export const checkoutSchema = z.object({
-  nationalCode: z
-    .string({ required_error: "قیمت ضروری است" })
-    .trim()
-    .nonempty("کدملی الزامی است")
-    .regex(/^\d{10}$/, "کدملی باید ۱۰ رقم باشد")
-    .min(10, "کد ملی باید ۱۰ رقم باشد"),
+export const checkoutSchema = yup.object({
+  nationalCode: trimmedRequiredString("کد ملی الزامی است").matches(
+    /^\d{10}$/,
+    "کد ملی باید ۱۰ رقم باشد",
+  ),
 
-  fullName: z
-    .string()
-    .trim()
-    .nonempty("نام و نام‌خانودگی الزامی است")
-    .min(2, "نام و نام خانوادگی باید حداقل ۲ کاراکتر باشد"),
+  fullName: trimmedRequiredString("نام و نام خانوادگی الزامی است").min(
+    2,
+    "نام و نام خانوادگی باید حداقل ۲ کاراکتر باشد",
+  ),
 
-  gender: z.string().nonempty("جنسیت را انتخاب کنید"),
+  gender: yup.string().required("جنسیت را انتخاب کنید"),
 
-  birthDate: z.string().trim().nonempty("تاریخ تولد را وارد کنید"),
+  birthDate: trimmedRequiredString("تاریخ تولد را وارد کنید"),
 });

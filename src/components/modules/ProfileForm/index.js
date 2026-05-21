@@ -8,7 +8,7 @@ import {
   jalaliToGregorianString,
 } from "@/core/utils/date";
 import { p2e } from "@/core/utils/digit";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import styles from "./index.module.css";
 
@@ -36,7 +36,7 @@ const ProfileForm = ({ editHandler, section, form, data: profileData }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(profileSchemas[section]),
+    resolver: yupResolver(profileSchemas[section]),
     defaultValues: initialData,
     mode: "onChange",
   });

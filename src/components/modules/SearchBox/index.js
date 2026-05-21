@@ -4,7 +4,7 @@ import TourDatePicker from "@/components/atoms/TourDatePicker";
 import { searchSchema } from "@/core/schemas/search";
 import { jalaliToGregorianString } from "@/core/utils/date";
 import { p2e } from "@/core/utils/digit";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./index.module.css";
@@ -14,7 +14,7 @@ const SearchBox = ({ topPlaces }) => {
   const searchParams = useSearchParams();
   const originId = searchParams.get("originId");
   const { control, handleSubmit } = useForm({
-    resolver: zodResolver(searchSchema),
+    resolver: yupResolver(searchSchema),
     defaultValues: {
       originId: "",
       destinationId: "",

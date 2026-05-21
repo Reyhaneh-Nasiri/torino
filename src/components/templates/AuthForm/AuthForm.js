@@ -1,10 +1,10 @@
 "use client";
 import LoginBtn from "@/components/atoms/LoginBtn";
 import ModalContainer from "@/components/partials/containers/ModalContainer";
-import { OtpSmsSchema } from "@/core/schemas/auth";
+import { otpSmsSchema } from "@/core/schemas/auth";
 import { useGetProfile } from "@/core/services/queries";
 import { removeCookie } from "@/core/utils/cookie";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
@@ -26,7 +26,7 @@ const AuthForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(OtpSmsSchema),
+    resolver: yupResolver(otpSmsSchema),
     defaultValues: { mobile: "" },
     mode: "onChange",
   });

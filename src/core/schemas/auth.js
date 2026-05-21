@@ -1,8 +1,9 @@
-import z from "zod";
+import * as yup from "yup";
+import { trimmedRequiredString } from "./helper";
 
-export const OtpSmsSchema = z.object({
-  mobile: z
-    .string()
-    .trim()
-    .regex(/^(?:\+98|0)9\d{9}$/, "شماره موبایل نامعتبر است"),
+export const otpSmsSchema = yup.object({
+  mobile: trimmedRequiredString("شماره موبایل الزامی است").matches(
+    /^(?:\+98|0)9\d{9}$/,
+    "شماره موبایل نامعتبر است",
+  ),
 });

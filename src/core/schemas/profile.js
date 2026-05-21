@@ -1,34 +1,35 @@
-// src/core/schemas/profile.ts
-import { z } from "zod";
+import * as yup from "yup";
+import { trimmedRequiredString } from "./helper";
 
-export const accountSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .nonempty("ایمیل الزامی است")
-    .email("فرمت ایمیل معتبر نیست"),
+export const accountSchema = yup.object({
+  email: trimmedRequiredString("ایمیل الزامی است").email(
+    "فرمت ایمیل معتبر نیست",
+  ),
 });
 
-export const personalSchema = z.object({
-  nationalCode: z
-    .string()
-    .trim()
-    .regex(/^\d{10}$/, "کد ملی باید ۱۰ رقم باشد"),
-  fullName: z.string().trim().nonempty("نام و نام خانوادگی الزامی است"),
-  gender: z.string().nonempty("جنسیت را انتخاب کنید"),
-  birthDate: z.string().trim().nonempty("تاریخ تولد را وارد کنید"),
+export const personalSchema = yup.object({
+  nationalCode: trimmedRequiredString("کد ملی الزامی است").matches(
+    /^\d{10}$/,
+    "کد ملی باید ۱۰ رقم باشد",
+  ),
+  fullName: trimmedRequiredString("نام و نام خانوادگی الزامی است").min(
+    2,
+    "نام و نام خانوادگی باید حداقل ۲ کاراکتر باشد",
+  ),
+  gender: yup.string().required("جنسیت را انتخاب کنید"),
+  birthDate: trimmedRequiredString("تاریخ تولد را وارد کنید"),
 });
 
-export const bankSchema = z.object({
-  shaba_code: z
-    .string()
-    .trim()
-    .regex(/^\d{24}$/, "شماره شبا باید ۲۴ رقم باشد"),
-  debitCard_code: z
-    .string()
-    .trim()
-    .regex(/^\d{16}$/, "شماره کارت باید ۱۶ رقم باشد"),
-  accountIdentifier: z.string().trim().nonempty("شماره حساب را وارد کنید"),
+export const bankSchema = yup.object({
+  shaba_code: trimmedRequiredString("شماره شبا الزامی است").matches(
+    /^\d{24}$/,
+    "شماره شبا باید ۲۴ رقم باشد",
+  ),
+  debitCard_code: trimmedRequiredString("شماره کارت الزامی است").matches(
+    /^\d{16}$/,
+    "شماره کارت باید ۱۶ رقم باشد",
+  ),
+  accountIdentifier: trimmedRequiredString("شماره حساب را وارد کنید"),
 });
 
 export const profileSchemas = {

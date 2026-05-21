@@ -8,7 +8,7 @@ import {
   jalaliToGregorianString,
 } from "@/core/utils/date";
 import { p2e } from "@/core/utils/digit";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import styles from "./index.module.css";
 
@@ -22,7 +22,7 @@ const Checkout = ({ data, userProfile }) => {
     setValue,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(checkoutSchema),
+    resolver: yupResolver(checkoutSchema),
     defaultValues: {
       nationalCode: String(userProfile?.nationalCode ?? ""),
       fullName: [userProfile?.firstName, userProfile?.lastName]
