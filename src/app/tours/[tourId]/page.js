@@ -1,10 +1,10 @@
 import TourDetail from "@/components/templates/TourDetail";
-import { serverFetch } from "@/core/services/http";
+import { publicFetch } from "@/core/services/http/publicFetch";
 
 const TourDetailsPage = async ({ params }) => {
   const { tourId } = await params;
 
-  const tourData = await serverFetch(`/tour/${tourId}`, null, {
+  const tourData = await publicFetch(`/tour/${tourId}`, {
     cache: "no-store",
   });
 
