@@ -24,9 +24,10 @@ const Checkout = ({ data, userProfile }) => {
   } = useForm({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
-      nationalCode: `${userProfile?.nationalCode}` || "",
-      fullName:
-        userProfile?.firstName + (" " + userProfile?.lastName || "") || "",
+      nationalCode: String(userProfile?.nationalCode ?? ""),
+      fullName: [userProfile?.firstName, userProfile?.lastName]
+        .filter(Boolean)
+        .join(" "),
       gender: userProfile?.gender || "",
       birthDate: gregorianToJalaliString(userProfile?.birthDate) || "",
     },

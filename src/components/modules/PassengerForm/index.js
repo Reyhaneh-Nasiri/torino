@@ -34,7 +34,7 @@ const PassengerForm = ({
             trigger={trigger}
             setValue={setValue}
             type="gender"
-            value={userProfile.gender}
+            value={userProfile?.gender}
           />
           {errors.gender && (
             <p className={styles.errorMessage}>{errors.gender.message}</p>
