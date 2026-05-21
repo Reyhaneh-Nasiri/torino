@@ -1,13 +1,11 @@
 "use client";
 import { useCheckOtp, useSendOtp } from "@/core/services/mutations";
-import useAuthStore from "@/stores/authStore";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import OtpInput from "react-otp-input";
 import styles from "./CheckOTPForm.module.css";
 
 const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
-  const login = useAuthStore((state) => state.login);
   const [otp, setOtp] = useState("");
   const [otpError, setOtpError] = useState("");
   const [otpHasError, setOtpHasError] = useState(false);
@@ -53,7 +51,6 @@ const CheckOTPForm = ({ mobile, setStep, setIsOpen }) => {
       { mobile, code: otp },
       {
         onSuccess: () => {
-          login();
           setIsOpen(false);
           setStep(1);
         },

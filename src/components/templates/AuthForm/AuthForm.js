@@ -2,9 +2,10 @@
 import LoginBtn from "@/components/atoms/LoginBtn";
 import ModalContainer from "@/components/partials/containers/ModalContainer";
 import { OtpSmsSchema } from "@/core/schemas/auth";
+import { useGetProfile } from "@/core/services/queries";
 import { removeCookie } from "@/core/utils/cookie";
-import useAuthStore from "@/stores/authStore";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -12,11 +13,12 @@ import styles from "./AuthForm.module.css";
 import CheckOTPForm from "./CheckOTPForm";
 import SendOTPForm from "./SendOTPForm";
 
-const AuthForm = ({ data }) => {
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
-  const logout = useAuthStore((state) => state.logout);
+const AuthForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
+
+  const { data } = useGetProfile();
+  console.log(data);
 
   const {
     watch,
@@ -29,24 +31,25 @@ const AuthForm = ({ data }) => {
     mode: "onChange",
   });
 
+  const queryClient = useQueryClient();
   const mobile = watch("mobile");
   const logoutHandler = () => {
     removeCookie("accessToken");
     removeCookie("refreshToken");
-    logout();
+    queryClient.setQueryData(["profile"], null);
   };
 
-  if (isLoggedIn)
+  if (data)
     return (
       <>
         <div className={styles.dashboardBtn}>
           <i className="fa-solid fa-user"></i>
-          {data?.mobile}
+          {data.mobile}
           <i className="fa-solid fa-angle-down"></i>
           <ul className={styles.dropdown}>
             <li className={styles.number}>
               <i className="fa-solid fa-user-circle"></i>
-              {data?.mobile}
+              {data.mobile}
             </li>
             <li className={styles.infoBtn}>
               <i className="fa-solid fa-user"></i>

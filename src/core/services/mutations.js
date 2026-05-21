@@ -10,10 +10,12 @@ export const useSendOtp = () => {
 };
 
 export const useCheckOtp = () => {
+  const queryClient = useQueryClient();
   const mutationFn = (data) => api.post("/auth/check-otp", data);
   const onSuccess = (data) => {
     setCookie("accessToken", data?.data?.accessToken, { days: 30 });
     setCookie("refreshToken", data?.data?.refreshToken, { days: 365 });
+    queryClient.invalidateQueries({ queryKey: ["profile"] });
   };
   return useMutation({ mutationFn, onSuccess });
 };
@@ -26,7 +28,7 @@ export const useReserveBuy = (id) => {
       toast.success(data.data.message);
     },
     onError: (error) => {
-      if(error.message === "Access token required"){
+      if (error.message === "Access token required") {
         router.push("/");
         toast("برای رزرو تور ابتدا وارد حساب کاربری خود شوید.");
       }

@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useState } from "react";
 import AuthForm from "../AuthForm/AuthForm";
 import styles from "./index.module.css";
-const Layout = ({ children, data }) => {
+const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
@@ -19,7 +19,7 @@ const Layout = ({ children, data }) => {
           className={styles.menuBtn}
           onClick={() => setIsMenuOpen(true)}
         ></div>
-        <AuthForm data={data} />
+        <AuthForm />
         <MenuBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
       <div className={styles.content}>{children}</div>

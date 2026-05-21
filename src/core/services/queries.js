@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../config/api";
 
-export const useGetProfile = () =>
-  useQuery({
-    queryKey: ["profile"],
-    queryFn: async () => {
-      const { data } = await api.get("/user/profile", { cache: "no-store" });
-      if (data.firstName) {
-        const { firstName, lastName, ...rest } = data;
-        return { ...rest, fullName: `${firstName} ${lastName}` };
-      }
-      return data;
-    },
-  });
+export const useGetProfile = () => {
+  const queryFn = async () => {
+    const { data } = await api.get("/user/profile");
+    if (data.firstName) {
+      const { firstName, lastName, ...rest } = data;
+      return { ...rest, fullName: `${firstName} ${lastName}` };
+    }
+    return data;
+  };
+  const queryKey = ["profile"];
+
+  return useQuery({ queryFn, queryKey });
+};
 
 export const useGetHistory = () =>
   useQuery({
