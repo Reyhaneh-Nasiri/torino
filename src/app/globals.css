@@ -1,23 +1,22 @@
-*{
+@import "./tokens.css";
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* font-family: var(--font-vazirmatn); */
 }
 
-
-ul{
+ul {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
   font-size: inherit;
 }
 
-
-button{
+button {
   border: none;
   outline: none;
   background-color: transparent;
