@@ -6,6 +6,11 @@
   /* font-family: var(--font-vazirmatn); */
 }
 
+body {
+  font-weight: var(--fw-regular);
+  color: var(--text-primary);
+}
+
 ul {
   list-style: none;
 }
