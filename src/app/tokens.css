@@ -1,22 +1,81 @@
-@layer base {
-  :root {
-    /* Primitive Palette */
-    --color-white: 255 255 255;
-    --color-black: 0 0 0;
-    --color-gray-50: 248 248 248;
-    --color-gray-100: 244 244 244;
-    --color-gray-400: 125 125 125;
-    --color-gray-500: 89 89 89;
-    --color-gray-600: 68 68 68;
-    --color-gray-800: 40 40 40;
-    --color-blue-500: 0 158 202;
-    --color-green-500: 40 167 69;
-    --color-green-600: 16 65 27;
-    --border-color-base: 0, 0, 0;
-  }
-}
-
 :root {
+  /* 1. Primitive Palette */
+  --color-white: 255 255 255;
+  --color-black: 0 0 0;
+
+  /* Grays */
+  --color-gray-50: 248 248 248;
+  --color-gray-100: 244 244 244;
+  --color-gray-400: 125 125 125;
+  --color-gray-500: 89 89 89;
+  --color-gray-600: 68 68 68;
+  --color-gray-800: 40 40 40;
+
+  /* Brand & UI Colors */
+  --color-blue-500: 0 158 202;
+  --color-green-500: 40 167 69;
+  --color-green-600: 16 65 27;
+
+  /* System Status Base Colors */
+  --color-brand-blue: 13 110 253;
+  --color-warning-yellow: 209 185 0;
+  --color-danger-red: 244 63 94;
+  --color-info-gray: 108 117 125;
+
+  /* Base Tokens */
+  --border-color-base: 0 0 0;
+
+  /* 2. Semantic Tokens */
+  /* --- Brand & Action --- */
+  --color-primary: rgb(var(--color-green-500));
+  --color-primary-dark: rgb(var(--color-green-600));
+  --color-on-primary: rgb(var(--color-white));
+  --color-price: rgb(var(--color-blue-500));
+
+  /* --- Backgrounds --- */
+  --bg-base: rgb(var(--color-white));
+  --bg-surface: rgb(var(--color-white));
+  --bg-muted: rgb(var(--color-gray-50));
+  --bg-elevated: rgb(var(--color-white));
+  --bg-secondary: rgb(var(--color-gray-100));
+  --bg-overlay: rgb(var(--color-black) / 50%);
+  --bg-input: transparent;
+
+  /* --- Typography Colors --- */
+  --text-primary: rgb(var(--color-gray-800));
+  --text-secondary: rgb(var(--color-gray-600));
+  --text-tertiary: rgb(var(--color-gray-500));
+  --text-placeholder: rgb(var(--color-black) / 50%);
+  --text-muted: rgb(var(--color-gray-400));
+  --text-inverse: rgb(var(--color-white));
+  --text-support-phone: rgb(var(--color-black));
+  --text-copyright: rgb(var(--color-black));
+
+  /* --- Borders --- */
+  --border-color-subtle: rgb(var(--border-color-base) / 12%);
+  --border-color-muted: rgb(var(--border-color-base) / 20%);
+  --border-color-default: rgb(var(--border-color-base) / 25%);
+  --border-color-prominent: rgb(var(--border-color-base) / 50%);
+
+  /* --- Form Validation --- */
+  --input-border-error: rgb(var(--color-danger-red));
+  --input-text-error: rgb(var(--color-danger-red));
+
+  /* --- Status Tags --- */
+  --tag-bg-upcoming: rgb(var(--color-brand-blue) / 30%);
+  --tag-color-upcoming: rgb(var(--color-brand-blue));
+  --tag-bg-ongoing: rgb(var(--color-warning-yellow) / 30%);
+  --tag-color-ongoing: rgb(var(--color-warning-yellow));
+  --tag-bg-finished: rgb(var(--color-green-500) / 30%);
+  --tag-color-finished: rgb(var(--color-green-500));
+  --tag-bg-unknown: rgb(var(--color-info-gray) / 13%);
+  --tag-color-unknown: rgb(var(--color-info-gray));
+
+  /* --- Effects --- */
+  --shadow-nav-bar: 0px 1px 4px 0px rgb(var(--color-black) / 16%);
+
+  /* 3. Structural Tokens */
+
   /* --- Spacing --- */
   --spacing-1: 0.25rem; /* 4px */
   --spacing-2: 0.5rem; /* 8px */
@@ -41,7 +100,7 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* --- Typography --- */
+  /* --- Typography Rules --- */
   --fs-xs: 0.75rem; /* 12px */
   --fs-sm: 0.875rem; /* 14px */
   --fs-base: 1rem; /* 16px */
@@ -77,51 +136,6 @@
   --z-index-toast: 1500;
   --z-index-highest: 9999;
 
-  /* --- Semantic Colors --- */
-  --color-primary: rgb(var(--color-green-500));
-  --color-primary-dark: rgb(var(--color-green-600));
-  --color-on-primary: rgb(var(--color-white));
-  --color-price: rgb(var(--color-blue-500));
-
-  --bg-base: rgb(var(--color-white));
-  --bg-surface: rgb(var(--color-white));
-  --bg-muted: rgb(var(--color-gray-50));
-  --bg-elevated: rgb(var(--color-white));
-  --bg-secondary: rgb(var(--color-gray-100));
-  --bg-overlay: rgb(var(--color-black) / 50%);
-  --bg-input: transparent;
-
-  --text-primary: rgb(var(--color-gray-800));
-  --text-secondary: rgb(var(--color-gray-600));
-  --text-tertiary: rgb(var(--color-gray-500));
-  --text-placeholder: #808080;
-  --text-muted: rgb(var(--color-gray-400));
-  --text-inverse: rgb(var(--color-white));
-  --text-support-phone: rgb(var(--color-black));
-  --text-copyright: rgb(var(--color-black));
-
-  /* --- Status Tag --- */
-  --tag-bg-upcoming: #0d6efd4d;
-  --tag-color-upcoming: #0d6efd;
-  --tag-bg-ongoing: #d1b9004d;
-  --tag-color-ongoing: #d1b900;
-  --tag-color-finished: #28a745;
-  --tag-bg-finished: #28a7454d;
-  --tag-bg-unknown: #6c757d20;
-  --tag-color-unknown: #6c757d;
-
   /* --- Layout --- */
   --container-max-width: 1200px;
-
-  /* --- Borders --- */
-  --border-color-subtle: rgba(var(--border-color-base), 0.12);
-  --border-color-muted: rgba(var(--border-color-base), 0.2);
-  --border-color-default: rgba(var(--color-border-base), 0.25);
-  --border-color-prominent: rgba(var(--border-color-base), 0.5);
-
-  /* --- Effects --- */
-  --shadow-nav-bar: 0px 1px 4px 0px #00000029;
-
-  --input-border-error: #f43f5e;
-  --input-text-error: #f43f5e;
 }
