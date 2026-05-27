@@ -12,6 +12,7 @@
     --color-blue-500: 0 158 202;
     --color-green-500: 40 167 69;
     --color-green-600: 16 65 27;
+    --border-color-base: 0, 0, 0;
   }
 }
 
@@ -113,11 +114,10 @@
   --container-max-width: 1200px;
 
   /* --- Borders --- */
-  --border-color-subtle: #0000001a;
-  --border-color-soft: #00000026;
-  --border-color-default: #00000033;
-  --border-color-strong: #00000040;
-  --border-color-emphasis: #00000080;
+  --border-color-subtle: rgba(var(--border-color-base), 0.12);
+  --border-color-muted: rgba(var(--border-color-base), 0.2);
+  --border-color-default: rgba(var(--color-border-base), 0.25);
+  --border-color-prominent: rgba(var(--border-color-base), 0.5);
 
   /* --- Effects --- */
   --shadow-nav-bar: 0px 1px 4px 0px #00000029;
