@@ -16,14 +16,14 @@
   --color-green-500: 40 167 69;
   --color-green-600: 16 65 27;
 
-  /* System Status Base Colors */
+  /* System Status Colors */
   --color-brand-blue: 13 110 253;
   --color-warning-yellow: 209 185 0;
   --color-danger-red: 244 63 94;
   --color-info-gray: 108 117 125;
 
   /* Base Tokens */
-  --border-color-base: 0 0 0;
+  --border-color-base: var(--color-black);
 
   /* 2. Semantic Tokens */
   /* --- Brand & Action --- */
@@ -71,10 +71,26 @@
   --tag-bg-unknown: rgb(var(--color-info-gray) / 13%);
   --tag-color-unknown: rgb(var(--color-info-gray));
 
-  /* --- Effects --- */
-  --shadow-nav-bar: 0px 1px 4px 0px rgb(var(--color-black) / 16%);
+  /* --- Effects & Shadows --- */
+  --shadow-sm: 0px 1px 2px 0px rgb(var(--color-black) / 5%);
+
+  /* --- Motion & Transitions --- */
+  --transition-duration-fast: 150ms;
+  --transition-duration-normal: 200ms;
+  --transition-duration-slow: 300ms;
+
+  --transition-timing-in: ease-in;
+  --transition-timing-out: ease-out;
+  --transition-timing-default: ease-in-out;
+  --transition-timing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-timing-fluid: cubic-bezier(0.25, 1, 0.5, 1);
 
   /* 3. Structural Tokens */
+
+  /* --- Breakpoints (Documenting Responsive Breakpoints) ---
+     Note: Due to the limitations of raw CSS, use these numbers directly in @media.
+     sm: 640px  |  md: 768px  |  lg: 1024px  |  xl: 1280px  |  2xl: 1536px
+  -------------------------------------------------------------------------- */
 
   /* --- Spacing --- */
   --spacing-1: 0.25rem; /* 4px */
@@ -100,7 +116,20 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* --- Typography Rules --- */
+  /* --- Border Widths --- */
+  --border-width-none: 0px;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  /* --- Icon Sizes --- */
+  --icon-size-xs: 0.75rem; /* 12px */
+  --icon-size-sm: 1rem; /* 16px */
+  --icon-size-md: 1.25rem; /* 20px */
+  --icon-size-lg: 1.5rem; /* 24px */
+  --icon-size-xl: 2rem; /* 32px */
+
+  /* --- Typography Sizes & Weights --- */
   --fs-xs: 0.75rem; /* 12px */
   --fs-sm: 0.875rem; /* 14px */
   --fs-base: 1rem; /* 16px */
@@ -138,4 +167,10 @@
 
   /* --- Layout --- */
   --container-max-width: 1200px;
+
+  /* --- Scrollbar --- */
+  --scrollbar-width: 8px;
+  --scrollbar-track-bg: var(--bg-secondary);
+  --scrollbar-thumb-bg: rgb(var(--color-gray-400));
+  --scrollbar-thumb-hover-bg: rgb(var(--color-gray-500));
 }
