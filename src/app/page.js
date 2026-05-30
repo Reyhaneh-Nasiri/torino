@@ -28,14 +28,12 @@ export default async function Home({ searchParams }) {
 
   return (
     <>
-      <Banner />
-      <div style={{ padding: "0 31px" }}>
+        <Banner />
         <SearchBox topPlaces={TOP_PLACES} query={query} />
         <ToursList toursData={data} query={query} />
         <Telesales />
         <WhyUs />
         <Features />
-      </div>
     </>
   );
 }

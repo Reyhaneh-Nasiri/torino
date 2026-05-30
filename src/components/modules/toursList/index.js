@@ -12,7 +12,7 @@ const ToursList = ({ toursData, query }) => {
   const canCollapse = count > 1;
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} content-boxed`}>
       {query.originId && query.destinationId ? (
         <h2>
           {PLACES[toursData[0]?.origin.name]}

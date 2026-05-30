@@ -3,21 +3,19 @@
 }
 
 .tour-date-picker .tour-input {
-  border: 1px solid #00000026;
-  border-radius: 12px;
-  padding: 14px 16px;
+  border: var(--border-width-thin) solid var(--border-color-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3) var(--spacing-4);
   background-color: white;
   cursor: pointer;
-  transition: 0.2s;
+  transition: var(--transition-duration-normal);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--spacing-2);
   min-width: 287px !important;
   width: 100% !important;
   color: #00000080;
-  font-weight: 400;
-  font-size: 16px;
 }
 
 .tour-date-picker .ep-arrow {
@@ -26,29 +24,29 @@
 
 .tour-date-picker .rmdp-container > div:nth-child(3) {
   width: 100% !important;
-  padding: 0 31px;
+  max-width: 268px;
+  padding: 0 var(--spacing-6);
   margin-top: -3px;
 }
 
 .tour-date-picker .rmdp-wrapper {
-  background-color: #fff !important;
+  background-color: var(--bg-surface) !important;
   width: 100% !important;
   box-shadow: none !important;
-  border: 1px solid #00000040;
-  border-radius: 12px !important;
+  border: var(--border-width-thin) solid #00000040;
+  border-radius: var(--radius-lg) !important;
 }
 
 .tour-date-picker .rmdp-header-values {
-  color: #fff !important;
-  padding: 4px 8px;
-  font-weight: 400;
-  font-size: 11px;
-  background: #28a745;
-  border-radius: 4px;
+  color: var(--color-on-primary) !important;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--fs-xs);
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
 }
 
 .tour-date-picker .rmdp-arrow {
-  border-color: #28a745 !important;
+  border-color: var(--color-primary) !important;
 }
 
 .tour-date-picker .rmdp-arrow-container:hover {
@@ -61,13 +59,12 @@
 }
 
 .tour-date-picker .rmdp-week-day {
-  font-weight: 400;
-  font-size: 11px;
-  color: #10411b !important;
+  font-size: var(--fs-xs);
+  color: var(--color-primary-dark) !important;
 }
 
 .tour-date-picker .rmdp-week-day:last-child {
-  color: #28a745 !important;
+  color: var(--color-primary) !important;
 }
 
 .tour-date-picker .rmdp-week {
@@ -81,17 +78,16 @@
 }
 
 .tour-date-picker .holiday-day {
-  color: #28a745 !important;
+  color: var(--color-primary) !important;
 }
 
 .tour-date-picker .rmdp-day.rmdp-selected span {
-  background-color: #28a745 !important;
-  color: #fff !important;
-  border-radius: 4px;
-  padding: 3px 5px !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-on-primary) !important;
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-1) !important;
   box-shadow: none !important;
-  font-weight: 400;
-  font-size: 11px;
+  font-size: var(--fs-xs);
 }
 
 .tour-date-picker .rmdp-day.rmdp-selected span:hover {
@@ -100,10 +96,10 @@
 
 .tour-date-picker .rmdp-today span {
   background-color: transparent !important;
-  color: #28a745 !important;
-  border: 1px solid #28a745;
-  border-radius: 4px !important;
-  padding: 3px 5px !important;
+  color: var(--color-primary) !important;
+  border: var(--border-width-thin) solid var(--color-primary);
+  border-radius: var(--radius-sm) !important;
+  padding: var(--spacing-1) !important;
   box-shadow: none !important;
 }
 
@@ -113,15 +109,35 @@
 }
 
 .tour-date-picker .rmdp-range {
-  background-color: #28a745 !important;
+  background-color: var(--color-primary) !important;
   border-radius: 50%;
 }
 
 .tour-date-picker .rmdp-range .sd {
-  color: #fff !important;
+  color: var(--color-on-primary) !important;
 }
 
 .tour-date-picker .rmdp-range-hover {
-  background-color: rgba(40, 167, 70, 0.15) !important;
+  background-color: #28a74626 !important;
   border-radius: 50%;
+}
+
+@media (width >= 768px) {
+  .tour-date-picker .rmdp-container {
+    max-width: 100%;
+  }
+  .tour-date-picker .rmdp-container > div:nth-child(3) {
+    width: 268px !important;
+    padding: 0;
+  }
+  .tour-date-picker .tour-input {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: var(--spacing-3) var(--spacing-4);
+    border: none;
+    justify-content: start;
+    color: #2c2c2c;
+    font-size: var(--fs-xl) !important;
+  }
 }

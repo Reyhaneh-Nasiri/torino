@@ -1,15 +1,15 @@
-import telesalesOperator from "@/assets/images/telesales-operator.png";
+import telesalesOperator from "@/assets/images/telesales-operator.webp";
 import Image from "next/image";
 
 import styles from "./index.module.css";
 
 const Telesales = () => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} content-boxed`}>
       <div className={styles.top}>
         <div>
           <h3 className={styles.title}>
-            خرید تلفی از <span>تورینو</span>
+            خرید تلفنی از <span>تورینو</span>
           </h3>
           <p className={styles.description}>به هرکجا که میخواهید!</p>
         </div>

@@ -1,6 +1,6 @@
-import support24h from "@/assets/images/24h-support.png";
-import bestPrice from "@/assets/images/best-price.png";
-import userSatisfaction from "@/assets/images/user-satisfaction.png";
+import support24h from "@/assets/images/24h-support.webp";
+import bestPrice from "@/assets/images/best-price.webp";
+import userSatisfaction from "@/assets/images/user-satisfaction.webp";
 import Image from "next/image";
 import styles from "./index.module.css";
 import { e2p } from "@/core/utils/digit";
@@ -27,7 +27,7 @@ const FEATURES = [
 ];
 const Features = () => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} content-full`}>
       <div className={styles.features}>
         {FEATURES.map((feature) => (
           <div className={styles.card} key={feature.id}>

@@ -5,7 +5,7 @@ import Link from "next/link"
 
 const NotFoundPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} content-boxed`}>
       <Image width={322} height={322} src={error404} alt="error 404 image" />
       <h2 className={styles.title}>صفحه مورد نظر یافت نشد!</h2>
       <Link href="/" className={styles.backToHomeBtn}>بازگشت به صفحه اصلی</Link>

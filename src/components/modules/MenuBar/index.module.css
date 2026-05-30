@@ -52,3 +52,9 @@
 
   }
 }
+
+@media (min-width: 768px) {
+  .container {
+    display: none;
+  }
+}

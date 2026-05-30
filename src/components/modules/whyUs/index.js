@@ -1,8 +1,8 @@
 "use client";
-import place1 from "@/assets/images/place1.png";
-import place2 from "@/assets/images/place2.png";
-import place3 from "@/assets/images/place3.png";
-import place4 from "@/assets/images/place4.png";
+import place1 from "@/assets/images/place1.webp";
+import place2 from "@/assets/images/place2.webp";
+import place3 from "@/assets/images/place3.webp";
+import place4 from "@/assets/images/place4.webp";
 import { e2p } from "@/core/utils/digit";
 import Image from "next/image";
 import { useState } from "react";
@@ -29,16 +29,28 @@ const WhyUs = () => {
     if (currentSlide === 1) setCurrentSlide(SLIDES.length);
   };
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>
-        <div className={styles.polygon}>؟</div> چرا <span>تورینو</span>؟
-      </h2>
+    <div className={`${styles.container} content-boxed`}>
+      <div className={styles.description}>
+        <h2 className={styles.title}>
+          <div className={styles.polygon}>؟</div> چرا <span>تورینو</span>؟
+        </h2>
+        <p>تور طبیعت گردی و تاریخی</p>
+        <p>
+          اگر دوست داشته باشید که یک جاذبه طبیعی را از نزدیک ببینید و در دل
+          طبیعت چادر بزنید یا در یک اقامتگاه بوم گردی اتاق بگیرید، باید تورهای
+          طبیعت‌گردی را خریداری کنید. اما اگر بخواهید از جاذبه‌های گردشگری و
+          آثار تاریخی یک مقصد خاص بازدید کنید، می‌توانید تورهای فرهنگی و تاریخی
+          را خریداری کنید.
+        </p>
+      </div>
       <div className={styles.slider}>
-        <div className={styles.images}>{SLIDES.map((slide) => slide)}</div>
-        <div className={styles.actions}>
-          <i className="fa-solid fa-arrow-right" onClick={prevHandler}></i>
-          <p>{e2p(`${SLIDES.length} / ${currentSlide}`)}</p>
-          <i className="fa-solid fa-arrow-left" onClick={nextHandler}></i>
+        <div className={styles.images}>
+          {SLIDES.map((slide) => slide)}
+          <div className={styles.actions}>
+            <i className="fa-solid fa-arrow-right" onClick={prevHandler}></i>
+            <p>{e2p(`${SLIDES.length} / ${currentSlide}`)}</p>
+            <i className="fa-solid fa-arrow-left" onClick={nextHandler}></i>
+          </div>
         </div>
       </div>
     </div>

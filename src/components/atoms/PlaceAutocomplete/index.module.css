@@ -1,7 +1,7 @@
 .dropdown {
-  border: 1px solid #00000033;
-  border-radius: 8px;
-  background-color: #fff;
+  border: var(--border-width-thin) solid var(--border-color-muted);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
   width: 160px;
   overflow: hidden;
   position: absolute;
@@ -9,30 +9,30 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 10;
+  z-index: var(--z-index-dropdown);
   max-height: 225px;
   overflow-y: auto;
 }
 
 .dropdown .title {
   background-color: #f8f8f8;
-  padding: 6px;
-  color: #282828b2;
-  font-weight: 300;
-  font-size: 13px;
+  padding: var(--spacing-1);
+  color: rgba(40, 40, 40, 0.698);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-xs);
 }
 
 .placeItem {
-  padding: 16px 12px;
-  color: #282828;
-  font-size: 14px;
-  font-weight: 400;
-  border-bottom: 1px solid #0000001f;
+  padding: var(--spacing-4) var(--spacing-3);
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  border-bottom: var(--border-width-thin) solid var(--border-color-subtle);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-duration-normal);
 }
 
 .placeItem:hover {
@@ -46,30 +46,31 @@
 .inputWrapper {
   position: relative;
   width: 160px;
+  width: 100%;
 }
 
 .inputWrapper input {
   width: 100%;
-  border: 1px solid #00000026;
-  border-radius: 12px;
-  padding: 14px 12px;
+  border: var(--border-width-thin) solid var(--border-color-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3);
   outline: none;
   text-align: center;
   background-color: transparent;
 }
 
 .inputWrapper input.field--error {
-  border-color: #f43f5e;
+  border-color: var(--input-border-error);
 }
 
 .placeholder {
   z-index: -1;
-  color: #00000080;
-  font-weight: 400;
-  font-size: 16px;
+  color: var(--text-placeholder);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-base);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -77,7 +78,37 @@
 }
 
 .errorMessage {
-  color: #f43f5e;
-  font-size: 12px;
-  padding: 4px 2px 0;
+  color: var(--input-text-error);
+  font-size: var(--fs-xs);
+  padding: var(--spacing-1) var(--spacing-1) 0;
+}
+
+@media (width >= 768px) {
+  .inputWrapper input {
+    width: 100%;
+    border: none;
+    border-left: var(--border-width-thin) solid var(--border-color-muted);
+    border-radius: 0;
+    padding: var(--spacing-3) 0;
+    outline: none;
+    text-align: start;
+    background-color: transparent;
+    padding-inline-start: var(--spacing-4);
+  }
+
+  .placeholder {
+    z-index: -1;
+    color: #2c2c2c;
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-xl);
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: var(--spacing-2);
+    position: absolute;
+    left: unset;
+    right: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

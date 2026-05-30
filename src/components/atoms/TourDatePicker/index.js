@@ -25,7 +25,7 @@ const TourDatePicker = ({ value, onChange }) => {
           value={value}
           onChange={onChange}
           format={"YYYY/MM/DD"}
-          calendarPosition="bottom-center"
+          calendarPosition="bottom-end"
           mapDays={({ date }) => {
             const isFriday = date.weekDay.index === 6;
             if (isFriday) {

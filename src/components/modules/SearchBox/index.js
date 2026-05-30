@@ -47,7 +47,7 @@ const SearchBox = ({ topPlaces }) => {
         </p>
       ) : null}
 
-      <div className={styles.container}>
+      <div  className={`${styles.container} content-boxed`}>
         <Controller
           name="originId"
           control={control}

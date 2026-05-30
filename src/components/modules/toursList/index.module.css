@@ -1,19 +1,18 @@
 .container {
-  margin-top: 48px;
-  margin-bottom: 82px;
+  margin-top: var(--spacing-7);
+  margin-bottom: var(--spacing-9);
 }
 
 .container h2 {
   color: #000;
-  font-weight: 400;
-  font-size: 20px;
-  margin-bottom: 8px;
+  font-size: var(--fs-xl);
+  margin-bottom: var(--spacing-2);
 }
 
 .tours {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-5) var(--spacing-4);
 }
 
 .moreBtnContainer {
@@ -23,11 +22,25 @@
 
 .moreBtn {
   color: #00000080;
-  font-weight: 400;
-  font-size: 13px;
-  padding: 8px;
-  margin-top: 4px;
+  font-size: var(--fs-sm);
+  padding: var(--spacing-2);
+  margin-top: var(--spacing-1);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
+}
+
+@media (width >= 768px) {
+  .container {
+    margin-top: var(--spacing-9);
+    margin-bottom: var(--spacing-10);
+  }
+  .container h2 {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .tours {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
