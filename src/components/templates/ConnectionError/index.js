@@ -1,17 +1,26 @@
-"use client"
-import connectionErrorImg from "@/assets/images/connection-error.svg"
+"use client";
+import connectionErrorImg from "@/assets/images/connection-error.svg";
 
-import styles from "./index.module.css"
-import Image from "next/image"
+import Image from "next/image";
+import styles from "./index.module.css";
 
 const ConnectionError = () => {
   return (
     <div className={`${styles.container} content-boxed`}>
-      <Image width={322} height={322} src={connectionErrorImg} alt="connection-error-image" />
-      <h2 className={styles.title}>اتصال با سرور برقرار نیست!</h2>
-      <p className={styles.text}>لطفا بعدا دوباره امتحان کنید.</p>
+      <div className={styles.imageWrapper}>
+        <Image
+          fill
+          priority
+          src={connectionErrorImg}
+          alt="connection-error-image"
+        />
+      </div>
+      <div className={styles.content}>
+        <h2 className={styles.title}>اتصال با سرور برقرار نیست!</h2>
+        <p className={styles.text}>لطفا بعدا دوباره امتحان کنید.</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ConnectionError
+export default ConnectionError;
