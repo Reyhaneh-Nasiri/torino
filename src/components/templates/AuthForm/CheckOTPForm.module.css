@@ -4,11 +4,12 @@
   top: 0;
   background-color: rgba(0, 0, 0, 0.44);
   backdrop-filter: blur(2px);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: var(--z-index-modal);
 }
 
 .form {
@@ -66,7 +67,6 @@
   margin-top: 24px;
 }
 
-
 .time span {
   font-weight: 500;
 }
@@ -107,8 +107,7 @@
   text-align: center;
 }
 
-
-.otpInputs .field--error{
+.otpInputs .field--error {
   border: 1px solid #f43f5e !important;
 }
 
