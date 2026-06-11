@@ -1,12 +1,12 @@
 import styles from "./ModalContainer.module.css";
 
-const ModalContainer = ({ children, isOpen, setIsOpen }) => {
+const ModalContainer = ({ children, isOpen, onClose }) => {
   if (!isOpen) return;
 
   return (
-    <div className={styles.modalContainer}>
-      <div className={styles.modalWrapper}>
-        <div className={styles.modalBox}>{children}</div>
+    <div className={styles.modalContainer} onClick={onClose}>
+      <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+        {children}
       </div>
     </div>
   );

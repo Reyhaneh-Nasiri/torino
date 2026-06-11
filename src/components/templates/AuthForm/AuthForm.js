@@ -24,12 +24,19 @@ const AuthForm = () => {
     watch,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(otpSmsSchema),
     defaultValues: { mobile: "" },
     mode: "onChange",
   });
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setStep(1);
+    reset({ mobile: "" });
+  };
 
   const queryClient = useQueryClient();
   const mobile = watch("mobile");
@@ -69,22 +76,22 @@ const AuthForm = () => {
       <LoginBtn setIsOpen={setIsOpen} />
 
       {step === 1 && (
-        <ModalContainer isOpen={isOpen}>
+        <ModalContainer isOpen={isOpen} onClose={closeModal}>
           <SendOTPForm
             register={register}
             handleSubmit={handleSubmit}
             errors={errors}
             setStep={setStep}
-            setIsOpen={setIsOpen}
+            onClose={closeModal}
           />
         </ModalContainer>
       )}
       {step === 2 && (
-        <ModalContainer isOpen={isOpen}>
+        <ModalContainer isOpen={isOpen} onClose={closeModal}>
           <CheckOTPForm
             mobile={mobile}
             setStep={setStep}
-            setIsOpen={setIsOpen}
+            onClose={closeModal}
           />
         </ModalContainer>
       )}

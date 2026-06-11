@@ -1,33 +1,10 @@
-.container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: var(--bg-overlay);
-  backdrop-filter: blur(2px);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: var(--z-index-modal);
-}
-
-.form {
-  width: 90%;
-  max-width: 560px;
-  border-radius: var(--radius-xl);
-  padding: clamp(var(--fs-xs), 1.25vw + 8px, var(--fs-2xl)) var(--spacing-5)
-    var(--spacing-5);
-  background-color: var(--bg-surface);
-  position: relative;
-}
-
 .closeBtn {
   position: absolute;
-  left: 24px;
-  top: 24px;
+  left: var(--spacing-5);
+  top: var(--spacing-5);
   font-size: var(--fs-lg);
   transform: rotate(45deg);
+  cursor: pointer;
 }
 
 .title {
