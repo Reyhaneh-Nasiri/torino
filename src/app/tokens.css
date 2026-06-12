@@ -19,7 +19,7 @@
   /* System Status Colors */
   --color-brand-blue: 13 110 253;
   --color-warning-yellow: 209 185 0;
-  --color-danger-red: 244 63 94;
+  --color-danger-red: 212 0 0;
   --color-info-gray: 108 117 125;
 
   /* Base Tokens */
@@ -51,6 +51,7 @@
   --text-placeholder: rgb(var(--color-black) / 50%);
   --text-muted: rgb(var(--color-gray-400));
   --text-inverse: rgb(var(--color-white));
+  --text-danger: rgb(var(--color-danger-red));
   --text-support-phone: rgb(var(--color-black));
   --text-copyright: rgb(var(--color-black));
 
