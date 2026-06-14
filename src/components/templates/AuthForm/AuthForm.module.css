@@ -1,32 +1,30 @@
-.dashboardBtn {
+.profile {
+  position: relative;
+  display: inline-block;
+}
+.profile__trigger {
+  display: flex;
+  align-items: center;
   font-weight: 500;
   font-size: clamp(var(--fs-sm), 0.37vw + 0.8rem, var(--fs-lg));
   color: var(--color-primary);
-  display: flex;
-  align-items: center;
   gap: var(--spacing-1);
   padding: var(--spacing-2);
-  position: relative;
   cursor: pointer;
   transition: all var(--transition-duration-normal);
 }
-.dashboardBtn > i:last-of-type {
+.profile__trigger > i:last-of-type {
   font-size: clamp(var(--fs-sm), 0.37vw + 0.8rem, var(--fs-lg));
   transition: all var(--transition-duration-normal);
 }
 
-.dashboardBtn:hover > i:last-of-type {
+.profile__trigger i.active {
   transform: rotate(180deg);
 }
 
-.dashboardBtn:hover .dropdown {
-  display: block;
-}
-
-.dropdown {
+.profile__menu {
   z-index: var(--z-index-dropdown);
   transition: all var(--transition-duration-normal);
-  display: none;
   background-color: var(--bg-surface);
   position: absolute;
   top: 100%;
@@ -40,7 +38,7 @@
   overflow: hidden;
 }
 
-.dropdown li {
+.profile__menu li {
   display: flex;
   align-items: center;
   padding: clamp(0.5rem, 0.74vw + 0.233rem, 1rem) 12px;
@@ -49,7 +47,7 @@
   cursor: pointer;
 }
 
-.dropdown .number {
+.profile__item--header {
   font-weight: var(--fw-medium);
   font-size: clamp(var(--fs-sm), 0.185vw + 0.833rem, var(--fs-base));
   color: var(--color-primary-dark);
@@ -57,13 +55,13 @@
   padding: var(--spacing-3);
 }
 
-.infoBtn {
+.profile__item {
   color: var(--text-primary);
   font-size: clamp(var(--fs-xs), 0.185vw + 0.708rem, var(--fs-sm));
   border-bottom: var(--border-width-thin) solid var(--border-color-subtle);
 }
 
-.logoutBtn {
+.profile__item--logout {
   font-size: clamp(var(--fs-xs), 0.185vw + 0.708rem, var(--fs-sm));
   color: var(--text-danger);
 }

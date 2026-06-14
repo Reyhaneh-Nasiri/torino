@@ -1,24 +1,30 @@
 "use client";
-import LoginBtn from "@/components/atoms/LoginBtn";
-import ModalContainer from "@/components/partials/containers/ModalContainer";
-import { otpSmsSchema } from "@/core/schemas/auth";
-import { useGetProfile } from "@/core/services/queries";
-import { removeCookie } from "@/core/utils/cookie";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import styles from "./AuthForm.module.css";
+
+import LoginBtn from "@/components/atoms/LoginBtn";
+import ModalContainer from "@/components/partials/containers/ModalContainer";
 import CheckOTPForm from "./CheckOTPForm";
 import SendOTPForm from "./SendOTPForm";
 
-const AuthForm = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState(1);
+import { useOutsideClick } from "@/core/hooks/useOutsideClick";
+import { otpSmsSchema } from "@/core/schemas/auth";
+import { useGetProfile } from "@/core/services/queries";
+import { removeCookie } from "@/core/utils/cookie";
 
+import styles from "./AuthForm.module.css";
+
+const AuthForm = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authStep, setAuthStep] = useState(1);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
+  const dropdownRef = useOutsideClick(() => setIsProfileMenuOpen(false));
   const { data } = useGetProfile();
-  console.log(data);
+  const queryClient = useQueryClient();
 
   const {
     watch,
@@ -32,70 +38,93 @@ const AuthForm = () => {
     mode: "onChange",
   });
 
+  const mobile = watch("mobile");
+
   const closeModal = () => {
-    setIsOpen(false);
-    setStep(1);
+    setIsAuthModalOpen(false);
+    setAuthStep(1);
     reset({ mobile: "" });
   };
 
-  const queryClient = useQueryClient();
-  const mobile = watch("mobile");
   const logoutHandler = () => {
     removeCookie("accessToken");
     removeCookie("refreshToken");
     queryClient.setQueryData(["profile"], null);
+    setIsProfileMenuOpen(false);
+  };
+
+  const renderModalContent = () => {
+    if (authStep === 1) {
+      return (
+        <SendOTPForm
+          register={register}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          setStep={setAuthStep}
+          onClose={closeModal}
+        />
+      );
+    }
+    if (authStep === 2) {
+      return (
+        <CheckOTPForm
+          mobile={mobile}
+          setStep={setAuthStep}
+          onClose={closeModal}
+        />
+      );
+    }
+    return null;
   };
 
   if (data)
     return (
-      <>
-        <div className={styles.dashboardBtn}>
+      <div className={styles.profile} ref={dropdownRef}>
+        <button
+          className={styles.profile__trigger}
+          onClick={() => setIsProfileMenuOpen((prev) => !prev)}
+          aria-expanded={isProfileMenuOpen}
+        >
           <i className="fa-solid fa-user"></i>
-          {data.mobile}
-          <i className="fa-solid fa-angle-down"></i>
-          <ul className={styles.dropdown}>
-            <li className={styles.number}>
+          <span>{data.mobile}</span>
+          <i
+            className={`fa-solid fa-angle-down ${isProfileMenuOpen ? styles.active : ""}`}
+          ></i>
+        </button>
+        {isProfileMenuOpen && (
+          <ul className={styles.profile__menu}>
+            <li className={styles["profile__item--header"]}>
               <i className="fa-solid fa-user-circle"></i>
               {data.mobile}
             </li>
-            <li className={styles.infoBtn}>
+            <li className={styles.profile__item}>
               <i className="fa-solid fa-user"></i>
-              <Link href="/dashboard">اطلاعات حساب کاربری</Link>
+              <Link
+                href="/dashboard"
+                onClick={() => setIsProfileMenuOpen(false)}
+              >
+                اطلاعات حساب کاربری
+              </Link>
             </li>
-            <li className={styles.logoutBtn} onClick={logoutHandler}>
+            <li
+              className={styles["profile__item--logout"]}
+              onClick={logoutHandler}
+            >
               <i className="fa-solid fa-sign-out"></i>
               خروج از حساب کاربری
             </li>
           </ul>
-        </div>
-      </>
+        )}
+      </div>
     );
 
   return (
-    <div>
-      <LoginBtn setIsOpen={setIsOpen} />
-
-      {step === 1 && (
-        <ModalContainer isOpen={isOpen} onClose={closeModal}>
-          <SendOTPForm
-            register={register}
-            handleSubmit={handleSubmit}
-            errors={errors}
-            setStep={setStep}
-            onClose={closeModal}
-          />
-        </ModalContainer>
-      )}
-      {step === 2 && (
-        <ModalContainer isOpen={isOpen} onClose={closeModal}>
-          <CheckOTPForm
-            mobile={mobile}
-            setStep={setStep}
-            onClose={closeModal}
-          />
-        </ModalContainer>
-      )}
-    </div>
+    <>
+      <LoginBtn setIsOpen={setIsAuthModalOpen} />
+      <ModalContainer isOpen={isAuthModalOpen} onClose={closeModal}>
+        {isAuthModalOpen && renderModalContent()}
+      </ModalContainer>
+    </>
   );
 };
 
