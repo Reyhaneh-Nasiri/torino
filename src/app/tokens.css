@@ -34,6 +34,7 @@
   --color-primary-dark: rgb(var(--color-green-600));
   --color-on-primary: rgb(var(--color-white));
   --color-price: rgb(var(--color-blue-500));
+  --color-primary-action: rgb(var(--color-blue-500));
 
   /* --- Backgrounds --- */
   --bg-base: rgb(var(--color-white));

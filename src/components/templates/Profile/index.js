@@ -34,6 +34,7 @@ const Profile = () => {
 
   if (isFetching) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
+
   const { mobile, email, fullName, gender, birthDate, nationalCode, payment } =
     data;
 
@@ -61,32 +62,25 @@ const Profile = () => {
           ) : (
             <div className={styles.item}>
               <p className={styles.label}>ایمیل</p>
-              <p className={styles.value}>{email || "__"}</p>
-              {email ? (
-                <p
+              <div className={styles.emailWrapper}>
+                <p className={styles.value}>{email || "__"}</p>
+                <button
                   className={styles.actionBtn}
                   onClick={() => editHandler("account")}
                 >
                   <i className="fa-solid fa-edit"></i>
-                  <span>ویرایش</span>
-                </p>
-              ) : (
-                <p
-                  className={styles.actionBtn}
-                  onClick={() => editHandler("account")}
-                >
-                  <i className="fa-solid fa-edit"></i>
-                  <span>افزودن</span>
-                </p>
-              )}
+                  <span>{email ? "افزودن" : "ویرایش"}</span>
+                </button>
+              </div>
             </div>
           )}
         </div>
       </div>
+
       <div className={styles.personalInfo}>
         <div className={styles.header}>
           <h3 className={styles.title}>اطلاعات شخصی</h3>
-          {!!edit.personal || (
+          {!edit.personal && (
             <p
               className={styles.actionBtn}
               onClick={() => editHandler("personal")}
@@ -96,6 +90,7 @@ const Profile = () => {
             </p>
           )}
         </div>
+
         {edit.personal ? (
           <ProfileForm
             editHandler={editHandler}
@@ -118,10 +113,12 @@ const Profile = () => {
                 {nationalCode ? e2p(nationalCode) : "__"}
               </p>
             </div>
+
             <div className={styles.item}>
               <p className={styles.label}>جنسیت</p>
               <p className={styles.value}>{gender ? GENDER[gender] : "__"}</p>
             </div>
+
             <div className={styles.item}>
               <p className={styles.label}>تاریخ تولد</p>
               <p className={styles.value}>
@@ -135,7 +132,7 @@ const Profile = () => {
       <div className={styles.bankInfo}>
         <div className={styles.header}>
           <h3 className={styles.title}>اطلاعات حساب بانکی</h3>
-          {!!edit.bank || (
+          {!edit.bank && (
             <p className={styles.actionBtn} onClick={() => editHandler("bank")}>
               <i className="fa-solid fa-edit"></i>
               <span>ویرایش اطلاعات</span>

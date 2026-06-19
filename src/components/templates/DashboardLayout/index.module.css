@@ -1,8 +1,12 @@
-.container {
-  padding: 0 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  margin-top: 16px;
-  margin-bottom: 40px;
+.dashboardLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(var(--spacing-5), 1.26rem + 0.99vw, var(--spacing-6));
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-7);
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 284px 1fr;
+    align-items: start;
+  }
 }
