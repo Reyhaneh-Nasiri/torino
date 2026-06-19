@@ -69,7 +69,7 @@ const Profile = () => {
                   onClick={() => editHandler("account")}
                 >
                   <i className="fa-solid fa-edit"></i>
-                  <span>{email ? "افزودن" : "ویرایش"}</span>
+                  <span>{email ? "ویرایش" : "افزودن"}</span>
                 </button>
               </div>
             </div>
