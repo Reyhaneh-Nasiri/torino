@@ -37,7 +37,9 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
-  margin-top: var(--spacing-5);
+  margin: var(--spacing-5)
+    calc(clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4)) * -1) 0;
+  padding: 0 clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4));
 
   @media (min-width: 768px) {
     border-top: var(--border-width-thin) solid var(--border-color-muted);
