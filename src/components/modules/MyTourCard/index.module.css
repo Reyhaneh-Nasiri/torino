@@ -1,103 +1,121 @@
 .card {
-  border: 1px solid #00000033;
-  border-radius: 10px;
+  border: var(--border-width-thin) solid var(--border-color-muted);
+  border-radius: var(--radius-lg);
   position: relative;
 }
 
 .status {
   position: absolute;
-  left: 8px;
-  top: 8px;
-  border-radius: 27px;
-  padding: 4px 6px;
-  font-weight: 400;
-  font-size: 6px;
-  font-size: 10px;
+  left: var(--spacing-2);
+  top: var(--spacing-2);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--fs-xs);
 }
 
 .upcoming {
-  background-color: #0d6efd4d;
-  color: #0d6efd;
+  background-color: var(--tag-bg-upcoming);
+  color: var(--tag-color-upcoming);
 }
 
 .ongoing {
-  background-color: #d1b9004d;
-  color: #d1b900;
+  background-color: var(--tag-bg-ongoing);
+  color: var(--tag-color-ongoing);
 }
 
 .finished {
-  background-color: #28a7454d;
-  color: #28a745;
+  background-color: var(--tag-bg-finished);
+  color: var(--tag-color-finished);
 }
 
 .unknown {
-  background-color: #6c757d20;
-  color: #6c757d;
+  background-color: var(--tag-bg-unknown);
+  color: var(--tag-color-unknown);
 }
 
 .header {
-  padding: 24px 20px 20px;
+  padding: clamp(var(--spacing-4), 1.666rem - 0.833vw, var(--spacing-5))
+    var(--spacing-4);
+  padding-bottom: var(--spacing-5);
 }
 
 .cardRow {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-bottom: 20px;
+  gap: clamp(var(--spacing-4), -1.333rem + 11.666vw, var(--spacing-11));
+  margin-bottom: var(--spacing-5);
 }
 
 .title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
   color: #000000;
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: var(--fw-regular);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
 }
 
 .type {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
   color: #000000;
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: var(--fw-regular);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
 }
-
-/* .type i {
-  transform: rotate(-135deg);
-} */
 
 .dates {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: clamp(var(--spacing-5), 1rem + 1.666vw, var(--spacing-7));
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .dateItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-2);
 }
 
 .dateLabel {
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
   color: #000;
 }
 
 .dateValue {
-  color: #00000099;
-  font-weight: 400;
-  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: var(--fw-regular);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.dateValue::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: var(--text-tertiary);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .footer {
-  border-top: 1px solid #00000033;
-  padding: 8px 6px;
+  border-top: var(--border-width-thin) solid var(--border-color-muted);
+  padding: clamp(var(--spacing-2), 0.333rem + 0.833vw, var(--spacing-4));
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 768px) {
+    justify-content: start;
+  }
 }
 
 .info,
@@ -105,32 +123,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: clamp(var(--spacing-2), 0.333rem + 0.833vw, var(--spacing-4));
 }
 
 .infoLabel,
 .priceLabel {
-  font-weight: 400;
-  font-size: 12px;
-  color: #00000080;
+  font-weight: var(--fw-regular);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
+  color: var(--text-muted);
 }
 
 .infoValue,
 .priceAmount {
-  font-weight: 500;
-  font-size: 12px;
-  color: #282828;
+  font-weight: var(--fw-medium);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
 }
 
 .border {
-  width: 1px;
+  width: var(--border-width-thin);
   height: 30px;
-  margin: 0 12px;
-  background-color: #00000033;
+  margin: 0 clamp(var(--spacing-3), 0.5rem + 1.25vw, var(--spacing-5));
+  background-color: var(--border-color-muted);
 }
 
 .unit {
-  font-weight: 300;
-  font-size: 8px;
-  color: #00000080;
+  font-weight: var(--fw-light);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
 }

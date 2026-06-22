@@ -74,7 +74,7 @@ const MyTourCard = ({ tour = {} }) => {
             <span className={styles.dateValue}>{formattedStartDate}</span>
           </div>
           <div className={styles.dateItem}>
-            <span className={styles.dateLabel}>تاریخ برگشت:</span>
+            <span className={styles.dateLabel}>تاریخ برگشت</span>
             <span className={styles.dateValue}>{formattedEndDate}</span>
           </div>
         </div>
@@ -82,12 +82,12 @@ const MyTourCard = ({ tour = {} }) => {
 
       <div className={styles.footer}>
         <div className={styles.info}>
-          <span className={styles.infoLabel}>شماره تور:</span>
+          <span className={styles.infoLabel}>شماره تور</span>
           <span className={styles.infoValue}>102095404</span>
         </div>
         <div className={styles.border}></div>
         <div className={styles.price}>
-          <span className={styles.priceLabel}>مبلغ پرداخت شده:</span>
+          <span className={styles.priceLabel}>مبلغ پرداخت شده</span>
           <span className={styles.priceAmount}>
             {formatCurrency(price ?? 0)}{" "}
             <span className={styles.unit}>تومان</span>
