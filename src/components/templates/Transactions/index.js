@@ -14,6 +14,7 @@ const Transactions = () => {
         <p className={styles.headerItem}>
           مبلغ <span className={styles.unit}>(تومان)</span>
         </p>
+        <p className={`${styles.headerItem} ${styles.type}`}>نوع تراکنش</p>
         <p className={styles.headerItem}>شماره سفارش</p>
       </div>
       <ul className={styles.TransactionList}>

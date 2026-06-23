@@ -1,20 +1,32 @@
 .container {
-  padding: 14px 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  padding: var(--spacing-3);
+  display: flex;
+  align-items: center;
+}
+
+.container > p {
+  flex: 1;
+  text-align: center;
+}
+
+.type {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
 .orderId,
 .amount {
-  font-weight: 300;
-  font-size: 12px;
+  font-weight: var(--fw-light);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
   color: #000;
   text-align: center;
 }
 
 .time {
-  font-weight: 300;
-  font-size: 10px;
-  color: #282828;
+  font-weight: var(--fw-light);
+  font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
   text-align: center;
 }

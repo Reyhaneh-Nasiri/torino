@@ -1,16 +1,30 @@
-.container {
-  border-radius: 10px;
-  overflow: hidden;
+.header {
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  background: rgb(219, 219, 219);
+  padding: clamp(12px, 0.4vw + 11px, 16px);
+  font-weight: 400;
+  font-size: clamp(12px, 0.4vw + 11px, 16px);
+  color: #282828cc;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    background: var(--bg-secondary);
+    color: #000;
+  }
 }
 
-.header {
-  background: #dbdbdb;
-  padding: 12px;
-  font-weight: 400;
-  font-size: 12px;
-  color: #282828cc;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.header .type {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.header > p {
+  flex: 1;
 }
 
 .headerItem {
@@ -18,12 +32,12 @@
 }
 
 .unit {
-  font-size: 10px;
+  font-size: var(--fs-xs);
 }
 
 .TransactionList {
-  border: 1px solid #00000040;
+  border: var(--border-width-thin) solid var(--border-color-default);
   border-top-color: transparent;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
 }
