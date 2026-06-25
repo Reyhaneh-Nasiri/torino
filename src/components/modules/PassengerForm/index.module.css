@@ -49,7 +49,7 @@
 
 .field--error > div > div > div,
 .field--error > div > input {
-  border-color: var(--input-border-error);
+  border-color: var(--input-border-error) !important;
 }
 
 .field option {
