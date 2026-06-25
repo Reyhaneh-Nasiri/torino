@@ -42,7 +42,7 @@ const Checkout = ({ data, userProfile }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} content-boxed`}>
       <PassengerForm
         register={register}
         trigger={trigger}
