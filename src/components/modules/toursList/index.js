@@ -1,13 +1,23 @@
 "use client";
 import TourCard from "@/components/modules/TourCard";
 import { PLACES } from "@/constants/places";
+import { useMediaQuery } from "@/core/hooks/useMediaQuery";
 import { useState } from "react";
 import styles from "./index.module.css";
 
 const ToursList = ({ toursData, query }) => {
   const [count, setCount] = useState(1);
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
+  const isTablet = useMediaQuery("(min-width: 768px)");
 
-  const visibleTours = toursData.slice(0, count * 4);
+  let itemsPerPage = 4;
+
+  if (isDesktop) {
+    itemsPerPage = 8;
+  } else if (isTablet) {
+    itemsPerPage = 6;
+  }
+  const visibleTours = toursData.slice(0, count * itemsPerPage);
   const hasMore = visibleTours.length < toursData.length;
   const canCollapse = count > 1;
 
@@ -16,7 +26,7 @@ const ToursList = ({ toursData, query }) => {
       {query.originId && query.destinationId ? (
         <h2>
           {PLACES[toursData[0]?.origin.name]}
-          {PLACES[toursData[0]?.origin.name] ? " - " : null}
+          {PLACES[toursData[0]?.origin?.name] ? " - " : null}
           {PLACES[toursData[0]?.destination.name]}
         </h2>
       ) : (

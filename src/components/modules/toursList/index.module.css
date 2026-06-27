@@ -1,18 +1,22 @@
 .container {
-  margin-top: var(--spacing-7);
-  margin-bottom: var(--spacing-9);
+  margin-top: clamp(var(--spacing-7), -0.56rem + 7.41vw, var(--spacing-9));
+  margin-bottom: clamp(var(--spacing-9), 3.22rem + 3.7vw, var(--spacing-10));
 }
 
 .container h2 {
   color: #000;
-  font-size: var(--fs-xl);
-  margin-bottom: var(--spacing-2);
+  font-size: clamp(var(--fs-xl), 0.14rem + 2.31vw, var(--fs-3xl));
+  margin-bottom: clamp(var(--spacing-2), 0.25rem + 0.52vw, var(--spacing-3));
 }
 
 .tours {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacing-5) var(--spacing-4);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-5);
+}
+
+.tours > * {
+  width: 100%;
 }
 
 .moreBtnContainer {
@@ -21,26 +25,11 @@
 }
 
 .moreBtn {
-  color: #00000080;
+  color: rgba(0, 0, 0, 0.502);
   font-size: var(--fs-sm);
   padding: var(--spacing-2);
   margin-top: var(--spacing-1);
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
-}
-
-@media (width >= 768px) {
-  .container {
-    margin-top: var(--spacing-9);
-    margin-bottom: var(--spacing-10);
-  }
-  .container h2 {
-    font-size: var(--fs-3xl);
-    margin-bottom: var(--spacing-3);
-  }
-
-  .tours {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
