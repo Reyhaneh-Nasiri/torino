@@ -1,16 +1,16 @@
 .closeBtn {
   position: absolute;
-  left: var(--spacing-5);
   top: var(--spacing-5);
+  left: var(--spacing-5);
   font-size: var(--fs-lg);
-  transform: rotate(45deg);
   cursor: pointer;
+  transform: rotate(45deg);
 }
 
 .title {
-  font-weight: var(--fw-semibold);
-  font-size: clamp(var(--fs-2xl), 1.2vw + 1.2rem, var(--fs-3xl));
   margin: clamp(var(--spacing-6), -2vw + 56px, var(--spacing-7)) 0;
+  font-size: clamp(var(--fs-2xl), 1.2vw + 1.2rem, var(--fs-3xl));
+  font-weight: var(--fw-semibold);
   text-align: center;
 }
 
@@ -19,20 +19,20 @@
 }
 
 .form form label {
-  font-weight: var(--fw-light);
-  font-size: var(--fs-base);
-  color: #000;
-  margin-bottom: var(--spacing-3);
   display: inline-block;
+  margin-bottom: var(--spacing-3);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-light);
+  color: #000;
 }
 
 .form form input {
   width: 100%;
   height: 54px;
-  border-radius: var(--radius-md);
-  border: var(--border-width-thin) solid var(--border-color-default);
   padding: var(--spacing-4) var(--spacing-2);
   outline: none;
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--radius-md);
   direction: ltr;
 }
 
@@ -41,19 +41,19 @@
 }
 
 .form button {
+  width: 100%;
+  padding: var(--spacing-3);
   margin-top: var(--spacing-6);
-  border-radius: var(--radius-md);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   border: var(--border-width-thin) solid var(--border-color-default);
-  padding: var(--spacing-3);
-  font-size: var(--fs-lg);
-  color: var(--color-on-primary);
-  font-weight: var(--fw-medium);
-  width: 100%;
+  border-radius: var(--radius-md);
 }
 
 .errorMessage {
-  color: var(--input-text-error);
-  font-size: var(--fs-xs);
   padding: var(--spacing-1) var(--spacing-1) 0;
+  font-size: var(--fs-xs);
+  color: var(--input-text-error);
 }

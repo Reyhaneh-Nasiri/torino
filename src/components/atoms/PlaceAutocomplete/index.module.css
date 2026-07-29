@@ -1,37 +1,37 @@
 .dropdown {
-  border: var(--border-width-thin) solid var(--border-color-muted);
-  border-radius: var(--radius-md);
-  background-color: var(--bg-surface);
-  width: 160px;
-  overflow: hidden;
   position: absolute;
   top: calc(100% + 4px);
-  left: 0;
   right: 0;
-  width: 100%;
+  left: 0;
   z-index: var(--z-index-dropdown);
+  width: 160px;
+  width: 100%;
   max-height: 225px;
+  overflow: hidden;
   overflow-y: auto;
+  background-color: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-color-muted);
+  border-radius: var(--radius-md);
 }
 
 .dropdown .title {
-  background-color: #f8f8f8;
   padding: var(--spacing-1);
-  color: rgba(40, 40, 40, 0.698);
-  font-weight: var(--fw-light);
   font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
+  color: rgba(40, 40, 40, 0.698);
+  background-color: #f8f8f8;
 }
 
 .placeItem {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
   padding: var(--spacing-4) var(--spacing-3);
-  color: var(--text-primary);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
-  border-bottom: var(--border-width-thin) solid var(--border-color-subtle);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
+  color: var(--text-primary);
   cursor: pointer;
+  border-bottom: var(--border-width-thin) solid var(--border-color-subtle);
   transition: all var(--transition-duration-normal);
 }
 
@@ -51,12 +51,12 @@
 
 .inputWrapper input {
   width: 100%;
+  padding: var(--spacing-3);
+  text-align: center;
+  outline: none;
+  background-color: transparent;
   border: var(--border-width-thin) solid var(--border-color-subtle);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-3);
-  outline: none;
-  text-align: center;
-  background-color: transparent;
 }
 
 .inputWrapper input.field--error {
@@ -64,51 +64,51 @@
 }
 
 .placeholder {
-  z-index: -1;
-  color: var(--text-placeholder);
-  font-weight: var(--fw-regular);
-  font-size: var(--fs-base);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
+  z-index: -1;
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  color: var(--text-placeholder);
   transform: translate(-50%, -50%);
 }
 
 .errorMessage {
-  color: var(--input-text-error);
-  font-size: var(--fs-xs);
   padding: var(--spacing-1) var(--spacing-1) 0;
+  font-size: var(--fs-xs);
+  color: var(--input-text-error);
 }
 
 @media (width >= 768px) {
   .inputWrapper input {
     width: 100%;
+    padding: var(--spacing-3) 0;
+    padding-inline-start: var(--spacing-4);
+    text-align: start;
+    outline: none;
+    background-color: transparent;
     border: none;
     border-left: var(--border-width-thin) solid var(--border-color-muted);
     border-radius: 0;
-    padding: var(--spacing-3) 0;
-    outline: none;
-    text-align: start;
-    background-color: transparent;
-    padding-inline-start: var(--spacing-4);
   }
 
   .placeholder {
+    position: absolute;
+    top: 50%;
+    right: var(--spacing-4);
+    left: unset;
     z-index: -1;
-    color: #2c2c2c;
-    font-weight: var(--fw-regular);
-    font-size: var(--fs-xl);
     display: flex;
+    gap: var(--spacing-2);
     align-items: start;
     justify-content: start;
-    gap: var(--spacing-2);
-    position: absolute;
-    left: unset;
-    right: var(--spacing-4);
-    top: 50%;
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-regular);
+    color: #2c2c2c;
     transform: translateY(-50%);
   }
 }

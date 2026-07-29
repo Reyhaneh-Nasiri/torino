@@ -1,13 +1,13 @@
 .header {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--z-index-header);
+  padding: var(--spacing-3) var(--spacing-6);
   /* background: var(--bg-surface); */
   background-color: rgb(255 255 255 / 70%);
   backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: var(--spacing-3) var(--spacing-6);
-  z-index: var(--z-index-header);
   animation: shrinkHeader auto;
   animation-timeline: scroll(root);
 }
@@ -27,8 +27,8 @@
 
 .navbar {
   display: none;
-  align-items: center;
   gap: var(--spacing-6);
+  align-items: center;
 }
 
 .logo {
@@ -38,13 +38,13 @@
 
 .menuList {
   display: flex;
-  align-items: center;
   gap: var(--spacing-6);
+  align-items: center;
 }
 
 .menuList li {
-  font-weight: var(--fw-regular);
   font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
   color: var(--text-primary);
   cursor: pointer;
 }
@@ -54,21 +54,21 @@
 }
 
 .menuBtn {
+  position: relative;
   width: 20px;
   height: 16px;
-  position: relative;
 }
 
 .menuBtn::after {
-  cursor: pointer;
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 20px;
   height: 2px;
-  border-radius: var(--radius-sm);
+  cursor: pointer;
+  content: "";
   background-color: var(--color-primary-dark);
+  border-radius: var(--radius-sm);
   box-shadow:
     0 7px 0 var(--color-primary-dark),
     0 14px 0 var(--color-primary-dark);
@@ -77,8 +77,8 @@
 .footer {
   position: relative;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   margin-top: auto;
 }
 
@@ -97,16 +97,16 @@
 }
 
 .top h2 {
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-2xl);
   margin-bottom: var(--spacing-5);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
 }
 
 .top li {
-  font-weight: var(--fw-regular);
-  font-size: var(--fs-base);
-  color: var(--text-primary);
   margin-bottom: var(--spacing-3);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  color: var(--text-primary);
 }
 
 .bottom {
@@ -116,10 +116,10 @@
 }
 
 .bottom_start {
-  width: fit-content;
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2) var(--spacing-4);
+  width: fit-content;
 }
 
 .bottom_end {
@@ -128,20 +128,20 @@
 
 .support_number {
   margin-top: var(--spacing-3);
-  font-weight: var(--fw-regular);
   font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
   color: var(--text-support-phone);
 }
 
 .copyright {
-  font-weight: var(--fw-light);
-  font-size: var(--fs-xs);
-  color: var(--text-copyright);
-  border-top: var(--border-width-thin) solid var(--border-color-muted);
-  padding: var(--spacing-2) 0;
-  text-align: center;
-  margin-top: var(--spacing-2);
   width: 100%;
+  padding: var(--spacing-2) 0;
+  margin-top: var(--spacing-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
+  color: var(--text-copyright);
+  text-align: center;
+  border-top: var(--border-width-thin) solid var(--border-color-muted);
 }
 
 @media (width >= 768px) {
@@ -162,10 +162,10 @@
   }
 
   .footer_content {
-    border-top: var(--border-width-thin) solid var(--border-color-muted);
-    padding-top: var(--spacing-5);
     display: flex;
     justify-content: space-between;
+    padding-top: var(--spacing-5);
+    border-top: var(--border-width-thin) solid var(--border-color-muted);
   }
 
   .top {
@@ -173,13 +173,13 @@
   }
 
   .top h2 {
-    font-size: var(--fs-2xl);
     margin-bottom: var(--spacing-5);
+    font-size: var(--fs-2xl);
   }
 
   .top li {
-    font-size: var(--fs-lg);
     margin-bottom: var(--spacing-3);
+    font-size: var(--fs-lg);
   }
 
   .bottom {
@@ -193,9 +193,9 @@
   }
 
   .bottom_end img {
-    margin-top: var(--spacing-3);
     width: 146px;
     height: 44px;
+    margin-top: var(--spacing-3);
   }
 
   .bottom_start img {
@@ -228,10 +228,10 @@
   }
 
   .copyright {
-    font-weight: var(--fw-regular);
-    font-size: var(--fs-base);
     padding: var(--spacing-3) 0;
     margin-top: var(--spacing-5);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
   }
 }
 

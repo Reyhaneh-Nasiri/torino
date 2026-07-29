@@ -3,17 +3,17 @@
 }
 
 .birth-date-picker .tour-input {
-  padding: var(--spacing-3) var(--spacing-2);
-  border: var(--border-width-thin) solid var(--border-color-prominent);
-  border-radius: var(--radius-sm);
-  outline: none;
   display: flex;
+  gap: var(--spacing-2);
   align-items: center;
   justify-content: start;
-  font-weight: var(--fw-regular);
+  padding: var(--spacing-3) var(--spacing-2);
   font-size: var(--fs-sm);
-  gap: var(--spacing-2);
+  font-weight: var(--fw-regular);
+  outline: none;
   background-color: var(--bg-input);
+  border: var(--border-width-thin) solid var(--border-color-prominent);
+  border-radius: var(--radius-sm);
 }
 
 .birth-date-picker .ep-arrow {
@@ -27,18 +27,18 @@
 }
 
 .birth-date-picker .rmdp-wrapper {
-  background-color: var(--bg-surface) !important;
   width: 100% !important;
-  box-shadow: none !important;
+  background-color: var(--bg-surface) !important;
   border: var(--border-width-thin) solid var(--color-border-subtle);
   border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
 }
 
 .birth-date-picker .rmdp-header-values {
-  color: var(--color-on-primary) !important;
   padding: var(--spacing-1) var(--spacing-2);
-  font-weight: var(--fw-regular);
   font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  color: var(--color-on-primary) !important;
   background: var(--color-primary);
   border-radius: var(--radius-sm);
 }
@@ -57,8 +57,8 @@
 }
 
 .birth-date-picker .rmdp-week-day {
-  font-weight: var(--fw-regular);
   font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
   color: var(--color-primary-dark) !important;
 }
 
@@ -71,8 +71,8 @@
 }
 
 .birth-date-picker .sd {
-  background-color: transparent !important;
   color: #616161 !important;
+  background-color: transparent !important;
   opacity: 0.8 !important;
 }
 
@@ -81,13 +81,13 @@
 }
 
 .birth-date-picker .rmdp-day.rmdp-selected span {
-  background-color: var(--color-primary) !important;
-  color: var(--color-on-primary) !important;
-  border-radius: var(--radius-sm);
   padding: var(--spacing-1) var(--spacing-2) !important;
-  box-shadow: none !important;
-  font-weight: var(--fw-regular);
   font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  color: var(--color-on-primary) !important;
+  background-color: var(--color-primary) !important;
+  border-radius: var(--radius-sm);
+  box-shadow: none !important;
 }
 
 .birth-date-picker .rmdp-day.rmdp-selected span:hover {
@@ -95,8 +95,8 @@
 }
 
 .birth-date-picker .rmdp-today span {
-  background-color: transparent !important;
   padding: var(--spacing-1) var(--spacing-2) !important;
+  background-color: transparent !important;
   box-shadow: none !important;
 }
 
@@ -106,16 +106,16 @@
 }
 
 .birth-date-picker .emptyValue {
-  color: var(--text-placeholder);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
+  color: var(--text-placeholder);
   cursor: pointer;
   user-select: none;
 }
 
 .birth-date-picker .value {
-  color: var(--text-primary);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
+  color: var(--text-primary);
   cursor: pointer;
 }

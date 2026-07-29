@@ -4,9 +4,9 @@
 }
 
 .container h2 {
-  color: #000;
-  font-size: clamp(var(--fs-xl), 0.14rem + 2.31vw, var(--fs-3xl));
   margin-bottom: clamp(var(--spacing-2), 0.25rem + 0.52vw, var(--spacing-3));
+  font-size: clamp(var(--fs-xl), 0.14rem + 2.31vw, var(--fs-3xl));
+  color: #000;
 }
 
 .tours {
@@ -25,11 +25,11 @@
 }
 
 .moreBtn {
-  color: rgba(0, 0, 0, 0.502);
-  font-size: var(--fs-sm);
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
   padding: var(--spacing-2);
   margin-top: var(--spacing-1);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
+  font-size: var(--fs-sm);
+  color: rgba(0, 0, 0, 0.502);
 }

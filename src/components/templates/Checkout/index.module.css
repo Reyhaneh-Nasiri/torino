@@ -1,10 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: clamp(var(--spacing-5), 2.3rem - 1vw, var(--spacing-6));
-  margin-bottom: clamp(var(--spacing-6), -2.18rem + 17.68vw, var(--spacing-12));
+  align-items: center;
   margin-top: clamp(var(--spacing-4), 0.5rem + 1.67vw, var(--spacing-6));
+  margin-bottom: clamp(var(--spacing-6), -2.18rem + 17.68vw, var(--spacing-12));
 
   @media (min-width: 768px) {
     flex-direction: row;

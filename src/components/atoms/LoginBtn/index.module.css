@@ -1,37 +1,37 @@
 .loginBtn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  border: var(--border-width-thin) solid var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
   color: var(--color-primary);
   cursor: pointer;
+  border: var(--border-width-thin) solid var(--color-primary);
+  border-radius: var(--radius-md);
 }
 
 .desktop {
   display: none;
-  align-items: center;
   gap: var(--spacing-1);
+  align-items: center;
 }
 
 .desktop .icon {
-  width: 24px;
-  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 
 @media (width >= 768px) {
   .loginBtn {
     width: fit-content;
     height: fit-content;
-    border-width: var(--border-width-medium);
     padding: var(--spacing-1) var(--spacing-3);
     font-size: var(--fs-base);
     font-weight: var(--fw-medium);
+    border-width: var(--border-width-medium);
   }
   .mobile {
     display: none;

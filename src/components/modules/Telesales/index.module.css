@@ -1,33 +1,33 @@
 .container {
-  border-radius: var(--radius-lg);
-  outline: var(--border-width-thin) solid var(--border-color-default);
-  outline-offset: -1px;
-  margin-bottom: var(--spacing-10);
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--spacing-10);
+  outline: var(--border-width-thin) solid var(--border-color-default);
+  outline-offset: -1px;
+  border-radius: var(--radius-lg);
 }
 
 .top {
-  display: flex;
-  background-color: var(--color-primary);
-  border-top-right-radius: var(--radius-lg);
-  border-top-left-radius: var(--radius-lg);
   position: relative;
-  padding: var(--spacing-3) var(--spacing-3) var(--spacing-7);
   z-index: -1;
+  display: flex;
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-7);
+  background-color: var(--color-primary);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
 }
 
 .top img {
   position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
 }
 
 .title {
-  font-weight: var(--fw-extrabold);
-  font-size: var(--fs-2xl);
-  color: var(--color-on-primary);
   margin-bottom: var(--spacing-2);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--color-on-primary);
 }
 
 .title span {
@@ -41,49 +41,49 @@
 
 .bottom {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: var(--spacing-3);
+  align-items: center;
+  justify-content: center;
   padding: var(--spacing-3);
 }
 
 .phoneNumber {
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-xl);
   display: flex;
-  align-items: center;
   gap: var(--spacing-2);
+  align-items: center;
   padding: var(--spacing-2);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
 }
 
 .moreInfoBtn {
-  background-color: var(--color-primary-dark);
-  color: var(--color-on-primary);
-  border-radius: var(--radius-md);
   padding: var(--spacing-2) var(--spacing-6);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-dark);
+  border-radius: var(--radius-md);
 }
 
 @media (width >= 768px) {
   .container {
-    border-radius: var(--radius-lg);
-    border: none;
-    margin-bottom: var(--spacing-12);
     flex-direction: row;
+    margin-bottom: var(--spacing-12);
+    border: none;
+    border-radius: var(--radius-lg);
   }
 
   .top {
+    z-index: 1;
     width: 100%;
     padding: var(--spacing-6) var(--spacing-8);
-    z-index: 1;
     border-radius: var(--radius-lg);
   }
 
   .top img {
+    left: 44px;
     width: 308px;
     height: 225px;
-    left: 44px;
   }
 
   .title {
@@ -95,18 +95,18 @@
   }
 
   .bottom {
-    width: fit-content;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     gap: var(--spacing-3);
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
     padding: var(--spacing-9);
   }
 
   .moreInfoBtn {
-    font-size: var(--spacing-4);
     width: 175px;
+    font-size: var(--spacing-4);
   }
   .phoneNumber {
     font-size: var(--spacing-6);

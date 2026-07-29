@@ -1,20 +1,20 @@
 .container {
   width: 100%;
-  text-align: center;
   margin-top: clamp(var(--spacing-5), 7vw - 4px, var(--spacing-9));
   margin-bottom: clamp(var(--spacing-10), -4vw + 144px, var(--spacing-11));
+  text-align: center;
 }
 
 .title {
   margin-top: -28px;
-  font-weight: var(--fw-semibold);
-  font-size: clamp(var(--fs-2xl), 2vw + 1rem, var(--fs-4xl));
   margin-bottom: var(--spacing-5);
+  font-size: clamp(var(--fs-2xl), 2vw + 1rem, var(--fs-4xl));
+  font-weight: var(--fw-semibold);
 }
 
 .text {
-  font-weight: var(--fw-semibold);
   font-size: clamp(var(--fs-base), 2.5vw + 1rem, var(--fs-2xl));
+  font-weight: var(--fw-semibold);
 }
 
 .imageWrapper {
@@ -33,15 +33,15 @@
 
 @media (width >= 768px) {
   .container {
-    padding: 0 var(--spacing-7);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-7);
   }
 
   .imageWrapper {
-    order: 2;
     flex: 1;
+    order: 2;
   }
 
   .content {

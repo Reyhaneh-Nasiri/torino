@@ -15,18 +15,18 @@
 
 .field > div {
   display: flex;
-  align-items: center;
   gap: var(--spacing-2);
+  align-items: center;
 }
 
 .field input {
   width: 100%;
   height: 40px;
-  border: var(--border-width-thin) solid var(--border-color-prominent);
-  border-radius: var(--radius-sm);
   padding: var(--spacing-2);
   font-size: clamp(var(--fs-xs), 0.625rem + 0.416vw, var(--fs-sm));
   outline: none;
+  border: var(--border-width-thin) solid var(--border-color-prominent);
+  border-radius: var(--radius-sm);
 }
 
 .field--error input {
@@ -35,50 +35,50 @@
 
 .actions {
   display: flex;
-  align-items: center;
   gap: var(--spacing-3);
+  align-items: center;
+  padding: 0 clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4));
   margin: var(--spacing-5)
     calc(clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4)) * -1) 0;
-  padding: 0 clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4));
 
   @media (min-width: 768px) {
-    border-top: var(--border-width-thin) solid var(--border-color-muted);
-    padding-top: var(--spacing-2);
     justify-content: end;
+    padding-top: var(--spacing-2);
+    border-top: var(--border-width-thin) solid var(--border-color-muted);
   }
 }
 
 .actions button {
   width: 100%;
   height: 40px;
-  border-radius: var(--radius-sm);
   padding: var(--spacing-2);
-  font-weight: var(--fw-semibold);
   font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-sm);
 
   @media (min-width: 768px) {
     width: 144px;
   }
 }
 .confirmBtn {
-  background-color: var(--color-primary);
   color: var(--color-on-primary);
+  background-color: var(--color-primary);
 }
 
 .cancelBtn {
-  border: var(--border-width-medium) solid var(--color-primary);
   color: var(--color-primary);
+  border: var(--border-width-medium) solid var(--color-primary);
 }
 
 .field > div > button {
-  background-color: var(--color-primary);
   min-width: 90px;
   height: 40px;
-  border-radius: var(--radius-sm);
   padding: var(--spacing-2);
+  font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
   color: var(--color-on-primary);
-  font-size: var(--fs-base);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
 
   @media (min-width: 768px) {
     min-width: 122px;
@@ -86,9 +86,9 @@
 }
 
 .errorMessage {
-  color: var(--input-text-error);
-  font-size: var(--fs-xs);
   padding: var(--spacing-1) var(--spacing-1) 0;
+  font-size: var(--fs-xs);
+  color: var(--input-text-error);
 }
 
 .field {
@@ -96,8 +96,8 @@
 }
 
 .field > div > div > div {
-  min-width: 287px !important;
   width: 100% !important;
+  min-width: 287px !important;
 }
 
 .field--error > div > div > div {

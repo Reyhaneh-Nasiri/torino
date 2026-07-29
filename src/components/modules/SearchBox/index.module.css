@@ -1,23 +1,23 @@
 .allToursBtn {
   display: inline-block;
-  margin: var(--spacing-3) 0;
-  border-radius: var(--radius-md);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  font-size: var(--fs-base);
   padding: var(--spacing-1) var(--spacing-2);
+  margin: var(--spacing-3) 0;
+  font-size: var(--fs-base);
+  color: var(--color-on-primary);
   cursor: pointer;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
 }
 
 .container {
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto;
-  gap: var(--spacing-2);
   grid-template-areas:
     "a b"
     "c c"
     "d d";
+  grid-template-rows: auto;
+  grid-template-columns: 50% 50%;
+  gap: var(--spacing-2);
 }
 
 .inputWrapper:nth-child(1) {
@@ -32,63 +32,63 @@
 }
 .container > button {
   grid-area: d;
-  margin-top: var(--spacing-3);
-  border-radius: var(--radius-lg);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  font-size: var(--fs-xl);
-  padding: var(--spacing-2);
   width: 100%;
+  padding: var(--spacing-2);
+  margin-top: var(--spacing-3);
+  font-size: var(--fs-xl);
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
 }
 .inputWrapper {
-  border: var(--border-width-thin) solid var(--border-color-subtle);
-  border-radius: var(--radius-lg);
+  position: relative;
+  padding: var(--spacing-3);
+  overflow: hidden;
   color: #00000080;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding: var(--spacing-3);
+  border: var(--border-width-thin) solid var(--border-color-subtle);
+  border-radius: var(--radius-lg);
 }
 
 .inputWrapper input {
   position: absolute;
-  border: none;
-  outline: none;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: 3;
   width: 100%;
   height: 100%;
-  z-index: 3;
   text-align: center;
+  outline: none;
   background: var(--bg-input);
+  border: none;
 }
 
 .label {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
   top: 0;
+  left: 0;
   display: flex;
+  gap: var(--spacing-2);
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-2);
+  width: 100%;
+  height: 100%;
   color: #00000080;
 }
 
 @media (width >= 768px) {
   .container {
+    display: grid;
+    grid-template-areas: "a b c d";
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    align-items: center;
     max-width: 874px;
+    padding: var(--spacing-2);
     margin: 0 auto;
     border: var(--border-width-thin) solid var(--border-color-subtle);
     border-radius: var(--radius-xl);
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    gap: 0;
-    grid-template-areas: "a b c d";
-    padding: var(--spacing-2);
   }
   .inputWrapper:nth-child(1) {
     flex: 1;
@@ -98,14 +98,14 @@
   }
 
   .container div:nth-child(3) {
-    margin-top: 0;
     flex: 1;
+    margin-top: 0;
   }
 
   .container > button {
     flex: 1;
-    margin-top: 0;
     height: 100%;
+    margin-top: 0;
     font-size: var(--fs-2xl);
   }
 }

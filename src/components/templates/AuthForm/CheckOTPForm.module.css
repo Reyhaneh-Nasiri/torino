@@ -1,16 +1,16 @@
 .backBtn {
   position: absolute;
-  left: var(--spacing-5);
   top: var(--spacing-5);
+  left: var(--spacing-5);
   font-size: var(--fs-lg);
   cursor: pointer;
 }
 
 .title {
-  font-weight: var(--fw-semibold);
-  font-size: clamp(var(--fs-2xl), 1.2vw + 1.2rem, var(--fs-3xl));
   margin-top: var(--spacing-7);
   margin-bottom: clamp(var(--spacing-2), -1vw + 22px, var(--spacing-4));
+  font-size: clamp(var(--fs-2xl), 1.2vw + 1.2rem, var(--fs-3xl));
+  font-weight: var(--fw-semibold);
   text-align: center;
 }
 
@@ -19,24 +19,24 @@
 }
 
 .message {
+  margin-bottom: var(--spacing-4);
   font-size: clamp(var(--fs-sm), 0.4vw + 0.8rem, var(--fs-base));
   text-align: center;
-  margin-bottom: var(--spacing-4);
 }
 
 .timer {
-  font-weight: var(--fw-light);
-  font-size: var(--fs-xs);
-  text-align: center;
   margin-top: var(--fs-2xl);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
+  text-align: center;
 }
 
 .resendOtp {
-  cursor: pointer;
-  font-weight: var(--fw-light);
-  font-size: var(--fs-xs);
-  text-align: center;
   margin-top: clamp(var(--spacing-4), -1vw, var(--spacing-5));
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
+  text-align: center;
+  cursor: pointer;
 }
 
 .time span {
@@ -44,34 +44,34 @@
 }
 
 .form button {
+  width: 100%;
+  padding: var(--spacing-3);
   margin-top: var(--spacing-5);
-  border-radius: var(--radius-md);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   border: var(--border-width-thin) solid var(--border-color-default);
-  padding: var(--spacing-3);
-  font-size: var(--fs-lg);
-  color: var(--color-on-primary);
-  font-weight: var(--fw-medium);
-  width: 100%;
+  border-radius: var(--radius-md);
 }
 
 .otpInputs > div {
+  display: flex;
+  gap: clamp(var(--spacing-2), 0.4vw + 6.5px, var(--spacing-3));
+  justify-content: center;
   width: 100%;
   direction: ltr;
-  display: flex;
-  justify-content: center;
-  gap: clamp(var(--spacing-2), 0.4vw + 6.5px, var(--spacing-3));
 }
 
 .otpInputs input {
-  min-width: 45px;
   width: 100% !important;
+  min-width: 45px;
   max-width: 58px;
   aspect-ratio: 1 / 0.9;
-  border-radius: var(--radius-md);
-  border: var(--border-width-thin) solid var(--border-color-default);
-  outline: none;
   text-align: center;
+  outline: none;
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--radius-md);
 }
 
 .otpInputs .field--error {
@@ -79,8 +79,8 @@
 }
 
 .errorMessage {
-  text-align: center;
-  color: var(--input-text-error);
-  font-size: var(--fs-xs);
   padding: var(--spacing-1) var(--spacing-1) 0;
+  font-size: var(--fs-xs);
+  color: var(--input-text-error);
+  text-align: center;
 }

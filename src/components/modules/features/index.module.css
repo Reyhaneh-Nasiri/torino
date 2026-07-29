@@ -1,32 +1,32 @@
 .container {
-  border-top: var(--border-width-thin) solid var(--border-color-muted);
   padding-top: var(--spacing-7);
   margin-bottom: var(--spacing-6);
+  border-top: var(--border-width-thin) solid var(--border-color-muted);
 }
 
 .features {
-  padding: 0 var(--spacing-6);
-  margin: auto;
-  max-width: var(--container-max-width);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-6);
+  max-width: var(--container-max-width);
+  padding: 0 var(--spacing-6);
+  margin: auto;
 }
 
 .card {
   display: flex;
-  align-items: center;
   gap: var(--spacing-3);
+  align-items: center;
 }
 
 .title {
-  font-weight: var(--fw-medium);
   font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
 }
 
 .description {
-  font-weight: var(--fw-light);
   font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
 }
 
 @media (width >= 768px) {

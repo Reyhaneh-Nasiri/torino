@@ -1,11 +1,11 @@
 .accountInfo,
 .bankInfo,
 .personalInfo {
-  border: var(--border-width-thin) solid var(--border-color-muted);
-  background-color: var(--bg-base);
-  border-radius: var(--radius-lg);
   padding: clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4));
   margin-bottom: var(--spacing-5);
+  background-color: var(--bg-base);
+  border: var(--border-width-thin) solid var(--border-color-muted);
+  border-radius: var(--radius-lg);
 }
 
 .header {
@@ -16,8 +16,8 @@
 }
 
 .title {
-  font-weight: var(--fw-semibold);
   font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
   color: #000;
 }
 
@@ -45,30 +45,30 @@
 }
 
 .label {
-  font-weight: var(--fw-light);
   font-size: var(--fs-sm);
+  font-weight: var(--fw-light);
   color: #000;
   white-space: nowrap;
 }
 
 .value {
-  font-weight: var(--fw-regular);
   font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
   color: var(--text-primary);
 }
 
 .emailWrapper {
   display: flex;
+  gap: var(--spacing-3);
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-3);
 }
 
 .actionBtn {
+  display: inline-flex;
+  gap: var(--spacing-2);
+  align-items: center;
   font-size: var(--fs-sm);
   color: var(--color-primary-action);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
   cursor: pointer;
 }

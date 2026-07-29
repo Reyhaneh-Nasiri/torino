@@ -1,18 +1,18 @@
 .container {
-  padding: var(--spacing-4);
-  border-radius: var(--radius-lg);
-  border: var(--border-width-thin) solid var(--border-color-muted);
   width: 100%;
+  padding: var(--spacing-4);
+  border: var(--border-width-thin) solid var(--border-color-muted);
+  border-radius: var(--radius-lg);
 }
 
 .title {
   display: flex;
-  align-items: center;
   gap: var(--spacing-3);
-  font-weight: var(--fw-regular);
-  font-size: var(--fs-2xl);
-  color: #000;
+  align-items: center;
   margin-bottom: var(--spacing-4);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-regular);
+  color: #000;
 }
 
 .form {
@@ -38,9 +38,9 @@
 .field {
   width: 100%;
   padding: var(--spacing-3) var(--spacing-2);
+  outline: none;
   border: var(--border-width-thin) solid var(--border-color-prominent);
   border-radius: var(--radius-sm);
-  outline: none;
 }
 
 .field--error {
@@ -57,7 +57,7 @@
 }
 
 .errorMessage {
-  color: var(--input-text-error);
-  font-size: var(--fs-xs);
   padding: var(--spacing-1) var(--spacing-1) 0;
+  font-size: var(--fs-xs);
+  color: var(--input-text-error);
 }
