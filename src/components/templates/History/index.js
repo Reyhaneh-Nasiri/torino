@@ -9,7 +9,7 @@ const History = () => {
   console.log(data);
   return (
     <div className={styles.container}>
-      {data ? (
+      {data?.length ? (
         data.map((tour, index) => (
           <MyTourCard
             key={`${index} ${tour.title} ${tour.startDate} ${tour.endDate}`}
