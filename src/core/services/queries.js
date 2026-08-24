@@ -30,8 +30,10 @@ export const useGetProfile = () => {
 export const useGetHistory = () =>
   useQuery({
     queryKey: ["history"],
-    queryFn: async () =>
-      (await api.get("/user/tours", { cache: "no-store" })).data,
+    queryFn: async () => {
+      const { data } = await api.get("/user/tours");
+      return data;
+    },
   });
 
 export const useGetTransactions = () =>
