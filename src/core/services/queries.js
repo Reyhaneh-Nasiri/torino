@@ -39,6 +39,8 @@ export const useGetHistory = () =>
 export const useGetTransactions = () =>
   useQuery({
     queryKey: ["transactions"],
-    queryFn: async () =>
-      (await api.get("/user/transactions", { cache: "no-store" })).data,
+    queryFn: async () => {
+      const { data } = await api.get("/user/transactions");
+      return data;
+    },
   });
