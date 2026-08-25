@@ -5,6 +5,7 @@ const ErrorState = ({
   description = "مشکلی در برقراری ارتباط با سرور به وجود آمده است. لطفاً اتصال خود را بررسی کرده و مجدداً تلاش کنید.",
   buttonText = "تلاش مجدد",
   onRetry,
+  isRetrying,
 }) => {
   return (
     <div className={styles["error-state-container"]}>
@@ -30,8 +31,9 @@ const ErrorState = ({
           type="button"
           className={styles["error-state-button"]}
           onClick={onRetry}
+          disabled={isRetrying}
         >
-          {buttonText}
+          {isRetrying ? "در حال دریافت..." : buttonText}
         </button>
       )}
     </div>
