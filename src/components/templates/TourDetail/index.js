@@ -7,6 +7,16 @@ import { e2p } from "@/core/utils/digit";
 import Image from "next/image";
 import styles from "./index.module.css";
 
+const InfoItem = ({ icon, label, value }) => (
+  <div>
+    <p>
+      {icon && (typeof icon === "string" ? <i className={icon}></i> : icon)}
+      {label}:
+    </p>
+    <p>{value}</p>
+  </div>
+);
+
 const TourDetail = ({
   id,
   image,
@@ -18,6 +28,61 @@ const TourDetail = ({
   availableSeats,
   origin,
 }) => {
+  const vehicleKey = fleetVehicle?.toLowerCase();
+  const vehicleData = VEHICLES[vehicleKey];
+
+  const vehicleName = vehicleData?.name || fleetVehicle || "نامشخص";
+  const vehicleIcon = vehicleData?.icon || <i className="fa-solid fa-bus"></i>;
+  const originName =
+    PLACES[origin?.name?.toLowerCase()] || origin?.name || "نامشخص";
+
+  const seatsText = availableSeats
+    ? `حداکثر ${e2p(availableSeats)} نفر`
+    : "تکمیل";
+  const insuranceText = `بیمه ${e2p(50)} هزار دیناری`;
+
+  const commonInfoList = [
+    {
+      id: "vehicle",
+      icon: vehicleIcon,
+      label: "حمل و نقل",
+      value: vehicleName,
+    },
+    {
+      id: "capacity",
+      icon: "fa-solid fa-users",
+      label: "ظرفیت",
+      value: seatsText,
+    },
+    {
+      id: "insurance",
+      icon: "fa-solid fa-shield-halved",
+      label: "بیمه",
+      value: insuranceText,
+    },
+  ];
+
+  const desktopOnlyList = [
+    {
+      id: "origin",
+      icon: "fa-solid fa-route",
+      label: "مبدا",
+      value: originName,
+    },
+    {
+      id: "startDate",
+      icon: "fa-solid fa-calendar",
+      label: "تاریخ رفت",
+      value: toPersianDate(startDate),
+    },
+    {
+      id: "endDate",
+      icon: "fa-solid fa-calendar",
+      label: "تاریخ برگشت",
+      value: toPersianDate(endDate),
+    },
+  ];
+
   return (
     <div className={styles.bg}>
       <div className={`${styles.container} content-boxed`}>
@@ -28,9 +93,10 @@ const TourDetail = ({
               height={220}
               unoptimized
               src={image}
-              alt={title}
+              alt={title || "تصویر تور"}
             />
           </div>
+
           <div>
             <div className={styles.header}>
               <h1 className={styles.title}>{title}</h1>
@@ -52,33 +118,11 @@ const TourDetail = ({
             </div>
 
             <div className={styles.informationMobile}>
-              <div>
-                <p>
-                  {VEHICLES[fleetVehicle].icon}
-                  حمل و نقل:
-                </p>
-                <p>{VEHICLES[fleetVehicle].name}</p>
-              </div>
-              <div>
-                <p>
-                  <i className="fa-solid fa-users"></i>
-                  ظرفیت:
-                </p>
-                <p>
-                  {availableSeats
-                    ? ` حداکثر
-            ${e2p(availableSeats)} نفر`
-                    : "تکمیل"}
-                </p>
-              </div>
-              <div>
-                <p>
-                  <i className="fa-solid fa-shield-halved"></i>
-                  بیمه:
-                </p>
-                <p>بیمه {e2p(50)} هزار دیناری</p>
-              </div>
+              {commonInfoList.map((item) => (
+                <InfoItem key={item.id} {...item} />
+              ))}
             </div>
+
             <div className={styles.footer}>
               <div className={styles.reserveBuyCTA}>
                 <ReserveBuyCTA id={id} availableSeats={availableSeats} />
@@ -90,54 +134,11 @@ const TourDetail = ({
             </div>
           </div>
         </div>
+
         <div className={styles.informationDesktop}>
-          <div>
-            <p>
-              <i className="fa-solid fa-route"></i>
-              مبدا
-            </p>
-            <p>{PLACES[origin?.name]}</p>
-          </div>
-          <div>
-            <p>
-              <i className="fa-solid fa-calendar"></i>
-              تاریخ رفت
-            </p>
-            <p>{toPersianDate(startDate)}</p>
-          </div>
-          <div>
-            <p>
-              <i className="fa-solid fa-calendar"></i>
-              تاریخ برگشت
-            </p>
-            <p>{toPersianDate(endDate)}</p>
-          </div>
-          <div>
-            <p>
-              {VEHICLES[fleetVehicle].icon}
-              حمل و نقل:
-            </p>
-            <p>{VEHICLES[fleetVehicle].name}</p>
-          </div>
-          <div>
-            <p>
-              <i className="fa-solid fa-users"></i>
-              ظرفیت:
-            </p>
-            <p>
-              {availableSeats
-                ? ` حداکثر
-            ${e2p(availableSeats)} نفر`
-                : "تکمیل"}
-            </p>
-          </div>
-          <div>
-            <p>
-              <i className="fa-solid fa-shield-halved"></i>
-              بیمه:
-            </p>
-            <p>بیمه {e2p(50)} هزار دیناری</p>
-          </div>
+          {[...desktopOnlyList, ...commonInfoList].map((item) => (
+            <InfoItem key={item.id} {...item} />
+          ))}
         </div>
       </div>
     </div>
