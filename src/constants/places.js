@@ -1,13 +1,11 @@
-const PLACES = {
-  Sananndaj: "سنندج",
-  Madrid: "مادرید",
-  Tehran: "تهران",
-  Isfahan: "اصفهان",
-  sulaymaniyahTour: "سلیمانیه",
-  Hewler: "اربیل",
-  Mazandaran: "مازندران",
-  "offRoad Center": "مرکز آفرود",
-  Italy: "ایتالیا",
+export const PLACES = {
+  sananndaj: "سنندج",
+  madrid: "مادرید",
+  tehran: "تهران",
+  isfahan: "اصفهان",
+  sulaymaniyah: "سلیمانیه",
+  hewler: "اربیل",
+  mazandaran: "مازندران",
+  italy: "ایتالیا",
+  gilan: "گیلان",
 };
-
-export { PLACES };
