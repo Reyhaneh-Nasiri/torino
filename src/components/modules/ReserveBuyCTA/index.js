@@ -3,7 +3,7 @@ import { useReserveBuy } from "@/core/services/mutations";
 import { useRouter } from "next/navigation";
 import styles from "./index.module.css";
 
-const ReserveBuyCTA = ({ id, availableSeats }) => {
+const ReserveBuyCTA = ({ id, isSoldOut }) => {
   const router = useRouter();
   const { mutate, isPending } = useReserveBuy(id);
 
@@ -18,7 +18,7 @@ const ReserveBuyCTA = ({ id, availableSeats }) => {
   };
   return (
     <>
-      {availableSeats ? (
+      {!isSoldOut ? (
         <button
           className={styles.buyBtn}
           disabled={isPending}

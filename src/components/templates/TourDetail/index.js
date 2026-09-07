@@ -1,19 +1,23 @@
+"use client";
 import ReserveBuyCTA from "@/components/modules/ReserveBuyCTA";
 import { PLACES } from "@/constants/places";
 import { VEHICLES } from "@/constants/vehicles";
+import { useTourCapacity } from "@/core/services/queries";
 import { formatCurrency } from "@/core/utils/currency";
 import { diffDaysAndNights, toPersianDate } from "@/core/utils/date";
 import { e2p } from "@/core/utils/digit";
 import Image from "next/image";
 import styles from "./index.module.css";
 
-const InfoItem = ({ icon, label, value }) => (
+const InfoItem = ({ icon, label, value, isAnimated = false }) => (
   <div>
     <p>
       {icon && (typeof icon === "string" ? <i className={icon}></i> : icon)}
       {label}:
     </p>
-    <p>{value}</p>
+    <p key={value} className={isAnimated ? styles.animatedValue : ""}>
+      {value}
+    </p>
   </div>
 );
 
@@ -28,17 +32,27 @@ const TourDetail = ({
   availableSeats,
   origin,
 }) => {
+  const { data: capacity } = useTourCapacity(id, availableSeats);
+
   const vehicleKey = fleetVehicle?.toLowerCase();
   const vehicleData = VEHICLES[vehicleKey];
 
   const vehicleName = vehicleData?.name || fleetVehicle || "نامشخص";
   const vehicleIcon = vehicleData?.icon || <i className="fa-solid fa-bus"></i>;
-  const originName =
-    PLACES[origin?.name?.toLowerCase()] || origin?.name || "نامشخص";
 
-  const seatsText = availableSeats
-    ? `حداکثر ${e2p(availableSeats)} نفر`
-    : "تکمیل";
+  const originKey = origin?.name?.toLowerCase();
+  const originName = PLACES[originKey] || origin?.name || "نامشخص";
+
+  const activeCapacity = capacity ?? availableSeats;
+  const isSoldOut = activeCapacity === 0;
+
+  const seatsText =
+    typeof activeCapacity === "number"
+      ? activeCapacity > 0
+        ? `حداکثر ${e2p(activeCapacity)} نفر`
+        : "تکمیل"
+      : "نامشخص";
+
   const insuranceText = `بیمه ${e2p(50)} هزار دیناری`;
 
   const commonInfoList = [
@@ -53,6 +67,7 @@ const TourDetail = ({
       icon: "fa-solid fa-users",
       label: "ظرفیت",
       value: seatsText,
+      isAnimated: true,
     },
     {
       id: "insurance",
@@ -104,7 +119,6 @@ const TourDetail = ({
                 {diffDaysAndNights(endDate, startDate)}
               </p>
             </div>
-
             <div className={styles.properties}>
               <p>
                 <i className="fa-solid fa-user-tie"></i> تورلیدر از مبدا
@@ -125,7 +139,7 @@ const TourDetail = ({
 
             <div className={styles.footer}>
               <div className={styles.reserveBuyCTA}>
-                <ReserveBuyCTA id={id} availableSeats={availableSeats} />
+                <ReserveBuyCTA id={id} isSoldOut={isSoldOut} />
               </div>
               <p>
                 <span className={styles.price}>{formatCurrency(price)}</span>
