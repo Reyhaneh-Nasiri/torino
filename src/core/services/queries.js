@@ -44,3 +44,19 @@ export const useGetTransactions = () =>
       return data;
     },
   });
+
+export const useTourCapacity = (tourId, initialCapacity) => {
+  return useQuery({
+    queryKey: ["tour-capacity", tourId],
+    queryFn: async () => {
+      const { data } = await api.get(`/tour/${tourId}`);
+      return data;
+    },
+    initialData: { availableSeats: initialCapacity },
+    select: (data) => data?.availableSeats,
+    enabled: Boolean(tourId),
+    staleTime: 10 * 1000,
+    refetchInterval: 10 * 1000,
+    refetchOnWindowFocus: true,
+  });
+};
