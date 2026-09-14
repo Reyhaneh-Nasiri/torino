@@ -1,4 +1,5 @@
 "use client";
+
 import BirthDatePicker from "@/components/atoms/BirthDatePicker";
 import SelectOption from "@/components/customGenerate/SelectOption";
 import { profileSchemas } from "@/core/schemas/profile";
@@ -12,7 +13,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import styles from "./index.module.css";
 
-const ProfileForm = ({ editHandler, section, form, data: profileData }) => {
+const ProfileForm = ({
+  editHandler,
+  section,
+  fields = [],
+  data: profileData = {},
+}) => {
   const { mutate } = useProfileUpdate();
 
   const initialData = {
@@ -21,13 +27,16 @@ const ProfileForm = ({ editHandler, section, form, data: profileData }) => {
     fullName: profileData.fullName || "",
     gender: profileData.gender || "",
     birthDate: gregorianToJalaliString(profileData.birthDate) || "",
-    nationalCode: `${profileData.nationalCode}` || "",
+    nationalCode: profileData.nationalCode
+      ? String(profileData.nationalCode)
+      : "",
     payment: {
       shaba_code: profileData.payment?.shaba_code || "",
       debitCard_code: profileData.payment?.debitCard_code || "",
       accountIdentifier: profileData.payment?.accountIdentifier || "",
     },
   };
+
   const {
     control,
     trigger,
@@ -42,128 +51,113 @@ const ProfileForm = ({ editHandler, section, form, data: profileData }) => {
   });
 
   const onSubmit = (values) => {
+    let payload = values;
+
     if (section === "personal") {
-      const [firstName, lastName] = values.fullName.split(" ");
-      const payload = {
+      const [firstName, lastName] = (values.fullName || "").split(" ");
+      payload = {
+        ...values,
         firstName,
         lastName: lastName || "",
-        ...values,
         birthDate: jalaliToGregorianString(p2e(values.birthDate)),
-        nationalCode: +values.nationalCode,
+        nationalCode: values.nationalCode ? +values.nationalCode : "",
       };
       delete payload.fullName;
-
-      mutate(payload);
-      editHandler(section);
-      return;
     } else if (section === "bank") {
-      const payload = {
-        payment: {
-          ...values,
-        },
+      payload = {
+        payment: { ...values },
       };
-      mutate(payload);
-      editHandler(section);
-      return;
     }
-    mutate(values);
+
+    mutate(payload);
     editHandler(section);
   };
 
   if (section === "account") {
     return (
-      <>
-        <div
-          className={`${styles.field} ${errors.email ? styles["field--error"] : null}`}
-        >
-          <div>
-            <input {...register("email")} placeholder="آدرس ایمیل" />
-            <button onClick={handleSubmit(onSubmit)}>تایید</button>
-          </div>
-          {errors.email && (
-            <p className={styles.errorMessage}>{errors.email.message}</p>
-          )}
-        </div>
-      </>
-    );
-  }
-  return (
-    <>
-      <div className={styles.form}>
-        <div className={styles.fields}>
-          {form[section].map((item) => {
-            if (item.name === "gender") {
-              return (
-                <div
-                  key={item.id}
-                  className={`${errors.gender ? styles["field--error"] : null}`}
-                >
-                  <SelectOption
-                    register={register}
-                    trigger={trigger}
-                    setValue={setValue}
-                    type="gender"
-                    value={profileData.gender}
-                  />
-                  {errors.gender && (
-                    <p className={styles.errorMessage}>
-                      {errors.gender.message}
-                    </p>
-                  )}
-                </div>
-              );
-            } else if (item.name === "birthDate") {
-              return (
-                <div
-                  key={item.id}
-                  className={`${errors.birthDate ? styles["field--error"] : null} ${styles.field} birth-date-picker`}
-                >
-                  <BirthDatePicker control={control} />
-                  {errors.birthDate && (
-                    <p className={styles.errorMessage}>
-                      {errors.birthDate.message}
-                    </p>
-                  )}
-                </div>
-              );
-            }
-
-            return (
-              <div
-                key={item.id}
-                className={`${styles.field} ${errors[item.name] ? styles["field--error"] : null}`}
-              >
-                <div>
-                  <input
-                    placeholder={item.placeholder}
-                    {...register(item.name)}
-                  />
-                </div>
-                {errors[item.name] && (
-                  <p className={styles.errorMessage}>
-                    {errors[item.name].message}
-                  </p>
-                )}
-              </div>
-            );
-          })}
-        </div>
-        <div className={styles.actions}>
-          <button
-            className={styles.confirmBtn}
-            onClick={handleSubmit(onSubmit)}
-          >
+      <div
+        className={`${styles.field} ${errors.email ? styles["field--error"] : ""}`}
+      >
+        <div>
+          <input {...register("email")} placeholder="آدرس ایمیل" />
+          <button type="button" onClick={handleSubmit(onSubmit)}>
             تایید
           </button>
-          <button
-            className={styles.cancelBtn}
-            onClick={() => editHandler(section)}
-          >
-            انصراف
-          </button>
         </div>
+        {errors.email && (
+          <p className={styles.errorMessage}>{errors.email.message}</p>
+        )}
       </div>
-    </>
+    );
+  }
+
+  const renderField = (item) => {
+    const fieldKey = item.name.includes(".")
+      ? item.name.split(".")[1]
+      : item.name;
+    const error = errors[fieldKey] || errors[item.name];
+    const errorClass = error ? styles["field--error"] : "";
+
+    if (item.name === "gender") {
+      return (
+        <div key={item.id} className={errorClass}>
+          <SelectOption
+            register={register}
+            trigger={trigger}
+            setValue={setValue}
+            type="gender"
+            value={profileData.gender}
+          />
+          {error && <p className={styles.errorMessage}>{error.message}</p>}
+        </div>
+      );
+    }
+
+    if (item.name === "birthDate") {
+      return (
+        <div
+          key={item.id}
+          className={`${errorClass} ${styles.field} birth-date-picker`}
+        >
+          <BirthDatePicker control={control} />
+          {error && <p className={styles.errorMessage}>{error.message}</p>}
+        </div>
+      );
+    }
+
+    return (
+      <div key={item.id} className={`${styles.field} ${errorClass}`}>
+        <div>
+          <input
+            placeholder={item.placeholder || item.label}
+            {...register(fieldKey)}
+          />
+        </div>
+        {error && <p className={styles.errorMessage}>{error.message}</p>}
+      </div>
+    );
+  };
+
+  return (
+    <div className={styles.form}>
+      <div className={styles.fields}>{fields.map(renderField)}</div>
+      <div className={styles.actions}>
+        <button
+          type="button"
+          className={styles.confirmBtn}
+          onClick={handleSubmit(onSubmit)}
+        >
+          تایید
+        </button>
+        <button
+          type="button"
+          className={styles.cancelBtn}
+          onClick={() => editHandler(section)}
+        >
+          انصراف
+        </button>
+      </div>
+    </div>
   );
 };
 
