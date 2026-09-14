@@ -1,6 +1,4 @@
-.accountInfo,
-.bankInfo,
-.personalInfo {
+.section {
   padding: clamp(var(--spacing-3), 1.12rem - 0.5vw, var(--spacing-4));
   margin-bottom: var(--spacing-5);
   background-color: var(--bg-base);
