@@ -1,114 +1,105 @@
 "use client";
-import airaLogo from "@/assets/images/aira-logo.svg";
-import caoLogo from "@/assets/images/cao-logo.svg";
-import caoPaxrightsLogo from "@/assets/images/cao-paxrights-logo.svg";
-import ecunionLogo from "@/assets/images/ecunion-logo.svg";
-import samandehiLogo from "@/assets/images/samandehi-logo.svg";
-import torinoLogo from "@/assets/images/Torino.webp";
-import MenuBar from "@/components/modules/MenuBar";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+
+import MenuBar from "@/components/modules/MenuBar";
 import AuthForm from "../AuthForm/AuthForm";
+import {
+  FOOTER_SECTIONS,
+  NAVIGATION_LINKS,
+  SITE_CONFIG,
+  TRUST_LOGOS,
+} from "./layout.config";
+
 import styles from "./index.module.css";
+
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <header className={styles.header}>
         <div>
-          <div
+          <button
+            type="button"
             className={styles.menuBtn}
             onClick={() => setIsMenuOpen(true)}
-          ></div>
+            aria-label="Open navigation menu"
+          />
           <nav className={styles.navbar}>
             <Link href="/">
               <Image
                 priority
-                src={torinoLogo}
-                alt="Torino Logo"
+                src={SITE_CONFIG?.logo?.src}
+                alt={SITE_CONFIG?.logo?.alt || "Logo"}
                 className={styles.logo}
               />
             </Link>
             <ul className={styles.menuList}>
-              <li className={styles.active}>
-                <Link href="/">صفحه اصلی</Link>
-              </li>
-              <li>
-                <Link href="/">خدمات گردشگری</Link>
-              </li>
-
-              <li>
-                <Link href="/">درباره ما</Link>
-              </li>
-              <li>
-                <Link href="/">تماس با ما</Link>
-              </li>
+              {NAVIGATION_LINKS?.map((link) => (
+                <li
+                  key={`${link?.href}-${link?.label}`}
+                  className={link?.active ? styles.active : undefined}
+                >
+                  <Link href={link?.href || "/"}>{link?.label}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
           <AuthForm />
           <MenuBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </div>
       </header>
+
       <div className="page-layout">{children}</div>
 
       <footer className={styles.footer}>
-        <div className={styles.footer_content}>
+        <div className={styles.footerContent}>
           <div className={styles.top}>
-            <div className={styles.top_start}>
-              <h2>تورینو</h2>
-              <ul>
-                <li>درباره ما</li>
-                <li>تماس با ما</li>
-                <li>چرا تورینو</li>
-                <li>بیمه مسافرتی</li>
-              </ul>
-            </div>
-
-            <div className={styles.top_end}>
-              <h2>خدمات مشتریان</h2>
-              <ul>
-                <li>پشتیبانی آنلاین</li>
-                <li>راهنمای خرید</li>
-                <li>راهنمای استرداد</li>
-                <li>پرسش و پاسخ</li>
-              </ul>
-            </div>
+            {FOOTER_SECTIONS?.map((section) => (
+              <div key={section?.title}>
+                <h2>{section?.title}</h2>
+                <ul>
+                  {section?.links?.map((item) => (
+                    <li key={item?.href}>
+                      <Link href={item?.href}>{item?.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
+
           <div className={styles.bottom}>
-            <div className={styles.bottom_start}>
-              <Image width={35} height={38} src={ecunionLogo} alt="login-btn" />
-              <Image
-                width={35}
-                height={38}
-                src={samandehiLogo}
-                alt="samandehi logo"
-              />
-              <Image width={35} height={38} src={airaLogo} alt="login-btn" />
-              <Image width={35} height={38} src={caoLogo} alt="login-btn" />
-              <Image
-                width={35}
-                height={38}
-                src={caoPaxrightsLogo}
-                alt="login-btn"
-              />
+            <div className={styles.bottomStart}>
+              {TRUST_LOGOS?.map((logo) => (
+                <Image
+                  key={logo?.id}
+                  width={35}
+                  height={38}
+                  src={logo?.src}
+                  alt={logo?.alt}
+                />
+              ))}
             </div>
-            <div className={styles.bottom_end}>
+            <div className={styles.bottomEnd}>
               <Image
                 width={100}
                 height={30}
-                src={torinoLogo}
-                alt="Torino Logo"
+                src={SITE_CONFIG?.logo?.src}
+                alt={SITE_CONFIG?.logo?.alt}
               />
-              <p className={styles.support_number}>
-                <a href="tel:+980218574">تلفن پشتیبانی: 021-8574</a>
+              <p className={styles.supportNumber}>
+                <a href={`tel:${SITE_CONFIG?.supportPhoneTel}`}>
+                  تلفن پشتیبانی: {SITE_CONFIG?.supportPhone}
+                </a>
               </p>
             </div>
           </div>
         </div>
-        <p className={styles.copyright}>
-          کلیه حقوق این وب سایت متعلق به تورینو میباشد.
-        </p>
+        <p className={styles.copyright}>{SITE_CONFIG?.copyrightText}</p>
       </footer>
     </>
   );
