@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: var(--z-index-overlay);
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.44);
+  height: 100vh;
+  background-color: var(--bg-overlay);
 }
 
 .surface {
@@ -15,41 +15,39 @@
   width: 209px;
   height: 100%;
   padding: 32px 12px;
-  background-color: #fff;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  animation: fadeIn .2s ease-out;
+  background-color: var(--bg-surface);
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+  animation: fadeIn 0.2s ease-out;
 }
 
-.menuList li{
+.menuList li a {
   display: grid;
   grid-template-columns: 20px 1fr;
-  gap: 8px;
+  gap: var(--spacing-2);
   align-items: center;
-  margin-bottom: 22px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #282828;
+  margin-bottom: var(--spacing-5);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  color: var(--text-primary);
 }
 
-.menuList li.active{
-  color: #28A745;
+.menuList li.active a {
+  color: var(--color-primary);
 }
 
-.menuList li i{
-  width: 16px;
-  height: 16px;
+.menuList li i {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
   text-align: center;
 }
 
-
-@keyframes fadeIn{
-  from{
+@keyframes fadeIn {
+  from {
     transform: translateX(100%);
   }
-  to{
+  to {
     transform: translateX(0%);
-
   }
 }
 

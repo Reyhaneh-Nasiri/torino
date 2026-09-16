@@ -1,33 +1,49 @@
-"use client"
+"use client";
+
+import Link from "next/link";
+
+import { useOutsideClick } from "@/core/hooks/useOutsideClick";
+import { MENU_ITEMS } from "./menubar.config";
+
 import styles from "./index.module.css";
 
 const MenuBar = ({ isMenuOpen, setIsMenuOpen }) => {
+  const menuRef = useOutsideClick(() => setIsMenuOpen(false));
+
+  if (!isMenuOpen) {
+    return null;
+  }
+
   const closeHandler = () => {
     setIsMenuOpen(false);
   };
+
   return (
-    <>
-      {isMenuOpen && (
-        <div className={styles.container} onClick={closeHandler}>
-          <div className={styles.surface} onClick={(e) => e.stopPropagation()}>
-            <ul className={styles.menuList}>
-              <li className={styles.active}>
-                <i className="fa-solid fa-house"></i> صفحه اصلی
-              </li>
-              <li>
-                <i className="fa-solid fa-plane-up"></i> خدمات گردشگری
-              </li>
-              <li>
-                <i className="fa-solid fa-info"></i> درباره ما
-              </li>
-              <li>
-                <i className="fa-solid fa-phone"></i> تماس با ما
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
-    </>
+    <div
+      className={styles.container}
+      role="dialog"
+      aria-modal="true"
+      aria-label="منوی سایت"
+    >
+      <div ref={menuRef} className={styles.surface}>
+        <nav className={styles.navbar}>
+          <ul className={styles.menuList}>
+            {MENU_ITEMS?.map((item, index) => {
+              const isActive = item?.active;
+
+              return (
+                <li key={index} className={isActive ? styles.active : ""}>
+                  <Link href={item?.href || "/"} onClick={closeHandler}>
+                    <i className={item?.iconClass} aria-hidden="true" />
+                    <span>{item?.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
 };
 
