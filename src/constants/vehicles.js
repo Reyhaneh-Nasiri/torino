@@ -1,26 +1,26 @@
 export const VEHICLES = {
   bus: {
     name: "اتوبوس",
-    icon: <i className="fas fa-bus-alt"></i>,
+    iconClass: "fas fa-bus-alt",
   },
   train: {
     name: "قطار",
-    icon: <i className="fas fa-train-subway"></i>,
+    iconClass: "fas fa-train-subway",
   },
   airplane: {
     name: "هواپیما",
-    icon: <i className="fas fa-plane"></i>,
+    iconClass: "fas fa-plane",
   },
   suv: {
     name: "شاسی‌بلند",
-    icon: <i className="fas fa-car"></i>,
+    iconClass: "fas fa-car",
   },
   van: {
     name: "ون",
-    icon: <i className="fas fa-shuttle-van"></i>,
+    iconClass: "fas fa-shuttle-van",
   },
   ship: {
     name: "کشتی",
-    icon: <i className="fas fa-ship"></i>,
+    iconClass: "fas fa-ship",
   },
 };
