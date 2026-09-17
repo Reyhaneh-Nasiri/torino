@@ -4,6 +4,7 @@ import { PLACES } from "@/constants/places";
 import { VEHICLES } from "@/constants/vehicles";
 import { formatCurrency } from "@/core/utils/currency";
 import { toPersianDateLong } from "@/core/utils/date";
+
 import styles from "./index.module.css";
 
 const STATUS_LABEL = {
@@ -28,8 +29,15 @@ const getTourStatus = (startDate, endDate) => {
   return "finished";
 };
 
+const displayTourId = (id, startChars = 6, endChars = 4) => {
+  if (!id) return "---";
+  if (id.length <= startChars + endChars) return id;
+  return `${id.slice(0, startChars)}...${id.slice(-endChars)}`;
+};
+
 const MyTourCard = ({ tour = {} }) => {
   const {
+    id,
     title,
     fleetVehicle,
     origin,
@@ -41,28 +49,51 @@ const MyTourCard = ({ tour = {} }) => {
 
   const status = getTourStatus(startDate, endDate);
 
-  const vehicleInfo = VEHICLES[fleetVehicle] || {};
-  const originLabel = origin?.name ? PLACES[origin.name] : "مبدأ نامشخص";
-  const destinationLabel = destination?.name
-    ? PLACES[destination.name]
+  const vehicleKey =
+    typeof fleetVehicle === "string" ? fleetVehicle.toLowerCase() : "";
+  const vehicleInfo = VEHICLES[vehicleKey];
+
+  const originName =
+    typeof origin?.name === "string" ? origin.name.toLowerCase() : "";
+  const destinationName =
+    typeof destination?.name === "string" ? destination.name.toLowerCase() : "";
+
+  const originLabel = originName ? PLACES[originName] : "مبدأ نامشخص";
+  const destinationLabel = destinationName
+    ? PLACES[destinationName]
     : "مقصد نامشخص";
-  const formattedStartDate = toPersianDateLong(startDate);
-  const formattedEndDate = toPersianDateLong(endDate);
+
+  const formattedStartDate = startDate
+    ? toPersianDateLong(startDate)
+    : "تاریخ نامشخص";
+  const formattedEndDate = endDate
+    ? toPersianDateLong(endDate)
+    : "تاریخ نامشخص";
 
   return (
-    <div className={styles.card}>
-      <span className={`${styles[status]} ${styles.status}`}>
+    <article
+      className={styles.card}
+      aria-label={`تور: ${title || "بدون عنوان"}`}
+    >
+      <span
+        className={`${styles[status] || styles.unknown} ${styles.status}`}
+        aria-label={`وضعیت تور: ${STATUS_LABEL[status]}`}
+      >
         {STATUS_LABEL[status]}
       </span>
-      <div className={styles.header}>
+
+      <header className={styles.header}>
         <div className={styles.cardRow}>
           <h3 className={styles.title}>
-            <i className="fa-solid fa-mountain-city"></i>
+            <i className="fa-solid fa-mountain-city" aria-hidden="true" />
             {title || "عنوان نامشخص"}
           </h3>
           <span className={styles.type}>
-            {vehicleInfo.icon || <i className="fa-solid fa-bus"></i>}
-            سفر با {vehicleInfo.name || "وسیله نامشخص"}
+            <i
+              className={vehicleInfo?.iconClass || "fa-solid fa-bus"}
+              aria-hidden="true"
+            />
+            {vehicleInfo?.name ? `سفر با ${vehicleInfo?.name}` : "وسیله نامشخص"}
           </span>
         </div>
 
@@ -78,23 +109,31 @@ const MyTourCard = ({ tour = {} }) => {
             <span className={styles.dateValue}>{formattedEndDate}</span>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className={styles.footer}>
+      <footer className={styles.footer}>
         <div className={styles.info}>
           <span className={styles.infoLabel}>شماره تور</span>
-          <span className={styles.infoValue}>102095404</span>
+          <span className={styles.infoValue} title={id}>
+            {displayTourId(id)}
+          </span>
         </div>
-        <div className={styles.border}></div>
+        <div className={styles.border} aria-hidden="true" />
         <div className={styles.price}>
           <span className={styles.priceLabel}>مبلغ پرداخت شده</span>
           <span className={styles.priceAmount}>
-            {formatCurrency(price ?? 0)}{" "}
-            <span className={styles.unit}>تومان</span>
+            {price != null ? (
+              <>
+                {formatCurrency(price)}
+                <span className={styles.unit}>تومان</span>
+              </>
+            ) : (
+              <span>نامشخص</span>
+            )}
           </span>
         </div>
-      </div>
-    </div>
+      </footer>
+    </article>
   );
 };
 
