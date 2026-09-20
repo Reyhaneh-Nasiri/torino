@@ -1,15 +1,27 @@
 import styles from "./index.module.css";
 
+export const ERROR_STATE_CONSTANTS = {
+  TITLE: "خطا در دریافت اطلاعات",
+  DESCRIPTION:
+    "مشکلی در برقراری ارتباط با سرور به وجود آمده است. لطفاً اتصال خود را بررسی کرده و مجدداً تلاش کنید.",
+  BUTTON_TEXT: "تلاش مجدد",
+  RETRYING_TEXT: "در حال دریافت...",
+  SECTION_LABEL: "خطای سیستم",
+};
+
+const { TITLE, DESCRIPTION, BUTTON_TEXT, RETRYING_TEXT, SECTION_LABEL } =
+  ERROR_STATE_CONSTANTS;
+
 const ErrorState = ({
-  title = "خطا در دریافت اطلاعات",
-  description = "مشکلی در برقراری ارتباط با سرور به وجود آمده است. لطفاً اتصال خود را بررسی کرده و مجدداً تلاش کنید.",
-  buttonText = "تلاش مجدد",
+  title = TITLE,
+  description = DESCRIPTION,
+  buttonText = BUTTON_TEXT,
   onRetry,
-  isRetrying,
+  isRetrying = false,
 }) => {
   return (
-    <div className={styles["error-state-container"]}>
-      <div className={styles["error-state-icon"]}>
+    <section className={styles.container} aria-label={SECTION_LABEL}>
+      <div className={styles.icon} aria-hidden="true">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -24,19 +36,22 @@ const ErrorState = ({
           />
         </svg>
       </div>
-      <h3 className={styles["error-state-title"]}>{title}</h3>
-      <p className={styles["error-state-description"]}>{description}</p>
+
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.description}>{description}</p>
+
       {onRetry && (
         <button
           type="button"
-          className={styles["error-state-button"]}
+          className={styles.button}
           onClick={onRetry}
           disabled={isRetrying}
+          aria-busy={isRetrying}
         >
-          {isRetrying ? "در حال دریافت..." : buttonText}
+          {isRetrying ? RETRYING_TEXT : buttonText}
         </button>
       )}
-    </div>
+    </section>
   );
 };
 

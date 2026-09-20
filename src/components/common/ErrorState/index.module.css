@@ -1,4 +1,4 @@
-.error-state-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@
   box-shadow: 0 1px 3px rgb(var(--color-danger-red) / 5%);
 }
 
-.error-state-icon {
+.icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,19 +23,19 @@
   border-radius: var(--radius-full);
 }
 
-.error-state-icon svg {
+.icon svg {
   width: 36px;
   height: 36px;
 }
 
-.error-state-title {
+.title {
   margin-bottom: var(--spacing-2);
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   color: var(--text-primary);
 }
 
-.error-state-description {
+.description {
   max-width: 380px;
   margin-bottom: var(--spacing-5);
   font-size: var(--fs-sm);
@@ -43,7 +43,7 @@
   color: var(--text-tertiary);
 }
 
-.error-state-button {
+.button {
   display: inline-flex;
   gap: var(--spacing-2);
   align-items: center;
@@ -59,7 +59,7 @@
     var(--transition-timing-default);
 }
 
-.error-state-button:hover {
+.button:hover {
   background-color: rgb(var(--color-danger-red) / 85%);
   box-shadow: 0 4px 12px rgb(var(--color-danger-red) / 25%);
   transform: translateY(-2px);
