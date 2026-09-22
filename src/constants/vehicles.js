@@ -1,26 +1,28 @@
+import { BusFront, Car, Plane, Ship, Train, Van } from "lucide-react";
+
 export const VEHICLES = {
   bus: {
     name: "اتوبوس",
-    iconClass: "fas fa-bus-alt",
+    icon: BusFront,
   },
   train: {
     name: "قطار",
-    iconClass: "fas fa-train-subway",
+    icon: Train,
   },
   airplane: {
     name: "هواپیما",
-    iconClass: "fas fa-plane",
+    icon: Plane,
   },
   suv: {
     name: "شاسی‌بلند",
-    iconClass: "fas fa-car",
+    icon: Car,
   },
   van: {
     name: "ون",
-    iconClass: "fas fa-shuttle-van",
+    icon: Van,
   },
   ship: {
     name: "کشتی",
-    iconClass: "fas fa-ship",
+    icon: Ship,
   },
 };

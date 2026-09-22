@@ -34,7 +34,7 @@ const MenuBar = ({ isMenuOpen, setIsMenuOpen }) => {
               return (
                 <li key={index} className={isActive ? styles.active : ""}>
                   <Link href={item?.href || "/"} onClick={closeHandler}>
-                    <i className={item?.iconClass} aria-hidden="true" />
+                    <item.icon strokeWidth={3} />
                     <span>{item?.label}</span>
                   </Link>
                 </li>

@@ -3,8 +3,6 @@
   top: var(--spacing-5);
   left: var(--spacing-5);
   font-size: var(--fs-lg);
-  cursor: pointer;
-  transform: rotate(45deg);
 }
 
 .title {
@@ -40,7 +38,7 @@
   border-color: var(--input-border-error);
 }
 
-.form button {
+.form form button {
   width: 100%;
   padding: var(--spacing-3);
   margin-top: var(--spacing-6);

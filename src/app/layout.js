@@ -18,12 +18,6 @@ export default async function RootLayout({ children }) {
   return (
     // <html lang="fa" dir="rtl" className={`${vazirmatn.variable}`}>
     <html lang="fa" dir="rtl" suppressHydrationWarning>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://lib.arvancloud.ir/font-awesome/6.3.0/css/all.css"
-        />
-      </head>
       <body suppressHydrationWarning>
         <TanstackQueryProvider>
           <Layout>{children}</Layout>

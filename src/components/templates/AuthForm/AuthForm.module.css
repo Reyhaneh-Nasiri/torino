@@ -13,12 +13,12 @@
   cursor: pointer;
   transition: all var(--transition-duration-normal);
 }
-.profile__trigger > i:last-of-type {
+.profile__trigger > svg:last-of-type {
   font-size: clamp(var(--fs-sm), 0.37vw + 0.8rem, var(--fs-lg));
   transition: all var(--transition-duration-normal);
 }
 
-.profile__trigger i.active {
+.profile__trigger svg.active {
   transform: rotate(180deg);
 }
 

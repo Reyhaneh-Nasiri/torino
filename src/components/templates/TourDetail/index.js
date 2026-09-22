@@ -1,4 +1,17 @@
 "use client";
+
+import {
+  Award,
+  BusFront,
+  CalendarDays,
+  Map,
+  Route,
+  ShieldCheck,
+  UserRoundCheck,
+  Users,
+} from "lucide-react";
+import Image from "next/image";
+
 import ReserveBuyCTA from "@/components/modules/ReserveBuyCTA";
 import { PLACES } from "@/constants/places";
 import { VEHICLES } from "@/constants/vehicles";
@@ -6,13 +19,13 @@ import { useTourCapacity } from "@/core/services/queries";
 import { formatCurrency } from "@/core/utils/currency";
 import { diffDaysAndNights, toPersianDate } from "@/core/utils/date";
 import { e2p } from "@/core/utils/digit";
-import Image from "next/image";
+
 import styles from "./index.module.css";
 
 const InfoItem = ({ icon, label, value, isAnimated = false }) => (
   <div>
     <p>
-      {icon && (typeof icon === "string" ? <i className={icon}></i> : icon)}
+      {icon}
       {label}:
     </p>
     <p key={value} className={isAnimated ? styles.animatedValue : ""}>
@@ -38,7 +51,11 @@ const TourDetail = ({
   const vehicleData = VEHICLES[vehicleKey];
 
   const vehicleName = vehicleData?.name || fleetVehicle || "نامشخص";
-  const vehicleIcon = vehicleData?.icon || <i className="fa-solid fa-bus"></i>;
+  const vehicleIcon = vehicleData?.icon ? (
+    <vehicleData.icon strokeWidth={3} />
+  ) : (
+    <BusFront strokeWidth={3} />
+  );
 
   const originKey = origin?.name?.toLowerCase();
   const originName = PLACES[originKey] || origin?.name || "نامشخص";
@@ -64,14 +81,14 @@ const TourDetail = ({
     },
     {
       id: "capacity",
-      icon: "fa-solid fa-users",
+      icon: <Users strokeWidth={3} />,
       label: "ظرفیت",
       value: seatsText,
       isAnimated: true,
     },
     {
       id: "insurance",
-      icon: "fa-solid fa-shield-halved",
+      icon: <ShieldCheck strokeWidth={3} />,
       label: "بیمه",
       value: insuranceText,
     },
@@ -80,19 +97,19 @@ const TourDetail = ({
   const desktopOnlyList = [
     {
       id: "origin",
-      icon: "fa-solid fa-route",
+      icon: <Route strokeWidth={3} />,
       label: "مبدا",
       value: originName,
     },
     {
       id: "startDate",
-      icon: "fa-solid fa-calendar",
+      icon: <CalendarDays strokeWidth={3} />,
       label: "تاریخ رفت",
       value: toPersianDate(startDate),
     },
     {
       id: "endDate",
-      icon: "fa-solid fa-calendar",
+      icon: <CalendarDays strokeWidth={3} />,
       label: "تاریخ برگشت",
       value: toPersianDate(endDate),
     },
@@ -121,13 +138,13 @@ const TourDetail = ({
             </div>
             <div className={styles.properties}>
               <p>
-                <i className="fa-solid fa-user-tie"></i> تورلیدر از مبدا
+                <UserRoundCheck /> تورلیدر از مبدا
               </p>
               <p>
-                <i className="fa-solid fa-route"></i> برنامه سفر
+                <Map /> برنامه سفر
               </p>
               <p>
-                <i className="fa-solid fa-award"></i> تضمین کیفیت
+                <Award /> تضمین کیفیت
               </p>
             </div>
 

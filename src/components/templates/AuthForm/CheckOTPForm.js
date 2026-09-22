@@ -1,8 +1,12 @@
 "use client";
-import { useCheckOtp, useSendOtp } from "@/core/services/mutations";
+
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import OtpInput from "react-otp-input";
+
+import { useCheckOtp, useSendOtp } from "@/core/services/mutations";
+
 import styles from "./CheckOTPForm.module.css";
 
 const CheckOTPForm = ({ mobile, setStep, onClose }) => {
@@ -68,10 +72,9 @@ const CheckOTPForm = ({ mobile, setStep, onClose }) => {
   };
   return (
     <div className={styles.form}>
-      <i
-        className={`${styles.backBtn} fa-solid fa-arrow-left`}
-        onClick={() => setStep(1)}
-      ></i>
+      <button className={styles.backBtn} onClick={() => setStep(1)}>
+        <ArrowLeft />
+      </button>
       <h4 className={styles.title}>کد تایید را وارد کنید</h4>
       <p className={styles.message}>کد تایید به شماره {mobile} ارسال شد</p>
       <form onSubmit={checkOtpHandler}>

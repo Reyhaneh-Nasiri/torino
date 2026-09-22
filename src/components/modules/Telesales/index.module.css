@@ -47,7 +47,7 @@
   padding: var(--spacing-3);
 }
 
-.phoneNumber {
+.phoneNumber a {
   display: flex;
   gap: var(--spacing-2);
   align-items: center;

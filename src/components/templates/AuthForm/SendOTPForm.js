@@ -1,6 +1,10 @@
 "use client";
-import { useSendOtp } from "@/core/services/mutations";
+
+import { X } from "lucide-react";
 import toast from "react-hot-toast";
+
+import { useSendOtp } from "@/core/services/mutations";
+
 import styles from "./SendOTPForm.module.css";
 
 const SendOTPForm = ({ setStep, register, handleSubmit, errors, onClose }) => {
@@ -26,10 +30,9 @@ const SendOTPForm = ({ setStep, register, handleSubmit, errors, onClose }) => {
   };
   return (
     <div className={styles.form}>
-      <i
-        className={`${styles.closeBtn} fa-solid fa-plus`}
-        onClick={onClose}
-      ></i>
+      <button className={styles.closeBtn} onClick={onClose}>
+        <X />
+      </button>
       <h4 className={styles.title}>ورود به تورینو</h4>
       <form onSubmit={handleSubmit(sendOtpHandler)}>
         <label>شماره موبایل خود را وارد کنید</label>

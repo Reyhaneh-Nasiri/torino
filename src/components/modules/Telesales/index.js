@@ -1,5 +1,7 @@
-import telesalesOperator from "@/assets/images/telesales-operator.webp";
+import { Phone } from "lucide-react";
 import Image from "next/image";
+
+import telesalesOperator from "@/assets/images/telesales-operator.webp";
 
 import styles from "./index.module.css";
 
@@ -23,7 +25,7 @@ const Telesales = () => {
       <div className={styles.bottom}>
         <p className={styles.phoneNumber}>
           <a href="tel:0211840">
-            021-1840 <i className="fa-solid fa-phone"></i>
+            021-1840 <Phone fill="currentColor" />
           </a>
         </p>
         <button className={styles.moreInfoBtn}>اطلاعات بیشتر</button>

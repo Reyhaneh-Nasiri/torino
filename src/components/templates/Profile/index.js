@@ -1,10 +1,13 @@
 "use client";
 
+import { SquarePen } from "lucide-react";
+import { useState } from "react";
+
 import ProfileForm from "@/components/modules/ProfileForm/index.js";
 import { useGetProfile } from "@/core/services/queries";
 import { toPersianDate } from "@/core/utils/date";
 import { e2p } from "@/core/utils/digit";
-import { useState } from "react";
+
 import styles from "./index.module.css";
 
 const GENDER_MAP = {
@@ -39,7 +42,7 @@ const PROFILE_SECTIONS = [
                 className={styles.actionBtn}
                 onClick={() => onEdit("account")}
               >
-                <i className="fa-solid fa-edit" aria-hidden="true" />
+                <SquarePen />
                 <span>{data?.email ? "ویرایش" : "افزودن"}</span>
               </button>
             </div>
@@ -156,7 +159,7 @@ const Profile = () => {
                   className={styles.actionBtn}
                   onClick={() => handleToggleEdit(section.id)}
                 >
-                  <i className="fa-solid fa-edit" aria-hidden="true" />
+                  <SquarePen />
                   <span>ویرایش اطلاعات</span>
                 </button>
               )}

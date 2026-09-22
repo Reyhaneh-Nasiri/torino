@@ -1,6 +1,10 @@
 "use client";
+
+import { UserRound } from "lucide-react";
+
 import BirthDatePicker from "@/components/atoms/BirthDatePicker";
 import SelectOption from "@/components/customGenerate/SelectOption";
+
 import styles from "./index.module.css";
 
 const PassengerForm = ({
@@ -14,7 +18,7 @@ const PassengerForm = ({
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>
-        <i className="fa-solid fa-user"></i>
+        <UserRound />
         مشخصات مسافر
       </h3>
       <div className={styles.form}>

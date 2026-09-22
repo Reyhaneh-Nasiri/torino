@@ -1,9 +1,12 @@
 "use client";
+
+import { CalendarDays } from "lucide-react";
 import { useEffect } from "react";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { Controller } from "react-hook-form";
 import DatePicker from "react-multi-date-picker";
+
 import "./index.css";
 
 const BirthDatePicker = ({ control }) => {
@@ -44,7 +47,7 @@ const BirthDatePicker = ({ control }) => {
                   className={`tour-input ${value ? "value" : "emptyValue"}`}
                   onClick={openCalendar}
                 >
-                  <i className="fa-solid fa-calendar"></i>
+                  <CalendarDays size={16} />
                   <span className={`${value ? "value" : "emptyValue"}`}>
                     {value || "تاریخ تولد"}
                   </span>

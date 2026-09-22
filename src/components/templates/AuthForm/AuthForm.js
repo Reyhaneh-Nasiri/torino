@@ -1,19 +1,20 @@
 "use client";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useQueryClient } from "@tanstack/react-query";
+import { ChevronDown, CircleUserRound, LogOut, UserRound } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import LoginBtn from "@/components/atoms/LoginBtn";
 import ModalContainer from "@/components/partials/containers/ModalContainer";
-import CheckOTPForm from "./CheckOTPForm";
-import SendOTPForm from "./SendOTPForm";
-
 import { useOutsideClick } from "@/core/hooks/useOutsideClick";
 import { otpSmsSchema } from "@/core/schemas/auth";
 import { useGetProfile } from "@/core/services/queries";
 import { removeCookie } from "@/core/utils/cookie";
+import CheckOTPForm from "./CheckOTPForm";
+import SendOTPForm from "./SendOTPForm";
 
 import styles from "./AuthForm.module.css";
 
@@ -85,20 +86,18 @@ const AuthForm = () => {
           onClick={() => setIsProfileMenuOpen((prev) => !prev)}
           aria-expanded={isProfileMenuOpen}
         >
-          <i className="fa-solid fa-user"></i>
+          <UserRound />
           <span>{data.mobile}</span>
-          <i
-            className={`fa-solid fa-angle-down ${isProfileMenuOpen ? styles.active : ""}`}
-          ></i>
+          <ChevronDown className={isProfileMenuOpen ? styles.active : ""} />
         </button>
         {isProfileMenuOpen && (
           <ul className={styles.profile__menu}>
             <li className={styles["profile__item--header"]}>
-              <i className="fa-solid fa-user-circle"></i>
+              <CircleUserRound />
               {data.mobile}
             </li>
             <li className={styles.profile__item}>
-              <i className="fa-solid fa-user"></i>
+              <UserRound />
               <Link
                 href="/dashboard"
                 onClick={() => setIsProfileMenuOpen(false)}
@@ -110,7 +109,7 @@ const AuthForm = () => {
               className={styles["profile__item--logout"]}
               onClick={logoutHandler}
             >
-              <i className="fa-solid fa-sign-out"></i>
+              <LogOut />
               خروج از حساب کاربری
             </li>
           </ul>

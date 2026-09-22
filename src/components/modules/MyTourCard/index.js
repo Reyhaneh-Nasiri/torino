@@ -1,5 +1,7 @@
 "use client";
 
+import { BusFront, Mountain } from "lucide-react";
+
 import { PLACES } from "@/constants/places";
 import { VEHICLES } from "@/constants/vehicles";
 import { formatCurrency } from "@/core/utils/currency";
@@ -52,7 +54,11 @@ const MyTourCard = ({ tour = {} }) => {
   const vehicleKey =
     typeof fleetVehicle === "string" ? fleetVehicle.toLowerCase() : "";
   const vehicleInfo = VEHICLES[vehicleKey];
-
+  const vehicleIcon = vehicleInfo?.icon ? (
+    <vehicleInfo.icon strokeWidth={3} />
+  ) : (
+    <BusFront strokeWidth={3} />
+  );
   const originName =
     typeof origin?.name === "string" ? origin.name.toLowerCase() : "";
   const destinationName =
@@ -85,14 +91,11 @@ const MyTourCard = ({ tour = {} }) => {
       <header className={styles.header}>
         <div className={styles.cardRow}>
           <h3 className={styles.title}>
-            <i className="fa-solid fa-mountain-city" aria-hidden="true" />
+            <Mountain />
             {title || "عنوان نامشخص"}
           </h3>
           <span className={styles.type}>
-            <i
-              className={vehicleInfo?.iconClass || "fa-solid fa-bus"}
-              aria-hidden="true"
-            />
+            {vehicleIcon}
             {vehicleInfo?.name ? `سفر با ${vehicleInfo?.name}` : "وسیله نامشخص"}
           </span>
         </div>

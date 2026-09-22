@@ -1,7 +1,11 @@
 "use client";
+
+import { MapPin } from "lucide-react";
+import { useState } from "react";
+
 import { PLACES } from "@/constants/places";
 import { filteredPlaces } from "@/core/utils/places";
-import { useState } from "react";
+
 import styles from "./index.module.css";
 
 const LABELS = {
@@ -70,7 +74,7 @@ const PlaceAutocomplete = ({
                   className={styles.placeItem}
                   onPointerDown={() => selectHandler(option)}
                 >
-                  <i className="fa-solid fa-map-marker-alt"></i>
+                  <MapPin />
                   {PLACES[option.name]}
                 </li>
               ))}

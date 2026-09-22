@@ -1,23 +1,25 @@
+import { Home, Info, Phone, Plane } from "lucide-react";
+
 export const MENU_ITEMS = [
   {
     href: "/",
     label: "صفحه اصلی",
-    iconClass: "fa-solid fa-house",
+    icon: Home,
     active: true,
   },
   {
     href: "/services",
     label: "خدمات گردشگری",
-    iconClass: "fa-solid fa-plane-up",
+    icon: Plane,
   },
   {
     href: "/about",
     label: "درباره ما",
-    iconClass: "fa-solid fa-info",
+    icon: Info,
   },
   {
     href: "/contact",
     label: "تماس با ما",
-    iconClass: "fa-solid fa-phone",
+    icon: Phone,
   },
 ];

@@ -1,11 +1,15 @@
 "use client";
+
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+
 import place1 from "@/assets/images/place1.webp";
 import place2 from "@/assets/images/place2.webp";
 import place3 from "@/assets/images/place3.webp";
 import place4 from "@/assets/images/place4.webp";
 import { e2p } from "@/core/utils/digit";
-import Image from "next/image";
-import { useState } from "react";
+
 import styles from "./index.module.css";
 
 const SLIDES = [
@@ -47,9 +51,15 @@ const WhyUs = () => {
         <div className={styles.images}>
           {SLIDES.map((slide) => slide)}
           <div className={styles.actions}>
-            <i className="fa-solid fa-arrow-right" onClick={prevHandler}></i>
+            <button onClick={prevHandler}>
+              <ArrowRight />
+            </button>
+
             <p>{e2p(`${SLIDES.length} / ${currentSlide}`)}</p>
-            <i className="fa-solid fa-arrow-left" onClick={nextHandler}></i>
+
+            <button onClick={nextHandler}>
+              <ArrowLeft />
+            </button>
           </div>
         </div>
       </div>

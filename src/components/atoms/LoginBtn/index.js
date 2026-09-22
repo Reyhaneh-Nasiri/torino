@@ -1,3 +1,5 @@
+import { LogIn, UserRound } from "lucide-react";
+
 import styles from "./index.module.css";
 
 const LoginBtn = ({ setIsOpen }) => {
@@ -5,11 +7,11 @@ const LoginBtn = ({ setIsOpen }) => {
     <>
       <div className={styles.loginBtn} onClick={() => setIsOpen(true)}>
         <div className={styles.mobile}>
-          <i className="fa-solid fa-sign-in"></i>
+          <LogIn />
         </div>
         <div className={styles.desktop}>
           <span className={styles.icon}>
-            <i className="fa-solid fa-user"></i>
+            <UserRound />
           </span>
           <span>ورود | ثبت نام</span>
         </div>

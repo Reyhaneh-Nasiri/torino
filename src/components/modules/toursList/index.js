@@ -1,8 +1,12 @@
 "use client";
+
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
+
 import TourCard from "@/components/modules/TourCard";
 import { PLACES } from "@/constants/places";
 import { useMediaQuery } from "@/core/hooks/useMediaQuery";
-import { useState } from "react";
+
 import styles from "./index.module.css";
 
 const ToursList = ({ toursData, query }) => {
@@ -49,13 +53,13 @@ const ToursList = ({ toursData, query }) => {
                 className={styles.moreBtn}
                 onClick={() => setCount((prev) => prev + 1)}
               >
-                مشاهده بیشتر <i className="fa-solid fa-angle-down"></i>
+                مشاهده بیشتر <ChevronDown />
               </button>
             )}
 
             {canCollapse && (
               <button className={styles.moreBtn} onClick={() => setCount(1)}>
-                مشاهده کمتر <i className="fa-solid fa-angle-up"></i>
+                مشاهده کمتر <ChevronUp />
               </button>
             )}
           </div>

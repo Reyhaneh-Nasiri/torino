@@ -1,8 +1,11 @@
 "use client";
+
+import { CalendarDays } from "lucide-react";
 import { useEffect } from "react";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DatePicker from "react-multi-date-picker";
+
 import "./index.css";
 
 const TourDatePicker = ({ value, onChange }) => {
@@ -36,7 +39,7 @@ const TourDatePicker = ({ value, onChange }) => {
           }}
           render={(value, openCalendar) => (
             <div className="tour-input" onClick={openCalendar}>
-              <i className="fa-solid fa-calendar"></i>
+              <CalendarDays />
               <span>{value || "انتخاب تاریخ"}</span>
             </div>
           )}

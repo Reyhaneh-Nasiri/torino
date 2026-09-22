@@ -1,6 +1,10 @@
 "use client";
-import { useOutsideClick } from "@/core/hooks/useOutsideClick";
+
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+
+import { useOutsideClick } from "@/core/hooks/useOutsideClick";
+
 import styles from "./index.module.css";
 
 const SELECT_TYPE = {
@@ -63,7 +67,7 @@ const SelectOption = ({
           {currentTypeData.map[localValue] || currentTypeData.title}
         </p>
 
-        <i className={`fa-solid fa-angle-down ${styles.angle}`}></i>
+        <ChevronDown className={styles.angle} />
         {isOpen && (
           <ul className={styles.options}>
             <li className={styles.label} onClick={(e) => e.stopPropagation()}>

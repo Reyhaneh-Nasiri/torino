@@ -1,6 +1,9 @@
 "use client";
+
+import { Mountain, ReceiptText, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import styles from "./index.module.css";
 
 const DashboardTabs = () => {
@@ -11,7 +14,7 @@ const DashboardTabs = () => {
         className={`${styles.tabItem} ${pathName.includes("profile") ? styles.active : null}`}
       >
         <Link href="/dashboard/profile">
-          <i className="fa-solid fa-user"></i>
+          <UserRound />
           پروفایل
         </Link>
       </li>
@@ -19,7 +22,7 @@ const DashboardTabs = () => {
         className={`${styles.tabItem} ${pathName.includes("history") ? styles.active : null}`}
       >
         <Link href="/dashboard/history">
-          <i className="fa-solid fa-mountain-city"></i>
+          <Mountain />
           تور های من
         </Link>
       </li>
@@ -27,7 +30,7 @@ const DashboardTabs = () => {
         className={`${styles.tabItem} ${pathName.includes("transactions") ? styles.active : null}`}
       >
         <Link href="/dashboard/transactions">
-          <i className="fa-solid fa-receipt"></i>
+          <ReceiptText />
           تراکنش ها
         </Link>
       </li>
